@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=Wifi_Dimmer.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\Wifi_Dimmer -TC:\CooCox\CoIDE\configuration\ProgramData\Wifi_Dimmer/arm-gcc-link.ld -g">
+      <target file="Wifi_Dimmer.elf" lastModified="14be163dad4">
+         <source file="..\obj\stm32f10x_rtc.o" lastModified="14be163c9a1"/>
+         <source file="..\obj\stm32f10x_tim.o" lastModified="14be163cab5"/>
+         <source file="..\obj\USART1_Config.o" lastModified="14be163cb1b"/>
+         <source file="..\obj\USART3_Config.o" lastModified="14be163cbae"/>
+         <source file="..\obj\stm32f10x_dbgmcu.o" lastModified="14be163cc07"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="14be163cd79"/>
+         <source file="..\obj\stm32f10x_fsmc.o" lastModified="14be163ce0c"/>
+         <source file="..\obj\startup_stm32f10x_md.o" lastModified="14be163ce53"/>
+         <source file="..\obj\stm32f10x_pwr.o" lastModified="14be163ceb7"/>
+         <source file="..\obj\stm32f10x_can.o" lastModified="14be163cf60"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="14be163cfdd"/>
+         <source file="..\obj\stm32f10x_dac.o" lastModified="14be163d049"/>
+         <source file="..\obj\main.o" lastModified="14be163d1b7"/>
+         <source file="..\obj\stm32f10x_crc.o" lastModified="14be163d218"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="14be163d2a6"/>
+         <source file="..\obj\stm32f10x_exti.o" lastModified="14be163d30c"/>
+         <source file="..\obj\stm32f10x_adc.o" lastModified="14be163d3af"/>
+         <source file="..\obj\stm32f10x_usart.o" lastModified="14be163d444"/>
+         <source file="..\obj\stm32f10x_flash.o" lastModified="14be163d4db"/>
+         <source file="..\obj\stm32f10x_cec.o" lastModified="14be163d548"/>
+         <source file="..\obj\stm32f10x_sdio.o" lastModified="14be163d5cb"/>
+         <source file="..\obj\stm32f10x_dma.o" lastModified="14be163d639"/>
+         <source file="..\obj\misc.o" lastModified="14be163d698"/>
+         <source file="..\obj\stm32f10x_wwdg.o" lastModified="14be163d6f6"/>
+         <source file="..\obj\stm32f10x_spi.o" lastModified="14be163d77f"/>
+         <source file="..\obj\stm32f10x_i2c.o" lastModified="14be163d814"/>
+         <source file="..\obj\stm32f10x_bkp.o" lastModified="14be163d87c"/>
+         <source file="..\obj\stm32f10x_iwdg.o" lastModified="14be163d8d7"/>
+      </target>
+   </processor>
+</history>

@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m3 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F103CBT6 -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD -D__ASSEMBLY__ -DSTM32F103CB -ID:\Google Drive\ARM Development\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver -ID:\Google Drive\ARM Development\STM32 Projects\F103\stm32-f103-CortexM3-ESP8266-Dimmer\app\cmsis_boot -ID:\Google Drive\ARM Development\STM32 Projects\F103\stm32-f103-CortexM3-ESP8266-Dimmer\app\Config -ID:\Google Drive\ARM Development\STM32 Projects\F103\stm32-f103-CortexM3-ESP8266-Dimmer\app -ID:\Google Drive\ARM Development\STM32 Projects\F103 -ID:\Google Drive\ARM Development\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\inc -ID:\Google Drive\ARM Development\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries -ID:\Google Drive\ARM Development\STM32 Projects\F103\stm32-f103-CortexM3-ESP8266-Dimmer\app\ATCommands -ID:\Google Drive\ARM Development\STM32 Projects\F103\stm32-f103-CortexM3-ESP8266-Dimmer\app\cmsis -ID:\Google Drive\ARM Development\STM32 Projects\F103\stm32-f103-CortexM3-ESP8266-Dimmer">
+      <target file="stm32f10x_dbgmcu.o" lastModified="14be163cc07">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dbgmcu.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_spi.o" lastModified="14be163d77f">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="USART1_Config.o" lastModified="14be163cb1b">
+         <source file="..\..\..\app\Config\USART1_Config.c" lastModified="14baac43597"/>
+      </target>
+      <target file="stm32f10x_iwdg.o" lastModified="14be163d8d7">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_crc.o" lastModified="14be163d218">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_crc.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_rcc.o" lastModified="14be163d2a6">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_cec.o" lastModified="14be163d548">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_cec.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_pwr.o" lastModified="14be163ceb7">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_pwr.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_dac.o" lastModified="14be163d049">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dac.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_i2c.o" lastModified="14be163d814">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="misc.o" lastModified="14be163d698">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\misc.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_fsmc.o" lastModified="14be163ce0c">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="startup_stm32f10x_md.o" lastModified="14be163ce53">
+         <source file="..\..\..\app\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="14b77707650"/>
+      </target>
+      <target file="stm32f10x_flash.o" lastModified="14be163d4db">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_flash.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_bkp.o" lastModified="14be163d87c">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_gpio.o" lastModified="14be163cfdd">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c" lastModified="12ea784aef0"/>
+      </target>
+      <target file="stm32f10x_rtc.o" lastModified="14be163c9a1">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_exti.o" lastModified="14be163d30c">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_can.o" lastModified="14be163cf60">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_can.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="system_stm32f10x.o" lastModified="14be163cd79">
+         <source file="..\..\..\app\cmsis_boot\system_stm32f10x.c" lastModified="14b77707650"/>
+      </target>
+      <target file="stm32f10x_sdio.o" lastModified="14be163d5cb">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_tim.o" lastModified="14be163cab5">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_adc.o" lastModified="14be163d3af">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_adc.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="USART3_Config.o" lastModified="14be163cbae">
+         <source file="..\..\..\app\Config\USART3_Config.c" lastModified="14bd8496561"/>
+      </target>
+      <target file="stm32f10x_wwdg.o" lastModified="14be163d6f6">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_dma.o" lastModified="14be163d639">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dma.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="stm32f10x_usart.o" lastModified="14be163d444">
+         <source file="..\..\..\..\..\..\STM32 Libraries\STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c" lastModified="12ea0e130a0"/>
+      </target>
+      <target file="main.o" lastModified="14be163d1b7">
+         <source file="..\..\..\app\main.c" lastModified="14bde640d5f"/>
+      </target>
+   </processor>
+</history>
