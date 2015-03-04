@@ -363,6 +363,19 @@ Discarded input sections
                 0x00000000      0x104 ..\obj\USART3_Config.o
  .text.USART3_SendNextChar
                 0x00000000        0xc ..\obj\USART3_Config.o
+ .text          0x00000000        0x0 ..\obj\localSite.o
+ .data          0x00000000        0x0 ..\obj\localSite.o
+ .bss           0x00000000        0x0 ..\obj\localSite.o
+ .rodata        0x00000000      0x310 ..\obj\localSite.o
+ .debug_info    0x00000000       0x4f ..\obj\localSite.o
+ .debug_abbrev  0x00000000       0x43 ..\obj\localSite.o
+ .debug_aranges
+                0x00000000       0x18 ..\obj\localSite.o
+ .debug_line    0x00000000       0x95 ..\obj\localSite.o
+ .debug_str     0x00000000      0x10a ..\obj\localSite.o
+ .comment       0x00000000       0x71 ..\obj\localSite.o
+ .ARM.attributes
+                0x00000000       0x33 ..\obj\localSite.o
  .text          0x00000000        0x0 ..\obj\stm32f10x_dbgmcu.o
  .data          0x00000000        0x0 ..\obj\stm32f10x_dbgmcu.o
  .bss           0x00000000        0x0 ..\obj\stm32f10x_dbgmcu.o
@@ -1986,6 +1999,7 @@ LOAD ..\obj\stm32f10x_rtc.o
 LOAD ..\obj\stm32f10x_tim.o
 LOAD ..\obj\USART1_Config.o
 LOAD ..\obj\USART3_Config.o
+LOAD ..\obj\localSite.o
 LOAD ..\obj\stm32f10x_dbgmcu.o
 LOAD ..\obj\system_stm32f10x.o
 LOAD ..\obj\stm32f10x_fsmc.o
@@ -2075,17 +2089,17 @@ OUTPUT(Wifi_Dimmer.elf elf32-littlearm)
  .debug_ranges  0x00000328       0xf0 ..\obj\stm32f10x_usart.o
  .debug_ranges  0x00000418       0x30 ..\obj\misc.o
 
-.debug_line     0x00000000     0x273b
+.debug_line     0x00000000     0x2739
  .debug_line    0x00000000      0x340 ..\obj\USART1_Config.o
  .debug_line    0x00000340      0x3d8 ..\obj\USART3_Config.o
  .debug_line    0x00000718      0x283 ..\obj\system_stm32f10x.o
  .debug_line    0x0000099b       0xd8 ..\obj\startup_stm32f10x_md.o
  .debug_line    0x00000a73      0x4a9 ..\obj\stm32f10x_gpio.o
- .debug_line    0x00000f1c      0x60f ..\obj\main.o
- .debug_line    0x0000152b      0x5b6 ..\obj\stm32f10x_rcc.o
- .debug_line    0x00001ae1      0x397 ..\obj\stm32f10x_exti.o
- .debug_line    0x00001e78      0x58c ..\obj\stm32f10x_usart.o
- .debug_line    0x00002404      0x337 ..\obj\misc.o
+ .debug_line    0x00000f1c      0x60d ..\obj\main.o
+ .debug_line    0x00001529      0x5b6 ..\obj\stm32f10x_rcc.o
+ .debug_line    0x00001adf      0x397 ..\obj\stm32f10x_exti.o
+ .debug_line    0x00001e76      0x58c ..\obj\stm32f10x_usart.o
+ .debug_line    0x00002402      0x337 ..\obj\misc.o
 
 .debug_str      0x00000000     0x1fdb
  .debug_str     0x00000000      0x750 ..\obj\USART1_Config.o
