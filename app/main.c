@@ -8,7 +8,8 @@
 #include "stm32f10x_exti.h"
 #include "USART3_Config.h"
 #include "USART1_Config.h"
-#include "helpers.h"
+
+//#include "helpers.h"
 #include "Wifi.h"
 #include "GetCommands.h"
 
@@ -37,6 +38,8 @@
  *  	- RST - Triggers soft reboot (Mainly a restart back to main)
  *  	- HRDRST - Hardware triggered system reboot
  */
+
+#define countof(a)   (sizeof(a) / sizeof(*(a)))
 
 
 #define RxBuffSize 800
@@ -257,30 +260,21 @@ void USART1_IRQHandler(void) //USART1 - User Command recieve (DEBUG ONLY, comman
 	//char byteToCommand = USART1_RxBuffer[(USART1_RxCounter - 1)];
 	if(USART1_RxBuffer[USART1_RxCounter - 1] == '\r')
 	{
-		// validate message receive string
+		// validate message receive string (if CMD termination string found)
 		if(((USART1_RxBuffer[USART1_RxCounter - 2] == WIFI_CMD_RECEIVE_COMPLETE[2]) && (USART1_RxBuffer[USART1_RxCounter - 3] == WIFI_CMD_RECEIVE_COMPLETE[1]) && (USART1_RxBuffer[USART1_RxCounter - 4] == WIFI_CMD_RECEIVE_COMPLETE[0])))
 		{
 
 			strncpy(CMD_FULL_Incomming,&USART1_RxBuffer[USART1_RxCounter - 15],11); // pulls command from buffer into CMD_FULL_Incomming Array
 			newCommandWaiting = 1;
-		//byteToCommand[0] = USART1_RxBuffer[USART1_RxCounter - 3];
-		//byteToCommand[1] = USART1_RxBuffer[USART1_RxCounter - 2];
 
-		//Command_To_Redirect = atoi(byteToCommand);
-
-		//if(Command_To_Redirect >= sizeof(ATCommandsArray)) // SHould probably run this outside the interrupt
-			//{
-				//Command error has occured, as requested command is outside the bounds of the array
-			//	Command_To_Redirect = 0;
-			//}
 		}
-		else {
+		else { // if CR is found but no CMD termination string (This is mainly for debugging, and this just references the 2 digit array index for the ATCommands array)
 			byteToCommand[0] = USART1_RxBuffer[USART1_RxCounter - 3];
 			byteToCommand[1] = USART1_RxBuffer[USART1_RxCounter - 2];
 
 			Command_To_Redirect = atoi(byteToCommand);
 
-			if(Command_To_Redirect >= sizeof(ATCommandsArray)) // SHould probably run this outside the interrupt
+			if(Command_To_Redirect >= sizeof(ATCommandsArray)) // Should probably run this outside the interrupt
 				{
 							//Command error has occured, as requested command is outside the bounds of the array
 				Command_To_Redirect = 0;
@@ -288,14 +282,7 @@ void USART1_IRQHandler(void) //USART1 - User Command recieve (DEBUG ONLY, comman
 		}
 	}
 
-
-
-
-
-
-	//Command_To_Redirect = USART1_RxBuffer[(USART1_RxCounter - 1)] - 0;
-
-	if(USART1_RxCounter >= USART1_RxBufferSize)
+	if(USART1_RxCounter >= USART1_RxBufferSize) // if counter has hit the end of the buffer, reset counter to 0 (hack circular buffer) Will move this to DMA
 	{
 		USART1_RxCounter = 0;
 	}
