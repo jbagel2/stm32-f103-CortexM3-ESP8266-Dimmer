@@ -1,1 +1,6 @@
-*/debug/*
+*.o
+*.ko
+*.obj
+*.elf
+
+./Wifi_Dimmer/Debug/*
