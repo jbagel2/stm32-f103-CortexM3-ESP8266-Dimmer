@@ -6,6 +6,12 @@
 #include <stdio.h>
 
 
+const char WIFI_newClientConnected[] = "Link"; // client just connected if found
+const char WIFI_newClientConnected[] = "Unlink"; // client disconnected if found
+const char WIFI_Command_Successful[] = "OK";
+const char WIFI_AlreadyInRequestedState[] = "no change";
+const chat WIFI_ClientDataFound[] = "+IPD"; // format +IPD,0,4:TEST : +IPD,{connectionNum},{LengthOfData}:{Data}
+
 uint8_t outgoingConnections = 0;
 
 void Wifi_SendCustomCommand(char *customMessage)
