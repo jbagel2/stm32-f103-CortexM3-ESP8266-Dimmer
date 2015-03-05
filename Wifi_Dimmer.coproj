@@ -26,9 +26,11 @@
         <Option name="nostartfiles" value="1"/>
         <Option name="LTO" value="0"/>
         <Option name="IsNewStartupCode" value="1"/>
-        <Option name="Library" value="Not use C Library"/>
+        <Option name="Library" value="Semihosting"/>
         <Option name="UserEditLinker" value="--entry=main; "/>
-        <LinkedLibraries/>
+        <LinkedLibraries>
+          <Libset dir="c:\program files (x86)\gnu tools arm embedded\4.9 2014q4\arm-none-eabi\lib\thumb\" libs="c"/>
+        </LinkedLibraries>
         <MemoryAreas debugInFlashNotRAM="1">
           <Memory name="IROM1" type="ReadOnly" size="0x00020000" startValue="0x08000000"/>
           <Memory name="IRAM1" type="ReadWrite" size="0x00005000" startValue="0x20000000"/>
