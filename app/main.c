@@ -138,7 +138,7 @@ int main(void)
 	Init_USART3(115200,ENABLE);
 	Init_USART1(115200,ENABLE);
 
-	for (i=0;i<5000;i++);// FOR TESTING
+	for (i=0;i<500000;i++);// FOR TESTING
 
 	//for (i=0;i<5000;i++);// FOR TESTING
 	//Need to wait for a sec before transmitting data. Let ESP8266 power on
@@ -153,7 +153,9 @@ int main(void)
 	//for (i=0;i<20500;i++);
 	Wifi_Init();
 	//for (i=0;i<20500;i++);
-
+	for (i=0;i<70500;i++);
+	//ConnectToAP("AncestryGuest","shakyleaf");
+	for (i=0;i<70500;i++);
 	StartServer(1,80);
 
 	for(;;)

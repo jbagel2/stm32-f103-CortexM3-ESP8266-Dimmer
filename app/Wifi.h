@@ -10,8 +10,11 @@
 
 //Just testing the ability to send webpages over ESP8266 USART (with AT Commands... :/)
 const char siteHeader[] = "HTTP/1.1 200 Ok\r\nContent-Type: application/json;\r\n"
-		"Connection: close;\r\n\r\n"
-		"{\"TestKey\":\"testValue\"}\r\n";
+		"Connection: close;\r\n\r\n";
+
+const char DimmingInputPage[] = "<html><form action=\"demo_form.asp\">Dimming Value: <input type=\"text\" name=\"dimvalue\"><br>"
+		"<input type=\"submit\" value=\"Submit\">"
+		"</form></html>";
 
 
 const char WIFI_ClientConnected[] = "Link"; // client just connected if found
@@ -27,6 +30,7 @@ const char WIFI_BrowserAcceptEncodingHeader[] = "Accept-Encoding:";
 const char WIFI_BrowserAcceptLangHeader[] = "Accept-Language:";
 
 char webResponse[900];
+char commandToSend[80];
 
 
 volatile char WIFI_LinkDataReceivedParamsBuffer[8]; // will hold the data after the +IPD stating the amount of data incoming
@@ -81,7 +85,9 @@ void Wifi_Init()
 
 void ConnectToAP(char *apName, char *password) //Will utilize the arguments later, for now static to Nonya
 {
-	Wifi_SendCommand(WIFI_JOIN_NONYA);
+	sprintf(commandToSend,"AT+CWJAP=\"%s\",\"%s\"",apName,password);
+	Wifi_SendCustomCommand(commandToSend);
+	//Wifi_SendCommand(WIFI_JOIN_NONYA);
 }
 
 void StartServer(uint8_t serverNum, uint16_t portNum)
@@ -117,7 +123,7 @@ void SendWebRequestResponse(uint8_t connectionNum)
 
 	//Wifi_SendCustomCommand("AT+CIPSEND=0,36\rGot your web request. I'm responding");
 	//Wifi_SendCustomCommand("AT+CIPSEND=1,36\rGot your web request. I'm responding");
-	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s",connectionNum,countof(siteHeader), siteHeader);
+	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s", connectionNum, countof(DimmingInputPage), DimmingInputPage);
 	Wifi_SendCustomCommand(webResponse);
 }
 
