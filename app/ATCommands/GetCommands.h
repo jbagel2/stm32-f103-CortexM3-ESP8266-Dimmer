@@ -87,6 +87,7 @@ void Build_WifiCommands()
 	ATCommandsArray[13] = "AT+CIPSTART=?"; // Get assigned IP
 	ATCommandsArray[14] = "AT+CWLIF"; // AP Mode check joined devices
 	ATCommandsArray[15] = "AT+CWQAP";
+
 }
 
 
