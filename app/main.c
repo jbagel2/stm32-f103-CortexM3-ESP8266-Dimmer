@@ -14,6 +14,9 @@
 #include "GetCommands.h"
 
 
+
+
+
 /*
  *  ATCommandsArray[0] = "AT+CIPSTATUS";
 	ATCommandsArray[1] = "AT+CWLAP";
@@ -64,6 +67,8 @@ Current_CMD parsedCommand;
 volatile char CMD_FULL_Incomming[13];
 char CMD_FULL_ResponseBuffer[25];
 volatile char byteToCommand[2];
+
+
 
 uint8_t CMD_Incomming_InProgress = 0;
 
@@ -116,7 +121,7 @@ int main(void)
 		GPIOB->BRR = GPIO_Pin_0; // Power OFF for ESP8266
 		GPIOB->BSRR = GPIO_Pin_1; // PB1 - Maple On-board LED
 		GPIOB->BRR = GPIO_Pin_6; // PB6 - Maple Pin 16
-
+		GPIOB->BSRR = GPIO_Pin_0; // Power On for ESP8266
 	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB,GPIO_PinSource14);
 
 	ZeroCross_Config.GPIO_Mode = GPIO_Speed_50MHz;
@@ -133,11 +138,11 @@ int main(void)
 	Init_USART3(115200,ENABLE);
 	Init_USART1(115200,ENABLE);
 
-	for (i=0;i<500000;i++);// FOR TESTING
-	GPIOB->BSRR = GPIO_Pin_0; // Power On for ESP8266
+	for (i=0;i<5000;i++);// FOR TESTING
 
+	//for (i=0;i<5000;i++);// FOR TESTING
 	//Need to wait for a sec before transmitting data. Let ESP8266 power on
-	for (i=0;i<500000;i++); // FOR TESTING
+	//for (i=0;i<500000;i++); // FOR TESTING
 
 
 	//USART_SendData(USART3,"AT/r/n");
@@ -145,7 +150,11 @@ int main(void)
 	ConfigZeroCrossExternalInt();
 	ConfigZeroCross_NVIC();
 
+	//for (i=0;i<20500;i++);
 	Wifi_Init();
+	//for (i=0;i<20500;i++);
+
+	StartServer(1,80);
 
 	for(;;)
     {
@@ -174,7 +183,11 @@ int main(void)
 				//CMD_FULL_ResponseBuffer = CMD_FULL_Incomming;
 				//CMD_FULL_ResponseBuffer[13] = "CMD RECVD\r";
 				Wifi_SendCustomCommand("AT+CIPSEND=0,23");
+				//Wifi_SendCustomCommand("AT+CIPSEND=1,36");
 				Wifi_SendCustomCommand(CMD_FULL_ResponseBuffer);
+				SendWebRequestResponse(0);
+				SendWebRequestResponse(1);
+
 			}
 			//Wifi_SendCustomCommand("AT+CIPSEND=0,11");
 			//Wifi_SendCustomCommand("CMD RECVD\r");

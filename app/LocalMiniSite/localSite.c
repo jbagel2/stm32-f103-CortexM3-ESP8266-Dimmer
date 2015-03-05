@@ -1,9 +1,10 @@
 
 
-#include "localSite.h"
+//#include "localSite.h"
 
 //Just testing the ability to send webpages over ESP8266 USART (with AT Commands... :/)
-const char siteHeader[] = "<html><head><script type=\"text/javascript\">var r; try {r = new XMLHttpRequest();} catch (e) {try {r = new ActiveXObject('Microsoft.XMLHTTP');} catch (e) {}} function set (c) { r.open('PUT', './led/' + c, false); r.send(null); }</script><style type=\"text/css\">"
+/*
+ * const char siteHeader[] = "<html><head><script type=\"text/javascript\">var r; try {r = new XMLHttpRequest();} catch (e) {try {r = new ActiveXObject('Microsoft.XMLHTTP');} catch (e) {}} function set (c) { r.open('PUT', './led/' + c, false); r.send(null); }</script><style type=\"text/css\">"
 		".b {width:112; height:112}.g {color:lightgrey}"
 	    "</style>"
 	  "</head>"
@@ -17,4 +18,4 @@ const char siteHeader[] = "<html><head><script type=\"text/javascript\">var r; t
 	      "<p>Site Hosted on Jacob Pagel's STM32F103 ARM MCU</p>"
 	    "</td></tr>"
 	  "</table></body></html>";
-
+*/
