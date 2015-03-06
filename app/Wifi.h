@@ -8,11 +8,15 @@
 #include "helpers.h"
 
 
+extern volatile uint8_t waitingForOK;
+extern volatile uint8_t OKFound;
+extern volatile uint8_t ERRORFound;
+
 //Just testing the ability to send webpages over ESP8266 USART (with AT Commands... :/)
 const char siteHeader[] = "HTTP/1.1 200 Ok\r\nContent-Type: application/json;\r\n"
 		"Connection: close;\r\n\r\n";
 
-const char DimmingInputPage[] = "<html><form action=\"demo_form.asp\">Dimming Value: <input type=\"text\" name=\"dimvalue\"><br>"
+const char DimmingInputPage[] = "  <html><form action=\"dimming_form.asp\">Dimming Value: <input type=\"text\" name=\"dimvalue\"><br>"
 		"<input type=\"submit\" value=\"Submit\">"
 		"</form></html>";
 
@@ -31,11 +35,34 @@ const char WIFI_BrowserAcceptLangHeader[] = "Accept-Language:";
 
 char webResponse[900];
 char commandToSend[80];
+char closeConnectionBuffer[16];
 
 
 volatile char WIFI_LinkDataReceivedParamsBuffer[8]; // will hold the data after the +IPD stating the amount of data incoming
 
 uint8_t outgoingConnections = 0;
+
+void Wifi_ReadyWaitForAnswer()
+{
+	waitingForOK = 1;
+
+	OKFound=0;
+	ERRORFound=0;
+}
+
+void Wifi_WaitForAnswer()
+{
+	//while(waitingForOK==1 && OKFound==0 && ERRORFound==0);
+	OKFound=0;
+	ERRORFound=0;
+}
+
+void Wifi_CloseConnection(uint8_t connectionNum)
+{
+	sprintf(closeConnectionBuffer, "AT+CIPCLOSE=%d\r\n",connectionNum);
+	Wifi_SendCustomCommand(closeConnectionBuffer);
+}
+
 
 void Wifi_SendCustomCommand(char *customMessage)
 {
@@ -51,12 +78,14 @@ void Wifi_SendCustomCommand(char *customMessage)
 			USART_SendData(USART3,'\r');
 
 		while(USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET);
+			Wifi_ReadyWaitForAnswer();
 			USART_SendData(USART3,'\n');
 
-			for (i=0;i<735000;i++);
+			Wifi_WaitForAnswer();
+			//for (i=0;i<735000;i++);
 }
 
-
+//Waits to return untill wifi responds (OK or ERROR)
 void Wifi_SendCommand(Wifi_Commands command )
 {
 	int i= 0;
@@ -71,10 +100,13 @@ void Wifi_SendCommand(Wifi_Commands command )
 	while(USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET);
 	USART_SendData(USART3,'\r');
 
+	Wifi_ReadyWaitForAnswer();
 	while(USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET);
+
 	USART_SendData(USART3,'\n');
 
-	for (i=0;i<735000;i++);
+	Wifi_WaitForAnswer();
+	//for (i=0;i<735000;i++);
 
 }
 
@@ -97,13 +129,16 @@ void StartServer(uint8_t serverNum, uint16_t portNum)
 	for (i=0;i<73500;i++);
 	//Wifi_SendCommand(WIFI_SET_MODE_BOTH_AP_ST);
 	//for (i=0;i<73500;i++);
+
 	Wifi_SendCommand(WIFI_SET_MULTICONNECTION);
-	for (i=0;i<73500;i++);
+
+	for (i=0;i<173500;i++);
 	//Wifi_SendCommand(WIFI_JOIN_NONYA);
 	//for (i=0;i<735000;i++);
 	//Wifi_SendCommand(WIFI_GET_CURRENT_IP);
 	//for (i=0;i<73500;i++);
 	Wifi_SendCommand(WIFI_START_LOCAL_SERVER_PORT_80);
+
 	//for (i=0;i<73500;i++);
 	//Wifi_SendCommand(WIFI_GET_CURRENT_IP);
 
@@ -120,11 +155,18 @@ void ConnectToRemoteServer(char *Protocol, char *IPAddress, uint16_t port)
 
 void SendWebRequestResponse(uint8_t connectionNum)
 {
-
+	int i= 0;
 	//Wifi_SendCustomCommand("AT+CIPSEND=0,36\rGot your web request. I'm responding");
 	//Wifi_SendCustomCommand("AT+CIPSEND=1,36\rGot your web request. I'm responding");
-	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s", connectionNum, countof(DimmingInputPage), DimmingInputPage);
+	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s", connectionNum, (countof(DimmingInputPage))-1, DimmingInputPage);
 	Wifi_SendCustomCommand(webResponse);
+	for (i=0;i<70500;i++);
+	//Wifi_WaitForAnswer();
+	OKFound=0;
+	Wifi_CloseConnection(connectionNum);
+
+
+
 }
 
 
@@ -133,7 +175,6 @@ void Wifi_SendDataToClient()
 	//(CIPMUX=0) AT+CIPSEND=<length>;
 	//(CIPMUX=1) AT+CIPSEND= <id>,<length>
 }
-
 
 
 
