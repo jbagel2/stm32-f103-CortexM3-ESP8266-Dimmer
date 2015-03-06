@@ -45,7 +45,7 @@
 #define countof(a)   (sizeof(a) / sizeof(*(a)))
 
 
-#define RxBuffSize 800
+#define RxBuffSize 400
 
 #define TxBufferSize (countof(USART3_TxBuffer) - 1)
 #define USART3_RxBufferSize (countof(USART3_RxBuffer) - 1)
@@ -67,6 +67,8 @@ Current_CMD parsedCommand;
 volatile char CMD_FULL_Incomming[13];
 char CMD_FULL_ResponseBuffer[25];
 volatile char byteToCommand[2];
+
+volatile char lookForResponseBuffer[10];
 
 
 
@@ -99,7 +101,15 @@ NVIC_InitTypeDef ZeroCross_VectorPrior;
 void ConfigZeroCrossExternalInt();
 void ConfigZeroCross_NVIC();
 void LED(void);
-int i;
+volatile int i;
+volatile int j = 0;
+volatile uint8_t waitingForOK = 0;
+volatile uint8_t OKFound = 0;
+volatile uint8_t ERRORFound = 0;
+
+volatile uint8_t OCount = 0;
+
+
 int main(void)
 {
 	// LED lamp 12800 MAX (before no response, wont turn on) But a few second delay before Diode saturation (light comes on)
@@ -138,7 +148,7 @@ int main(void)
 	Init_USART3(115200,ENABLE);
 	Init_USART1(115200,ENABLE);
 
-	for (i=0;i<500000;i++);// FOR TESTING
+	for (j=0;j<500000;j++);// FOR TESTING
 
 	//for (i=0;i<5000;i++);// FOR TESTING
 	//Need to wait for a sec before transmitting data. Let ESP8266 power on
@@ -153,9 +163,9 @@ int main(void)
 	//for (i=0;i<20500;i++);
 	Wifi_Init();
 	//for (i=0;i<20500;i++);
-	for (i=0;i<70500;i++);
-	//ConnectToAP("AncestryGuest","shakyleaf");
-	for (i=0;i<70500;i++);
+	for (j=0;j<70500;j++);
+	//ConnectToAP("Nonya","porsche911");
+	//for (j=0;j<70500;j++);
 	StartServer(1,80);
 
 	for(;;)
@@ -167,11 +177,8 @@ int main(void)
 		{
 			Wifi_SendCommand(Command_To_Redirect);
 		}
-		/*if(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_7)) // Power cycle the ESP8266
-		{
-			//ConnectToRemoteServer(testProto,testIP,testPort);
-			StartServer(0,80);
-		}*/
+		//check for command to send
+		//check for connection to close
 
 		if(newCommandWaiting == 1)
 		{
@@ -184,9 +191,9 @@ int main(void)
 				strcat(CMD_FULL_ResponseBuffer,"CMD RECVD\r");
 				//CMD_FULL_ResponseBuffer = CMD_FULL_Incomming;
 				//CMD_FULL_ResponseBuffer[13] = "CMD RECVD\r";
-				Wifi_SendCustomCommand("AT+CIPSEND=0,23");
+				//Wifi_SendCustomCommand("AT+CIPSEND=0,23");
 				//Wifi_SendCustomCommand("AT+CIPSEND=1,36");
-				Wifi_SendCustomCommand(CMD_FULL_ResponseBuffer);
+				//Wifi_SendCustomCommand(CMD_FULL_ResponseBuffer);
 				SendWebRequestResponse(0);
 				SendWebRequestResponse(1);
 
@@ -247,12 +254,36 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
   if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)
   {
     /* Read one byte from the receive data register */
-	USART3_RxBuffer[RxCounter++] = USART_ReceiveData(USART3);
+	USART3_RxBuffer[RxCounter++] = (char)USART_ReceiveData(USART3);
 
-	if(USART3_RxBuffer[(RxCounter - 1)] == '\r')
+	if((waitingForOK==1)&&(USART3_RxBuffer[(RxCounter - 1)] == 'K')&&(USART3_RxBuffer[(RxCounter - 2)] == 'O'))
 	{
-		//newCommandWaiting = 1;
+		OKFound = 1;
+		waitingForOK =0;
 	}
+	if((USART3_RxBuffer[(RxCounter - 2)] == 'R')&&(USART3_RxBuffer[(RxCounter - 3)] == 'O')&&(USART3_RxBuffer[(RxCounter - 5)] == 'R'))
+				{
+					ERRORFound=1;
+					waitingForOK =0;
+				}
+	/*if(USART3_RxBuffer[(RxCounter - 1)] == '\r')
+	{
+		if(waitingForOK==1)
+		{
+
+
+			//strncpy(lookForResponseBuffer, USART3_RxBuffer[RxCounter - 11], 10);
+
+			if((USART3_RxBuffer[(RxCounter - 2)] == 'K')&&(USART3_RxBuffer[(RxCounter - 3)] == 'O'))
+			{
+			OKFound = 1;
+			waitingForOK =0;
+			}
+
+		}
+
+		//newCommandWaiting = 1;
+	}*/
 
 	if(RxCounter >= USART3_RxBufferSize)
 	{
@@ -261,7 +292,7 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
 
 	USART_ClearITPendingBit(USART3,USART_IT_RXNE);
   }
-
+  USART_ClearITPendingBit(USART3,USART_IT_RXNE);
 }
 
 void USART1_IRQHandler(void) //USART1 - User Command recieve (DEBUG ONLY, commands from user will come from wifi)
