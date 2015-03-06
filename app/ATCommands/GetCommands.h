@@ -6,7 +6,7 @@
  extern "C" {
 #endif
 
-const char *ATCommandsArray[16];
+const char *ATCommandsArray[18];
 const char *SystemCommandsArray[4];
 
 typedef struct
@@ -45,7 +45,9 @@ typedef enum
 	WIFI_GET_CURRENT_IP,
 	WIFI_SHOW_ACTIVE_CONNECTIONS,
 	WIFI_LIST_CONNECTED_DEVICES_inAPModeOnly,
-	WIFI_QUIT_CURRENT_AP
+	WIFI_QUIT_CURRENT_AP,
+	WIFI_START_ACCESS_POINT,
+	WIFI_DISABLE_ECHO
 }Wifi_Commands;
 
 
@@ -68,6 +70,16 @@ void Build_SystemCommands()
 	SystemCommandsArray[3] = "STA";
 }
 
+typedef enum
+{
+	OPEN,
+	WEP,
+	WPA_PSK,
+	WPA2_PSK,
+	WPA_WPA2_PSK
+}Available_Encyption;
+
+
 void Build_WifiCommands()
 {
 	ATCommandsArray[0] = "AT"; // Used to validate connection to device only
@@ -87,6 +99,8 @@ void Build_WifiCommands()
 	ATCommandsArray[13] = "AT+CIPSTART=?"; // Get assigned IP
 	ATCommandsArray[14] = "AT+CWLIF"; // AP Mode check joined devices
 	ATCommandsArray[15] = "AT+CWQAP";
+	ATCommandsArray[16] = "AT+CWSAP="; //Parameters are required for this <ssid>,<password>,<channel>,<encryption>
+	ATCommandsArray[17] = "ATE0";
 
 }
 
