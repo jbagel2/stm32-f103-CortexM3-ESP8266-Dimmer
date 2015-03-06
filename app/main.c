@@ -101,9 +101,10 @@ NVIC_InitTypeDef ZeroCross_VectorPrior;
 void ConfigZeroCrossExternalInt();
 void ConfigZeroCross_NVIC();
 void LED(void);
-volatile int i;
-volatile int j = 0;
-volatile uint8_t waitingForOK = 0;
+//volatile int mi = 0;
+volatile uint32_t mj = 0;
+volatile uint32_t mdi = 0;
+volatile uint8_t waitingForReponse = 0;
 volatile uint8_t OKFound = 0;
 volatile uint8_t ERRORFound = 0;
 
@@ -148,11 +149,11 @@ int main(void)
 	Init_USART3(115200,ENABLE);
 	Init_USART1(115200,ENABLE);
 
-	for (j=0;j<500000;j++);// FOR TESTING
+	for (mj=0;mj<500000;mj++);// FOR TESTING
 
-	//for (i=0;i<5000;i++);// FOR TESTING
+	//for (mj=0;mj<5000;mj++);// FOR TESTING
 	//Need to wait for a sec before transmitting data. Let ESP8266 power on
-	//for (i=0;i<500000;i++); // FOR TESTING
+	//for (mj=0;mj<500000;mj++); // FOR TESTING
 
 
 	//USART_SendData(USART3,"AT/r/n");
@@ -160,12 +161,12 @@ int main(void)
 	ConfigZeroCrossExternalInt();
 	ConfigZeroCross_NVIC();
 
-	//for (i=0;i<20500;i++);
+	//for (mj=0;mj<20500;mj++);
 	Wifi_Init();
-	//for (i=0;i<20500;i++);
-	for (j=0;j<70500;j++);
+	//for (mj=0;mj<20500;mj++);
+	for (mj=0;mj<130500;mj++);
 	//ConnectToAP("Nonya","porsche911");
-	//for (j=0;j<70500;j++);
+	//for (mj=0;mj<70500;mj++);
 	StartServer(1,80);
 
 	for(;;)
@@ -176,6 +177,7 @@ int main(void)
 		if(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_8)) // Power cycle the ESP8266
 		{
 			Wifi_SendCommand(Command_To_Redirect);
+			for (mj=0;mj<130500;mj++);//debounce
 		}
 		//check for command to send
 		//check for connection to close
@@ -239,11 +241,10 @@ void ConfigZeroCross_NVIC()
 
 void EXTI15_10_IRQHandler(void)
 {
-	for (i=0;i<1170;i++);// delay to allow 0 dimming value to be full brightness
-	for (i=0;i<dimmingValue;i++); // NUMBER FOR ADJUSTMENT- 14750 = lowest found full wave
+	for (mdi=0;mdi<1170;mdi++);// delay to allow 0 dimming value to be full brightness
+	for (mdi=0;mdi<dimmingValue;mdi++); // NUMBER FOR ADJUSTMENT- 14750 = lowest found full wave
 	GPIOB->BSRR = (1<<6);
-	int i;
-	for (i=0;i<70;i++); // 70 = 11.8us
+	for (mdi=0;mdi<70;mdi++); // 70 = 11.8us
 	GPIOB->BRR = (1<<6);
 	EXTI_ClearITPendingBit(EXTI_Line14);
 
@@ -256,34 +257,16 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
     /* Read one byte from the receive data register */
 	USART3_RxBuffer[RxCounter++] = (char)USART_ReceiveData(USART3);
 
-	if((waitingForOK==1)&&(USART3_RxBuffer[(RxCounter - 1)] == 'K')&&(USART3_RxBuffer[(RxCounter - 2)] == 'O'))
+	if((waitingForReponse==1)&&(USART3_RxBuffer[(RxCounter - 1)] == 'K')&&(USART3_RxBuffer[(RxCounter - 2)] == 'O'))
 	{
 		OKFound = 1;
-		waitingForOK =0;
+		waitingForReponse =0;
 	}
-	if((USART3_RxBuffer[(RxCounter - 2)] == 'R')&&(USART3_RxBuffer[(RxCounter - 3)] == 'O')&&(USART3_RxBuffer[(RxCounter - 5)] == 'R'))
+	if((waitingForReponse==1)&&(USART3_RxBuffer[(RxCounter - 2)] == 'R')&&(USART3_RxBuffer[(RxCounter - 3)] == 'O')&&(USART3_RxBuffer[(RxCounter - 5)] == 'R'))
 				{
 					ERRORFound=1;
-					waitingForOK =0;
+					waitingForReponse =0;
 				}
-	/*if(USART3_RxBuffer[(RxCounter - 1)] == '\r')
-	{
-		if(waitingForOK==1)
-		{
-
-
-			//strncpy(lookForResponseBuffer, USART3_RxBuffer[RxCounter - 11], 10);
-
-			if((USART3_RxBuffer[(RxCounter - 2)] == 'K')&&(USART3_RxBuffer[(RxCounter - 3)] == 'O'))
-			{
-			OKFound = 1;
-			waitingForOK =0;
-			}
-
-		}
-
-		//newCommandWaiting = 1;
-	}*/
 
 	if(RxCounter >= USART3_RxBufferSize)
 	{

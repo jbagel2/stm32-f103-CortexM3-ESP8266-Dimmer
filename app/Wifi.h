@@ -7,8 +7,9 @@
 #include "string.h"
 #include "helpers.h"
 
+uint32_t wi= 0;
 
-extern volatile uint8_t waitingForOK;
+extern volatile uint8_t waitingForReponse;
 extern volatile uint8_t OKFound;
 extern volatile uint8_t ERRORFound;
 
@@ -44,15 +45,13 @@ uint8_t outgoingConnections = 0;
 
 void Wifi_ReadyWaitForAnswer()
 {
-	waitingForOK = 1;
+	waitingForReponse = 1;
 
-	OKFound=0;
-	ERRORFound=0;
 }
 
 void Wifi_WaitForAnswer()
 {
-	//while(waitingForOK==1 && OKFound==0 && ERRORFound==0);
+	while(waitingForReponse == 1);
 	OKFound=0;
 	ERRORFound=0;
 }
@@ -66,8 +65,6 @@ void Wifi_CloseConnection(uint8_t connectionNum)
 
 void Wifi_SendCustomCommand(char *customMessage)
 {
-		int i= 0;
-
 		while(*customMessage)
 		{
 			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
@@ -82,13 +79,12 @@ void Wifi_SendCustomCommand(char *customMessage)
 			USART_SendData(USART3,'\n');
 
 			Wifi_WaitForAnswer();
-			//for (i=0;i<735000;i++);
+			//for (wi=0;wi<735000;wi++);
 }
 
 //Waits to return untill wifi responds (OK or ERROR)
 void Wifi_SendCommand(Wifi_Commands command )
 {
-	int i= 0;
 	const char *commandToSend = ATCommandsArray[command];
 
 	while(*commandToSend)
@@ -96,6 +92,7 @@ void Wifi_SendCommand(Wifi_Commands command )
 		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
 		USART_SendData(USART3,*commandToSend++);
 	}
+	Wifi_ReadyWaitForAnswer();
 
 	while(USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET);
 	USART_SendData(USART3,'\r');
@@ -106,13 +103,18 @@ void Wifi_SendCommand(Wifi_Commands command )
 	USART_SendData(USART3,'\n');
 
 	Wifi_WaitForAnswer();
-	//for (i=0;i<735000;i++);
+	//for (wi=0;wi<735000;wi++);
 
 }
 
 void Wifi_Init()
 {
 	Commands_Init();
+}
+
+void StartLocalAP(char *SSID, char *password, uint8_t channel, Available_Encyption encypt)
+{
+
 }
 
 void ConnectToAP(char *apName, char *password) //Will utilize the arguments later, for now static to Nonya
@@ -124,22 +126,23 @@ void ConnectToAP(char *apName, char *password) //Will utilize the arguments late
 
 void StartServer(uint8_t serverNum, uint16_t portNum)
 {
-	int i =0;
-	for (i=0;i<73500;i++);
-	for (i=0;i<73500;i++);
+	for (wi=0;wi<73500;wi++);
+	for (wi=0;wi<73500;wi++);
+	for (wi=0;wi<73500;wi++);
 	//Wifi_SendCommand(WIFI_SET_MODE_BOTH_AP_ST);
-	//for (i=0;i<73500;i++);
+	//for (wi=0;wi<73500;wi++);
+
 
 	Wifi_SendCommand(WIFI_SET_MULTICONNECTION);
 
-	for (i=0;i<173500;i++);
+	//for (wi=0;wi<173500;wi++);
 	//Wifi_SendCommand(WIFI_JOIN_NONYA);
-	//for (i=0;i<735000;i++);
+	//for (wi=0;i<735000;i++);
 	//Wifi_SendCommand(WIFI_GET_CURRENT_IP);
-	//for (i=0;i<73500;i++);
+	//for (wi=0;i<73500;i++);
 	Wifi_SendCommand(WIFI_START_LOCAL_SERVER_PORT_80);
 
-	//for (i=0;i<73500;i++);
+	//for (wi=0;i<73500;i++);
 	//Wifi_SendCommand(WIFI_GET_CURRENT_IP);
 
 }
@@ -155,12 +158,11 @@ void ConnectToRemoteServer(char *Protocol, char *IPAddress, uint16_t port)
 
 void SendWebRequestResponse(uint8_t connectionNum)
 {
-	int i= 0;
 	//Wifi_SendCustomCommand("AT+CIPSEND=0,36\rGot your web request. I'm responding");
 	//Wifi_SendCustomCommand("AT+CIPSEND=1,36\rGot your web request. I'm responding");
 	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s", connectionNum, (countof(DimmingInputPage))-1, DimmingInputPage);
 	Wifi_SendCustomCommand(webResponse);
-	for (i=0;i<70500;i++);
+	for (wi=0;wi<70500;wi++);
 	//Wifi_WaitForAnswer();
 	OKFound=0;
 	Wifi_CloseConnection(connectionNum);
@@ -170,7 +172,7 @@ void SendWebRequestResponse(uint8_t connectionNum)
 }
 
 
-void Wifi_SendDataToClient()
+void Wifi_SendDataToClient(uint8_t connectionNum)
 {
 	//(CIPMUX=0) AT+CIPSEND=<length>;
 	//(CIPMUX=1) AT+CIPSEND= <id>,<length>
