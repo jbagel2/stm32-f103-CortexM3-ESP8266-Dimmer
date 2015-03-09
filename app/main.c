@@ -14,20 +14,6 @@
 #include "GetCommands.h"
 
 
-
-
-
-/*
- *  ATCommandsArray[0] = "AT+CIPSTATUS";
-	ATCommandsArray[1] = "AT+CWLAP";
-	ATCommandsArray[2] = "AT+GMR";
-	ATCommandsArray[3] = "AT+CWMODE?";
-	ATCommandsArray[4] = "AT+CWMODE=2";
-	ATCommandsArray[5] = "AT+CWMODE=1";
-	ATCommandsArray[6] = "AT+CWMODE=3";
- */
-
-
 /*
  * Possible Rx Command syntax
  * ::CMD:DIM:XXX:|: - :|: = end of transmission
@@ -41,6 +27,9 @@
  *  	- RST - Triggers soft reboot (Mainly a restart back to main)
  *  	- HRDRST - Hardware triggered system reboot
  */
+
+
+
 
 #define countof(a)   (sizeof(a) / sizeof(*(a)))
 
@@ -69,6 +58,9 @@ char CMD_FULL_ResponseBuffer[25];
 volatile char byteToCommand[2];
 
 volatile char lookForResponseBuffer[10];
+
+
+
 
 
 
@@ -109,6 +101,7 @@ volatile uint8_t OKFound = 0;
 volatile uint8_t ERRORFound = 0;
 
 volatile uint8_t OCount = 0;
+volatile uint8_t indexPageRequestWaiting = 0;
 
 
 int main(void)
@@ -172,6 +165,11 @@ int main(void)
 	for(;;)
     {
 
+		if(indexPageRequestWaiting == 1)
+		{
+			indexPageRequestWaiting = 0;
+			SendWebRequestResponse(0);
+		}
 		//Check for data to transmit USART3
 
 		if(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_8)) // Power cycle the ESP8266
@@ -250,6 +248,17 @@ void EXTI15_10_IRQHandler(void)
 
 }
 
+volatile uint8_t activeDataTrap = 0;
+volatile char IPDDataBuffer[1000];
+volatile uint16_t IPDDataIndex = 0;
+volatile uint16_t bytesToGet = 395; //a count of the number of bytes to expect from an incoming +IPD data transmission DEBUG SET AT 400 need to get this from the IPD metadata
+volatile uint8_t activeIPDTrap = 0;
+volatile uint8_t IPDMetaIndex = 0;
+volatile char IPDMetaBuffer[15]; // contains data after +IPD ie +IPD[,0,394:] - (data inside brackets), denoting the connection number sending the data and the byte count of expected data
+
+
+
+
 void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
 {
   if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)
@@ -257,21 +266,64 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
     /* Read one byte from the receive data register */
 	USART3_RxBuffer[RxCounter++] = (char)USART_ReceiveData(USART3);
 
-	if((waitingForReponse==1)&&(USART3_RxBuffer[(RxCounter - 1)] == 'K')&&(USART3_RxBuffer[(RxCounter - 2)] == 'O'))
-	{
-		OKFound = 1;
-		waitingForReponse =0;
-	}
-	if((waitingForReponse==1)&&(USART3_RxBuffer[(RxCounter - 2)] == 'R')&&(USART3_RxBuffer[(RxCounter - 3)] == 'O')&&(USART3_RxBuffer[(RxCounter - 5)] == 'R'))
-				{
-					ERRORFound=1;
-					waitingForReponse =0;
-				}
 
-	if(RxCounter >= USART3_RxBufferSize)
+	if(activeDataTrap == 1)
 	{
-		RxCounter = 0;
+		if(IPDDataIndex < bytesToGet)
+		{
+		IPDDataBuffer[IPDDataIndex++] = USART3_RxBuffer[RxCounter - 1];
+		}
+		else
+		{
+			IPDDataIndex = 0;
+			activeDataTrap = 0; //Data collection should be complete
+			indexPageRequestWaiting = 1;
+		}
+
 	}
+	else if(activeIPDTrap == 1)
+	{
+		if(USART3_RxBuffer[RxCounter - 1] != ':')
+		{
+			IPDMetaBuffer[IPDMetaIndex++] = USART3_RxBuffer[RxCounter - 1];
+			if(IPDMetaIndex >= sizeof(IPDMetaBuffer))
+			{
+				IPDMetaIndex = 0;
+				activeIPDTrap = 0; //This data section should never be even close to this big. but this is here to keep it getting stuck in case of data corruption or something.
+			}
+		}
+		else {
+			activeIPDTrap = 0;
+			activeDataTrap = 1;
+			IPDMetaIndex = 0;
+		}
+
+	}
+	else
+	{
+
+
+		if((USART3_RxBuffer[(RxCounter - 1)] == 'D')&&(USART3_RxBuffer[(RxCounter - 2)] == 'P')&&(USART3_RxBuffer[(RxCounter - 3)] == 'I')&&(USART3_RxBuffer[(RxCounter - 4)] == '+'))
+			{
+				activeIPDTrap = 1;
+			}
+			if((waitingForReponse==1)&&(USART3_RxBuffer[(RxCounter - 1)] == 'K')&&(USART3_RxBuffer[(RxCounter - 2)] == 'O'))
+			{
+				OKFound = 1;
+				waitingForReponse =0;
+			}
+			if((waitingForReponse==1)&&(USART3_RxBuffer[(RxCounter - 2)] == 'R')&&(USART3_RxBuffer[(RxCounter - 3)] == 'O')&&(USART3_RxBuffer[(RxCounter - 5)] == 'R'))
+			{
+				ERRORFound=1;
+				waitingForReponse =0;
+			}
+
+			if(RxCounter >= USART3_RxBufferSize)
+			{
+				RxCounter = 0;
+			}
+	}
+
 
 	USART_ClearITPendingBit(USART3,USART_IT_RXNE);
   }

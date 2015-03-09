@@ -166,9 +166,6 @@ void SendWebRequestResponse(uint8_t connectionNum)
 	//Wifi_WaitForAnswer();
 	OKFound=0;
 	Wifi_CloseConnection(connectionNum);
-
-
-
 }
 
 
