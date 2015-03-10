@@ -93,14 +93,14 @@ NVIC_InitTypeDef ZeroCross_VectorPrior;
 void ConfigZeroCrossExternalInt();
 void ConfigZeroCross_NVIC();
 void LED(void);
-//volatile int mi = 0;
+volatile uint32_t mi = 0;
 volatile uint32_t mj = 0;
 volatile uint32_t mdi = 0;
 volatile uint8_t waitingForReponse = 0;
 volatile uint8_t OKFound = 0;
 volatile uint8_t ERRORFound = 0;
-
 volatile uint8_t OCount = 0;
+volatile uint8_t LINKFound = 0;
 volatile uint8_t indexPageRequestWaiting = 0;
 
 
@@ -167,6 +167,7 @@ int main(void)
 
 		if(indexPageRequestWaiting == 1)
 		{
+			for (mdi=0;mdi<80170;mdi++);// Wait for buffer. (need to replace with check for OK)
 			indexPageRequestWaiting = 0;
 			SendWebRequestResponse(0);
 		}
