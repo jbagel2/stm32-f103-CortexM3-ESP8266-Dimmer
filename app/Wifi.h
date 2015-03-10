@@ -115,6 +115,8 @@ void Wifi_Init()
 void StartLocalAP(char *SSID, char *password, uint8_t channel, Available_Encyption encypt)
 {
 
+	sprintf(commandToSend, "AT+CWSAP=\"\",\"\",\"\",\"\"");
+
 }
 
 void ConnectToAP(char *apName, char *password) //Will utilize the arguments later, for now static to Nonya
