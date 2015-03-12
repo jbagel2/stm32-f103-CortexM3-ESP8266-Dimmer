@@ -13,9 +13,12 @@
 #include "USART3_Config.h"
 #include "misc.h"
 #include "helpers.h"
+#include "stm32f10x_dma.h"
 //#include "Wifi.h"
 
 //extern uint8_t USART3_RxBufferSize;
+
+
 
 extern uint8_t USART3_TxBuffer[];
 extern volatile char USART3_RxBuffer[];
@@ -31,6 +34,7 @@ USART_InitTypeDef USART3_Config;
 void Init_USART3_RCC();
 void Init_USART3_GPIO();
 void Init_USART3_Interrupt();
+void Init_USART_DMA();
 
 //int i = 0;
 
@@ -95,6 +99,23 @@ void Init_USART3_Interrupt()
 
 	USART_ITConfig(USART3,USART_IT_RXNE, ENABLE); // Enable USART Interrupts
 	//USART_ITConfig(USART3,USART_IT_TXE, ENABLE);
+}
+
+
+void Init_USART_DMA()
+{
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
+
+	DMA_InitTypeDef USART_DMA_Config;
+
+	//Just incase there is lingering config
+	DMA_DeInit(DMA1_Channel1);
+
+	USART_DMA_Config.DMA_DIR = DMA_DIR_PeripheralSRC;
+	USART_DMA_Config.DMA_M2M = DMA_M2M_Enable;
+	USART_DMA_Config.DMA_Mode = DMA_Mode_Circular;
+	USART_DMA_Config.
+
 }
 
 
