@@ -12,6 +12,7 @@ uint32_t wi= 0;
 extern volatile uint8_t waitingForReponse;
 extern volatile uint8_t OKFound;
 extern volatile uint8_t ERRORFound;
+extern volatile char RxBuffer[];
 
 //Just testing the ability to send webpages over ESP8266 USART (with AT Commands... :/)
 const char siteHeader[] = "HTTP/1.1 200 Ok\r\nContent-Type: application/json;\r\n"
