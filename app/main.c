@@ -8,6 +8,7 @@
 #include "stm32f10x_exti.h"
 #include "USART3_Config.h"
 #include "USART1_Config.h"
+#include <string.h>
 
 //#include "helpers.h"
 #include "Wifi.h"
@@ -77,8 +78,6 @@ uint8_t USART1_RxCounter = 0;
 volatile uint8_t newCommandWaiting = 0;
 
 volatile uint8_t Command_To_Redirect = 0;
-
-
 volatile uint32_t dimmingValue;
 
 //USART_InitTypeDef ESP8266_Interface_Config;
@@ -102,7 +101,7 @@ volatile uint8_t ERRORFound = 0;
 volatile uint8_t OCount = 0;
 volatile uint8_t LINKFound = 0;
 volatile uint8_t indexPageRequestWaiting = 0;
-
+volatile uint8_t activeConnectionNum = 0;
 
 int main(void)
 {
@@ -169,7 +168,7 @@ int main(void)
 		{
 			for (mdi=0;mdi<80170;mdi++);// Wait for buffer. (need to replace with check for OK)
 			indexPageRequestWaiting = 0;
-			SendWebRequestResponse(0);
+			SendWebRequestResponse(activeConnectionNum);
 		}
 		//Check for data to transmit USART3
 
@@ -252,7 +251,7 @@ void EXTI15_10_IRQHandler(void)
 volatile uint8_t activeDataTrap = 0;
 volatile char IPDDataBuffer[1000];
 volatile uint16_t IPDDataIndex = 0;
-volatile uint16_t bytesToGet = 395; //a count of the number of bytes to expect from an incoming +IPD data transmission DEBUG SET AT 400 need to get this from the IPD metadata
+volatile uint16_t bytesToGet = 462; //a count of the number of bytes to expect from an incoming +IPD data transmission DEBUG SET AT 400 need to get this from the IPD metadata
 volatile uint8_t activeIPDTrap = 0;
 volatile uint8_t IPDMetaIndex = 0;
 volatile char IPDMetaBuffer[15]; // contains data after +IPD ie +IPD[,0,394:] - (data inside brackets), denoting the connection number sending the data and the byte count of expected data
@@ -297,6 +296,7 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
 			activeIPDTrap = 0;
 			activeDataTrap = 1;
 			IPDMetaIndex = 0;
+			//activeConnectionNum = IPDMetaBuffer[1] - '0'; // converts ascii to int
 		}
 
 	}
@@ -308,18 +308,18 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
 			{
 				activeIPDTrap = 1;
 			}
-			if((waitingForReponse==1)&&(USART3_RxBuffer[(RxCounter - 1)] == 'K')&&(USART3_RxBuffer[(RxCounter - 2)] == 'O'))
+		if((waitingForReponse==1)&&(USART3_RxBuffer[(RxCounter - 1)] == 'K')&&(USART3_RxBuffer[(RxCounter - 2)] == 'O'))
 			{
 				OKFound = 1;
 				waitingForReponse =0;
 			}
-			if((waitingForReponse==1)&&(USART3_RxBuffer[(RxCounter - 2)] == 'R')&&(USART3_RxBuffer[(RxCounter - 3)] == 'O')&&(USART3_RxBuffer[(RxCounter - 5)] == 'R'))
+		if((waitingForReponse==1)&&(USART3_RxBuffer[(RxCounter - 2)] == 'R')&&(USART3_RxBuffer[(RxCounter - 3)] == 'O')&&(USART3_RxBuffer[(RxCounter - 5)] == 'R'))
 			{
 				ERRORFound=1;
 				waitingForReponse =0;
 			}
 
-			if(RxCounter >= USART3_RxBufferSize)
+		if(RxCounter >= USART3_RxBufferSize)
 			{
 				RxCounter = 0;
 			}
