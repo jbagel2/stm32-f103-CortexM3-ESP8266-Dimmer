@@ -1,4 +1,4 @@
-# stm32-f103-CortexM3-ESP8266-Dimmer
+# stm32-f103-CortexM3-ESP8266-Dimmer README File
 AC mains triac controlled dimmer using STM32F103 for brains. ESP8266 Wifi for communication and mesh networking. --- CoIDE (v1.7.8) Project.---
 
 I welcome comments on things you think can be improved along the way. CONSTRUCTIVE ONLY PLEASE!!
@@ -31,6 +31,7 @@ Project under heavy development.
 As you can see below, there is still a lot to do. 
 **********************************************************
 On the To-Do list:
+(This item (#1) is currently being actively developed in the branch "browser_response_return_testing" )
 1. Create basic http based response for a port 80 request to module.
     - Report current status (to include)
       - Assigned IP
