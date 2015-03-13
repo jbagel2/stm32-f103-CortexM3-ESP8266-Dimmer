@@ -2,6 +2,7 @@
 #include "misc.h"
 //#include "stm32f10x_usart.h"
 #include "stm32f10x_gpio.h"
+#include <stdio.h>
 #include "stm32f10x_rcc.h"
 #include <stdlib.h>
 #include "stm32f10x_adc.h"
@@ -105,37 +106,45 @@ volatile uint8_t activeConnectionNum = 0;
 
 int main(void)
 {
+	printf("Entering Main()\r\n"); //SEMIHOSTING DEBUG OUT
 	// LED lamp 12800 MAX (before no response, wont turn on) But a few second delay before Diode saturation (light comes on)
 	// 12400 - min for reasonable saturation delay
 	dimmingValue = 12600; // 12600
+
+	printf("Starting RCC clocks\r\n"); //SEMIHOSTING DEBUG OUT
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3,ENABLE); // ESP8266 - Wifi
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
-
+	printf("Finished Starting RCC clocks\r\n"); //SEMIHOSTING DEBUG OUT
 
 
 	POWER_LED_Config.GPIO_Speed = GPIO_Speed_50MHz;
 	POWER_LED_Config.GPIO_Mode = GPIO_Mode_Out_PP;
 	POWER_LED_Config.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_6; // PB1 - Maple On-board LED | PB6 - Maple Pin 16 | PB0 - CH_PD (Power ON) Pin for ESP8266 Wifi
 	GPIO_Init(GPIOB,&POWER_LED_Config);
+	printf("Finished GPIO Init for GPIO Port: B Pins: 0,1,6\r\n"); //SEMIHOSTING DEBUG OUT
 
 		GPIOB->BRR = GPIO_Pin_0; // Power OFF for ESP8266
+		printf("ESP8266 Powered OFF (CH01 Pin Disabled (Pulled Low))\r\n"); //SEMIHOSTING DEBUG OUT
 		GPIOB->BSRR = GPIO_Pin_1; // PB1 - Maple On-board LED
 		GPIOB->BRR = GPIO_Pin_6; // PB6 - Maple Pin 16
 		GPIOB->BSRR = GPIO_Pin_0; // Power On for ESP8266
+		printf("ESP8266 Powered ON\r\n"); //SEMIHOSTING DEBUG OUT
 	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB,GPIO_PinSource14);
 
 	ZeroCross_Config.GPIO_Mode = GPIO_Speed_50MHz;
 	ZeroCross_Config.GPIO_Mode = GPIO_Mode_IPD;
 	ZeroCross_Config.GPIO_Pin = GPIO_Pin_14; // PB14 - Maple Pin 29
 	GPIO_Init(GPIOB,&ZeroCross_Config);
+	printf("GPIOB Pin 14 configured for Zero-Crossing detection (Maple Pin 29)\r\n"); //SEMIHOSTING DEBUG OUT
 
 	Button_Config.GPIO_Mode = GPIO_Mode_IN_FLOATING;
 	Button_Config.GPIO_Speed = GPIO_Speed_50MHz;
 	Button_Config.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_7;
 	GPIO_Init(GPIOB,&Button_Config);
+	printf("GPIOB Pin 14 configured for Zero-Crossing detection (Maple Pin 29)\r\n"); //SEMIHOSTING DEBUG OUT
 
 
 	Init_USART3(115200,ENABLE);
@@ -155,10 +164,12 @@ int main(void)
 
 	//for (mj=0;mj<20500;mj++);
 	Wifi_Init();
+	printf("Wifi_Init() Complete\r\n"); //SEMIHOSTING DEBUG OUT
 	//for (mj=0;mj<20500;mj++);
 	for (mj=0;mj<130500;mj++);
 	//ConnectToAP("Nonya","porsche911");
 	//for (mj=0;mj<70500;mj++);
+	printf("Preparing to start local ESP8266 server at ID: 1 Port: 80\r\n"); //SEMIHOSTING DEBUG OUT
 	StartServer(1,80);
 
 	for(;;)
@@ -166,8 +177,10 @@ int main(void)
 
 		if(indexPageRequestWaiting == 1)
 		{
+			printf("WebResquest found!\r\n"); //SEMIHOSTING DEBUG OUT
 			for (mdi=0;mdi<80170;mdi++);// Wait for buffer. (need to replace with check for OK)
 			indexPageRequestWaiting = 0;
+			printf("Preparing to send web response to connection %d\r\n",activeConnectionNum); //SEMIHOSTING DEBUG OUT
 			SendWebRequestResponse(activeConnectionNum);
 		}
 		//Check for data to transmit USART3
@@ -182,7 +195,7 @@ int main(void)
 
 		if(newCommandWaiting == 1)
 		{
-
+			printf("New Command waiting!\r\n"); //SEMIHOSTING DEBUG OUT
 			if(CMD_FULL_Incomming[0] != NULL)
 			{
 				CMD_FULL_Incomming[11] = '\r';
