@@ -25,13 +25,12 @@ Current capabilities as software and hardware currently exist.
 
 
 Project under heavy development. 
--(DevBoard is a Leaf Labs - Maple Mini (socketed on a custom protoboard (used as a connections breakout for testing)))
--This will be implemented on a custom built multi-layer PCB for production.
--EAGLE CAD files will be included soon for V0.1 hardware.
-
--- Basic COMS/Commands for ESP8266 working
--- USART1 - currently used for debuging and sending commands while testing (will come from parsed Wifi received data eventually)
--- USART3 - used for serial connection to ESP8266
+ - (DevBoard is a Leaf Labs - Maple Mini (socketed on a custom protoboard (used as a connections breakout for testing)))
+ - This will be implemented on a custom built multi-layer PCB for production.
+ - EAGLE CAD files will be included soon for V0.1 hardware.
+ - Basic COMS/Commands for ESP8266 working
+ - USART1 - currently used for debuging and sending commands while testing (will come from parsed Wifi received data eventually)
+ - USART3 - used for serial connection to ESP8266
 
 
 As you can see below, there is still a lot to do. 
