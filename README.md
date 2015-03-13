@@ -35,10 +35,10 @@ As you can see below, there is still a lot to do.
 
 On the To-Do list:
 
-(This item (#1) is currently being actively developed in the branch "browser_response_return_testing" )
+(This item (#1) is currently being actively developed in the branch
 
 
-1. Create basic http based response for a port 80 request to module.
+1. Create basic http based response for a port 80 request to module. (Active on branch "browser_response_return_testing")
     * Report current status (to include)
       * Assigned IP
       * Currently connected Wifi AP SSID
