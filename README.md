@@ -29,7 +29,7 @@ Project under heavy development.
 
 
 As you can see below, there is still a lot to do. 
-**********************************************************
+
 On the To-Do list:
 (This item (#1) is currently being actively developed in the branch "browser_response_return_testing" )
 1. Create basic http based response for a port 80 request to module.
