@@ -1,5 +1,8 @@
-# stm32-f103-CortexM3-ESP8266-Dimmer README File
-AC mains triac controlled dimmer using STM32F103 for brains. ESP8266 Wifi for communication and mesh networking. --- CoIDE (v1.7.8) Project.---
+# stm32-f103-CortexM3-ESP8266-Dimmer
+
+###--- CoIDE (v1.7.8) Project. ---
+
+AC mains triac controlled dimmer using STM32F103 for brains. ESP8266 Wifi for communication and mesh networking. 
 
 I welcome comments on things you think can be improved along the way. CONSTRUCTIVE ONLY PLEASE!!
 
@@ -29,22 +32,23 @@ Project under heavy development.
 
 
 As you can see below, there is still a lot to do. 
-**********************************************************
+
 On the To-Do list:
+
 (This item (#1) is currently being actively developed in the branch "browser_response_return_testing" )
 1. Create basic http based response for a port 80 request to module.
-    - Report current status (to include)
-      - Assigned IP
-      - Currently connected Wifi AP SSID
-      - Current Dimming level
-      - Current, current throughput..
-      - Current angle of triac in AC SINE
-      - Current frequency of AC mains
-      - Current Triac, MCU, WIFI module tempurature
-      - Flag for if recent errors (last hour or so, not sure how long I want it to hold on to them)
-    - Basic Textbox for direct input of dimming value
-    - Manual MCU/Module reset/reboot
-    - Option to enable Mesh network or Wifi network extention features (802.11n)
+    * Report current status (to include)
+      * Assigned IP
+      * Currently connected Wifi AP SSID
+      * Current Dimming level
+      * Current, current throughput..
+      * Current angle of triac in AC SINE
+      * Current frequency of AC mains
+      * Current Triac, MCU, WIFI module tempurature
+      * Flag for if recent errors (last hour or so, not sure how long I want it to hold on to them)
+    * Basic Textbox for direct input of dimming value
+    * Manual MCU/Module reset/reboot
+    * Option to enable Mesh network or Wifi network extention features (802.11n)
      
 2. Make ESP8266 library more universal (more of a library, less of a specific implimentation).
 3. Build stm32 hosted website library for ESP8266.
