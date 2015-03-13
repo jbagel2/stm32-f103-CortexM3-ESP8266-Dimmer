@@ -3,4 +3,5 @@
 *.obj
 *.elf
 
+Wifi_Dimmer/*
 Wifi_Dimmer/Debug/
