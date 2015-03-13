@@ -11,12 +11,15 @@ THIS IS A SUB PROJECT OF A LARGER SOON TO BE KICKSTARTED OPEN SOURCED HOME AUTOM
 
 
 Current capabilities as software and hardware currently exist.
-  -connection to existing wifi network
-  -starting local TCP/UDP server
-  -echo and CMD RECVD response back to connected wifi client if properly formated CMD received over DEBUG connection (USART1)
-  -USART buffer parsing in interrupt for USART1 and 3. (being done inside inturrupt for now to simply code base and development) Keeping close eye on active AC dimming as logic for USART expands inside interrupt (no flicker AT ALL on connected AC Cree 60W (equiv.) LED bulb).
-  -Lots of dimming code tweaks (while monitoring with high frequency bench oscilloscope) (still in progress), to get the most dimming possible without ANY flicker on LED bulds (so sick of the crap out there, that makes LED bulbs hum or cut out before they even get DIM. This project already does better at dimming than any comercial "LED compatible" dimmer I have found.(not saying a better one doesn't exist)).
-  -dimming function is 360 degree of SINE (FULL WAVE), unlike a lot of dimmers that only work on the positive portion of the wave.
+
+ - Connection to existing wifi network
+ - Starting local TCP/UDP server
+ - Echo and CMD RECVD response back to connected wifi client if properly formated CMD received over DEBUG connection (USART1)
+ - USART buffer parsing in interrupt for USART1 and 3. (being done inside inturrupt for now to simply code base and development) Keeping close eye on active AC dimming as logic for USART expands inside interrupt (no flicker AT ALL on connected AC Cree 60W (equiv.) LED bulb).
+ - Lots of dimming code tweaks (while monitoring with high frequency bench oscilloscope) (still in progress), to get the most dimming possible without ANY flicker on LED bulds (so sick of the crap out there, that makes LED bulbs hum or cut out before they even get DIM. This project already does better at dimming than any comercial "LED compatible" dimmer I have found.(not saying a better one doesn't exist)).
+ - Dimming function is 360 degree of SINE (FULL WAVE), unlike a lot of dimmers that only work on the positive portion of the wave.
+ - Serves basic page with textbox and Submit button to connecting Browser clients **(In Progress on seperate  branch)**
+
   ----- I'm sure there is more i'm not thinking of.
 
 
@@ -50,8 +53,8 @@ On the To-Do list:
     - [ ] Manual MCU/Module reset/reboot
     - [ ] Option to enable Mesh network or Wifi network extention features (802.11n)
      
-2. Make ESP8266 library more universal (more of a library, less of a specific implimentation).
-3. Build stm32 hosted website library for ESP8266.
+2. Make ESP8266 library more universal (more of a library, less of a specific implimentation). **In Progress**
+3. Build stm32 hosted website library for ESP8266. **In Progress**
 4. Test realworld throughput limits of USART data throughput to ESP8266 module. (current tested max without tweaking, 2Mbaud)
 5. Build motion control/occupation sensor support (So user can add motion sensor if desired)
 6. Build small current monitor library for AC and DC connection support (obviously hardware will also be required)
