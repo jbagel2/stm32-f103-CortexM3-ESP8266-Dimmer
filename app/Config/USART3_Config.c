@@ -114,7 +114,7 @@ void Init_USART_DMA()
 	USART_DMA_Config.DMA_DIR = DMA_DIR_PeripheralSRC;
 	USART_DMA_Config.DMA_M2M = DMA_M2M_Enable;
 	USART_DMA_Config.DMA_Mode = DMA_Mode_Circular;
-	USART_DMA_Config.
+	//Need to finish this
 
 }
 
