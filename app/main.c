@@ -38,9 +38,6 @@
  */
 
 
-
-
-
 #define countof(a)   (sizeof(a) / sizeof(*(a)))
 
 
