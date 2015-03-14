@@ -30,6 +30,14 @@
  *  	- HRDRST - Hardware triggered system reboot
  */
 
+/*
+ * DO NOT USE THESE PINS!!!!! (SWD DEBUG AND PROGRAM INTERFACE) these can be re-mapped if required.
+ * PA14 - SWCLK
+ * PA13 - SWDIO
+ *
+ */
+
+
 
 
 
