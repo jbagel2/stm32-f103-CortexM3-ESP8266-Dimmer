@@ -106,14 +106,14 @@ void Init_USART_DMA()
 {
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
 
-	DMA_InitTypeDef USART_DMA_Config;
+	//DMA_InitTypeDef USART_DMA_Config;
 
 	//Just incase there is lingering config
-	DMA_DeInit(DMA1_Channel1);
+	//DMA_DeInit(DMA1_Channel1);
 
-	USART_DMA_Config.DMA_DIR = DMA_DIR_PeripheralSRC;
-	USART_DMA_Config.DMA_M2M = DMA_M2M_Enable;
-	USART_DMA_Config.DMA_Mode = DMA_Mode_Circular;
+	//USART_DMA_Config.DMA_DIR = DMA_DIR_PeripheralSRC;
+	//USART_DMA_Config.DMA_M2M = DMA_M2M_Enable;
+	//USART_DMA_Config.DMA_Mode = DMA_Mode_Circular;
 	//Need to finish this
 
 }

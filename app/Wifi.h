@@ -38,7 +38,7 @@ const char WIFI_BrowserAcceptLangHeader[] = "Accept-Language:";
 char webResponse[900];
 char commandToSend[80];
 char closeConnectionBuffer[16];
-
+void Wifi_SendCustomCommand(char *customMessage);
 
 volatile char WIFI_LinkDataReceivedParamsBuffer[8]; // will hold the data after the +IPD stating the amount of data incoming
 

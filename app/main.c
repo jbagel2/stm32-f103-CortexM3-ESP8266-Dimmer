@@ -78,7 +78,7 @@ uint8_t USART3_TxBuffer[10]; //Starting initialization at 10 (for now)
 volatile char USART3_RxBuffer[RxBuffSize];
 volatile char USART1_RxBuffer[RxBuffSize];
 uint8_t TxCounter = 0;
-uint8_t RxCounter = 0;
+volatile uint8_t RxCounter = 0;
 uint8_t USART1_RxCounter = 0;
 
 volatile uint8_t newCommandWaiting = 0;
