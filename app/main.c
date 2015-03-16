@@ -182,6 +182,7 @@ int main(void)
 
 		if(indexPageRequestWaiting == 1)
 		{
+
 			printf("WebResquest found!\r\n"); //SEMIHOSTING DEBUG OUT
 			for (mdi=0;mdi<80170;mdi++);// Wait for buffer. (need to replace with check for OK)
 			indexPageRequestWaiting = 0;
@@ -269,7 +270,7 @@ void EXTI15_10_IRQHandler(void)
 volatile uint8_t activeDataTrap = 0;
 volatile char IPDDataBuffer[1000];
 volatile uint16_t IPDDataIndex = 0;
-volatile uint16_t bytesToGet = 462; //a count of the number of bytes to expect from an incoming +IPD data transmission DEBUG SET AT 400 need to get this from the IPD metadata
+volatile uint16_t bytesToGet = 367; //a count of the number of bytes to expect from an incoming +IPD data transmission DEBUG SET AT 400 need to get this from the IPD metadata
 volatile uint8_t activeIPDTrap = 0;
 volatile uint8_t IPDMetaIndex = 0;
 volatile char IPDMetaBuffer[15]; // contains data after +IPD ie +IPD[,0,394:] - (data inside brackets), denoting the connection number sending the data and the byte count of expected data
@@ -287,6 +288,7 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
 
 	if(activeDataTrap == 1)
 	{
+
 		if(IPDDataIndex < bytesToGet)
 		{
 		IPDDataBuffer[IPDDataIndex++] = USART3_RxBuffer[RxCounter - 1];
@@ -311,8 +313,10 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
 			}
 		}
 		else {
+			IPDMetaBuffer[IPDMetaIndex++] = '\0'; //null terminate the data
 			activeIPDTrap = 0;
 			activeDataTrap = 1;
+			bytesToGet = atoi(IPDMetaBuffer[3]); //convert last numbers in ipd meta data into byteToGet number
 			IPDMetaIndex = 0;
 			//activeConnectionNum = IPDMetaBuffer[1] - '0'; // converts ascii to int
 		}
