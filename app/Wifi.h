@@ -18,7 +18,7 @@ extern volatile char RxBuffer[];
 const char siteHeader[] = "HTTP/1.1 200 Ok\r\nContent-Type: application/json;\r\n"
 		"Connection: close;\r\n\r\n";
 
-const char DimmingInputPage[] = "  <html><form action=\"dimming_form.asp\">Dimming Value: <input type=\"text\" name=\"dimvalue\"><br>"
+const char DimmingInputPage[] = "  <html><head><meta charset=\"UTF-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Dimming Module Control Page</title></head><form action=\"dimming_form.asp\">Dimming Value: <input type=\"text\" name=\"dimvalue\"><br>"
 		"<input type=\"submit\" value=\"Submit\">"
 		"</form></html>";
 

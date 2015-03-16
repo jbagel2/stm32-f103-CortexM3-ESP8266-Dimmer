@@ -30,13 +30,13 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/ATCommands/GetCommands.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="435" selectionTopPixel="867"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Wifi.h" partName="Wifi.h" path="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Wifi.h" title="Wifi.h" tooltip="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Wifi.h" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="Wifi.h" partName="Wifi.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Wifi.h" title="Wifi.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Wifi.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Wifi.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1648" selectionTopPixel="479"/>
+<editorState selectionHorizontalPixel="476" selectionLength="0" selectionOffset="713" selectionTopPixel="19"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/main.c" title="main.c" tooltip="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/main.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/main.c" title="main.c" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="38" selectionOffset="6759" selectionTopPixel="3215"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="7586" selectionTopPixel="2807"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="USART3_Config.c" partName="USART3_Config.c" path="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Config/USART3_Config.c" title="USART3_Config.c" tooltip="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Config/USART3_Config.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Config/USART3_Config.c"/>
@@ -96,7 +96,7 @@
 <viewState/>
 </view>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="44">
+<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="37">
 <expanded>
 <element path="/Wifi_Dimmer"/>
 <element path="/Wifi_Dimmer/cmsis_boot"/>
@@ -109,7 +109,7 @@
 <element path="/Wifi_Dimmer/STM32F10x_StdPeriph_Lib_V3.5.0/src"/>
 </expanded>
 <selection>
-<element path="/Wifi_Dimmer/main.c"/>
+<element path="/Wifi_Dimmer/Wifi.h"/>
 </selection>
 </viewState>
 </view>
@@ -329,10 +329,8 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/stdio/printf.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/Wifi.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/Config/USART3_Config.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/Wifi.h"/>
 </editors>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3193" y="0"/>
-</item>
 <item historyLabel="main.c" index="0">
 <position info="not_deleted" x="3228" y="0"/>
 </item>
@@ -475,8 +473,11 @@
 <item historyLabel="main.c" index="0">
 <position info="not_deleted" x="6875" y="57"/>
 </item>
-<item active="true" historyLabel="main.c" index="0">
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="6759" y="38"/>
+</item>
+<item active="true" historyLabel="Wifi.h" index="8">
+<position info="not_deleted" x="1802" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -485,49 +486,48 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor" name="" tooltip="">
-<persistable>
-<org.coocox.builder.ui.editors.ConfigEditor/>
-</persistable>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" tooltip="Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c">
+<persistable path="/Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.c" tooltip="Wifi_Dimmer/cmsis_boot/system_stm32f10x.c">
+<persistable path="/Wifi_Dimmer/cmsis_boot/system_stm32f10x.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.h" tooltip="Wifi_Dimmer/cmsis_boot/system_stm32f10x.h">
+<persistable path="/Wifi_Dimmer/cmsis_boot/system_stm32f10x.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="printf.c" tooltip="Wifi_Dimmer/stdio/printf.c">
+<persistable path="/Wifi_Dimmer/stdio/printf.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="sh_cmd.s" tooltip="Wifi_Dimmer/semihosting/sh_cmd.s">
+<persistable path="/Wifi_Dimmer/semihosting/sh_cmd.s"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="semihosting.c" tooltip="Wifi_Dimmer/semihosting/semihosting.c">
 <persistable path="/Wifi_Dimmer/semihosting/semihosting.c"/>
 </file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="save1.dat" tooltip="C:\Users\Jacob\AppData\Local\X Moon Productions\XStoryPlayer 2\save\save1.dat">
-<persistable uri="file:/C:/Users/Jacob/AppData/Local/X%20Moon%20Productions/XStoryPlayer%202/save/save1.dat"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="semihosting.h" tooltip="Wifi_Dimmer/semihosting/semihosting.h">
+<persistable path="/Wifi_Dimmer/semihosting/semihosting.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_usart.c" tooltip="Wifi_Dimmer/STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_usart.c">
-<persistable path="/Wifi_Dimmer/STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_usart.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" tooltip="Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c">
-<persistable path="/Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Wifi_Dimmer.coproj" tooltip="C:\ARMDevelopment\STM32 Projects\F103\stm32-f103-CortexM3-ESP8266-Dimmer\Wifi_Dimmer.coproj">
-<persistable uri="file:/C:/ARMDevelopment/STM32%20Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/Wifi_Dimmer.coproj"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="localSite.h" tooltip="Wifi_Dimmer/localSite/localSite.h">
-<persistable path="/Wifi_Dimmer/localSite/localSite.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="localSite.c" tooltip="Wifi_Dimmer/localSite/localSite.c">
-<persistable path="/Wifi_Dimmer/localSite/localSite.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="helpers.h" tooltip="Wifi_Dimmer/helpers.h">
-<persistable path="/Wifi_Dimmer/helpers.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="localSite.c" tooltip="Wifi_Dimmer/LocalMiniSite/localSite.c">
-<persistable path="/Wifi_Dimmer/LocalMiniSite/localSite.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="localSite.h" tooltip="Wifi_Dimmer/LocalMiniSite/localSite.h">
-<persistable path="/Wifi_Dimmer/LocalMiniSite/localSite.h"/>
+<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
+<persistable>&#x0A;<subPage/>
+</persistable>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="USART3_Config.c" tooltip="Wifi_Dimmer/Config/USART3_Config.c">
 <persistable path="/Wifi_Dimmer/Config/USART3_Config.c"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="Wifi_Dimmer/main.c">
+<persistable path="/Wifi_Dimmer/main.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Wifi.h" tooltip="Wifi_Dimmer/Wifi.h">
 <persistable path="/Wifi_Dimmer/Wifi.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_gpio.h" tooltip="Wifi_Dimmer/STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_gpio.h">
-<persistable path="/Wifi_Dimmer/STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_gpio.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="localSite.h" tooltip="Wifi_Dimmer/localSite/localSite.h">
+<persistable path="/Wifi_Dimmer/localSite/localSite.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" tooltip="Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c">
+<persistable path="/Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.c" tooltip="Wifi_Dimmer/cmsis_boot/system_stm32f10x.c">
+<persistable path="/Wifi_Dimmer/cmsis_boot/system_stm32f10x.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="USART1_Config.c" tooltip="TEST/Config/USART1_Config.c">
 <persistable path="/TEST/Config/USART1_Config.c"/>
