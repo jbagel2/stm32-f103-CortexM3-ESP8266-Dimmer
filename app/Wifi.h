@@ -22,6 +22,14 @@ const char DimmingInputPage[] = "  <html><head><meta charset=\"UTF-8\"/><meta na
 		"<input type=\"submit\" value=\"Submit\">"
 		"</form></html>";
 
+const char RESTResponse_Headers_OK[] =
+		"HTTP/1.1 200 OK\r\n"
+		"Cache-Control: no-cache\r\n"
+		"Content-Type: application/json;charset-utf-8\r\n"
+		"Connection: close\r\n\r\n";
+
+const char RESTResponse_Body_TEST_JSON[] =
+		"{\"Status\":\"\{\"CurrentIP_WAN\":\"0.0.0.0\",\"currentip_lan\":\"192.168.4.1\",\"self_check_result\":\"OK\"}""}";
 
 const char WIFI_ClientConnected[] = "Link"; // client just connected if found
 const char WIFI_ClientDisconnected[] = "Unlink"; // client disconnected if found
@@ -169,6 +177,12 @@ void SendWebRequestResponse(uint8_t connectionNum)
 	//Wifi_WaitForAnswer();
 	OKFound=0;
 	Wifi_CloseConnection(connectionNum);
+}
+
+
+void SendRESTResponse(uint8_t connectionNum, char *responseHeaders, char *responseBody)
+{
+
 }
 
 

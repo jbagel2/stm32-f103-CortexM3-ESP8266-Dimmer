@@ -83,9 +83,9 @@
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_sdio.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_sdio.h" type="1"/>
     <File name="localSite/localSite.h" path="app/LocalMiniSite/localSite.h" type="1"/>
     <File name="RestApi/RestApi_Core.c" path="app/RestApi/RestApi_Core.c" type="1"/>
-    <File name="RestApi/RestCommands.h" path="app/RestApi/RestCommands.h" type="1"/>
-    <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_i2c.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_i2c.c" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_tim.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_tim.h" type="1"/>
+    <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_i2c.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_i2c.c" type="1"/>
+    <File name="RestApi/RestCommands.h" path="app/RestApi/RestCommands.h" type="1"/>
     <File name="cmsis_boot" path="" type="2"/>
     <File name="helpers.h" path="app/helpers.h" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_flash.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_flash.c" type="1"/>
@@ -106,16 +106,16 @@
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_crc.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_crc.c" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_cec.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_cec.c" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_iwdg.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_iwdg.c" type="1"/>
-    <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/misc.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/misc.h" type="1"/>
     <File name="ATCommands/GetCommands.h" path="app/ATCommands/GetCommands.h" type="1"/>
+    <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/misc.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/misc.h" type="1"/>
     <File name="stdio/printf.c" path="stdio/printf.c" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_can.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_can.c" type="1"/>
     <File name="cmsis_boot/startup/startup_stm32f10x_md.c" path="app/cmsis_boot/startup/startup_stm32f10x_md.c" type="1"/>
     <File name="ATCommands" path="" type="2"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_tim.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_bkp.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_bkp.h" type="1"/>
-    <File name="Config/USART1_Config.h" path="app/Config/USART1_Config.h" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_dbgmcu.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_dbgmcu.h" type="1"/>
+    <File name="Config/USART1_Config.h" path="app/Config/USART1_Config.h" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_spi.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_spi.h" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.c" path="app/cmsis_boot/system_stm32f10x.c" type="1"/>
     <File name="RestApi" path="" type="2"/>
@@ -133,8 +133,8 @@
     <File name="semihosting" path="" type="2"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_fsmc.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_fsmc.h" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_usart.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_usart.h" type="1"/>
-    <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_dbgmcu.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_dbgmcu.c" type="1"/>
     <File name="Wifi.h" path="app/Wifi.h" type="1"/>
+    <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_dbgmcu.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_dbgmcu.c" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/misc.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/misc.c" type="1"/>
     <File name="Config/USART1_Config.c" path="app/Config/USART1_Config.c" type="1"/>
     <File name="cmsis" path="" type="2"/>

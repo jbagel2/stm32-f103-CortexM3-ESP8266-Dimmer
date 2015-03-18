@@ -2,24 +2,18 @@
 #ifndef _RESTCOMMANDS_H_
 #define _RESTCOMMANDS_H_
 
-typedef enum // The rest call types that we know what to do with
-{
-	GET,
-	POST,
-	PUT,
-	DELETE
+/**********************************************************
+ * Most everything in this section is just here to
+ * simplify the parsing of HTTP calls for the REST
+ * service.
+ *
+ **********************************************************/
+typedef enum {GET,POST,PUT,DELETE}Http_Method; // The rest call types that we know what to do with
+char *HTTP_Method[4] = {"GET","POST","PUT","DELETE"}; // Array is used for string compare or value of for the Http_Call_Type ENUM
 
-}Http_Call_Type;
 
-
-typedef enum // The query strings that are accepted by the rest call
-{
-	Dim,
-	Reset,
-	Settings,
-	Status
-
-}REST_Commands;
+typedef enum {Dim,Reset,Settings,Status}REST_ValidQueryStrings; // The query strings that are accepted by the rest call
+char *ValidQueryStrings[4] = {"Dim","Reset","Settings","Status"}; // Query strings that are valid
 
 typedef struct
 {
