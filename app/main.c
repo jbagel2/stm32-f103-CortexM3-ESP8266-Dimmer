@@ -172,10 +172,12 @@ int main(void)
 	printf("Wifi_Init() Complete\r\n"); //SEMIHOSTING DEBUG OUT
 	//for (mj=0;mj<20500;mj++);
 	for (mj=0;mj<130500;mj++);
-	//ConnectToAP("Nonya","porsche911");
+	ConnectToAP("Nonya","porsche911");
 	//for (mj=0;mj<70500;mj++);
 	printf("Preparing to start local ESP8266 server at ID: 1 Port: 80\r\n"); //SEMIHOSTING DEBUG OUT
 	StartServer(1,80);
+
+	Wifi_SendCommand(WIFI_GET_CURRENT_IP);
 
 	for(;;)
     {
@@ -186,8 +188,9 @@ int main(void)
 			printf("WebResquest found!\r\n"); //SEMIHOSTING DEBUG OUT
 			for (mdi=0;mdi<80170;mdi++);// Wait for buffer. (need to replace with check for OK)
 			indexPageRequestWaiting = 0;
-			printf("Preparing to send web response to connection %d\r\n",activeConnectionNum); //SEMIHOSTING DEBUG OUT
-			SendWebRequestResponse(activeConnectionNum);
+			//printf("Preparing to send web response to connection %d\r\n",activeConnectionNum); //SEMIHOSTING DEBUG OUT
+			//SendWebRequestResponse(activeConnectionNum);
+			SendRESTResponse(activeConnectionNum,RESTResponse_Headers_Test_OK,RESTResponse_Body_TEST_JSON);
 		}
 		//Check for data to transmit USART3
 

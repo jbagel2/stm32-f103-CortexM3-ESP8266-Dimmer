@@ -1,6 +1,6 @@
-#include "RestCommands.h"
+//#include "RestCommands.h"
 //#include "Wifi.h"
-
+/*
 void buildResponseHeaders(ResponseHeaders headerValues)
 {
 
@@ -15,3 +15,4 @@ void processRequestHeaders(RequestHeaders headerValues)
 {
 
 }
+*/

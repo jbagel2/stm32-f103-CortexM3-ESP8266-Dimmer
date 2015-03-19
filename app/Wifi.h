@@ -6,14 +6,16 @@
 #include <stdio.h>
 #include "string.h"
 #include "helpers.h"
+#include "RestApi/RestCommands.h"
 
-uint32_t wi= 0;
+
 
 extern volatile uint8_t waitingForReponse;
 extern volatile uint8_t OKFound;
 extern volatile uint8_t ERRORFound;
 extern volatile char RxBuffer[];
 
+uint32_t wi= 0;
 //Just testing the ability to send webpages over ESP8266 USART (with AT Commands... :/)
 const char siteHeader[] = "HTTP/1.1 200 Ok\r\nContent-Type: application/json;\r\n"
 		"Connection: close;\r\n\r\n";
@@ -22,14 +24,14 @@ const char DimmingInputPage[] = "  <html><head><meta charset=\"UTF-8\"/><meta na
 		"<input type=\"submit\" value=\"Submit\">"
 		"</form></html>";
 
-const char RESTResponse_Headers_OK[] =
+extern const char RESTResponse_Headers_Test_OK[]; /* = //Just here for testing as this is just a static OK 200 response
 		"HTTP/1.1 200 OK\r\n"
 		"Cache-Control: no-cache\r\n"
 		"Content-Type: application/json;charset-utf-8\r\n"
-		"Connection: close\r\n\r\n";
+		"Connection: close\r\n\r\n\0"; */
 
-const char RESTResponse_Body_TEST_JSON[] =
-		"{\"Status\":\"\{\"CurrentIP_WAN\":\"0.0.0.0\",\"currentip_lan\":\"192.168.4.1\",\"self_check_result\":\"OK\"}""}";
+extern const char RESTResponse_Body_TEST_JSON[]; /*=
+		"{\"Status\":\"\{\"CurrentIP_WAN\":\"0.0.0.0\",\"currentip_lan\":\"192.168.4.1\",\"self_check_result\":\"OK\"}""}\0"; */
 
 const char WIFI_ClientConnected[] = "Link"; // client just connected if found
 const char WIFI_ClientDisconnected[] = "Unlink"; // client disconnected if found
@@ -43,6 +45,8 @@ const char WIFI_BrowserClientTypeHeader[] = "User-Agent:";
 const char WIFI_BrowserAcceptEncodingHeader[] = "Accept-Encoding:";
 const char WIFI_BrowserAcceptLangHeader[] = "Accept-Language:";
 
+char *curResponse;
+
 char webResponse[900];
 char commandToSend[80];
 char closeConnectionBuffer[16];
@@ -51,7 +55,10 @@ void Wifi_SendCustomCommand(char *customMessage);
 volatile char WIFI_LinkDataReceivedParamsBuffer[8]; // will hold the data after the +IPD stating the amount of data incoming
 
 uint8_t outgoingConnections = 0;
-
+void ClearArray(char buffer[])
+{
+	memset(&buffer[0], '\0', sizeof(buffer));
+}
 void Wifi_ReadyWaitForAnswer()
 {
 	waitingForReponse = 1;
@@ -180,8 +187,31 @@ void SendWebRequestResponse(uint8_t connectionNum)
 }
 
 
-void SendRESTResponse(uint8_t connectionNum, char *responseHeaders, char *responseBody)
+Request_Type newResponse;
+
+uint16_t headLength = 0;
+uint16_t bodyLength = 0;
+
+void SendRESTResponse(uint8_t connectionNum, const char *responseHeaders, const char *responseBody)
 {
+	//newResponse.HttpStatusCode="200";
+	//newResponse->Headers=
+	//char test[50];
+	//buildHeader(test,ContentType,"application/json");
+	headLength = strlen(responseHeaders);
+	bodyLength = strlen(responseBody);
+	uint16_t countTest = strlen(responseHeaders);
+	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s", connectionNum, headLength-1, responseHeaders);
+	Wifi_SendCustomCommand(webResponse);
+	ClearArray(webResponse);
+	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s%d\r\n\r\n", connectionNum, (strlen(RequestHeaders_Array[ContentLength]))+6, RequestHeaders_Array[ContentLength],bodyLength-1);
+	Wifi_SendCustomCommand(webResponse);
+	ClearArray(webResponse);
+	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s", connectionNum, bodyLength-1, responseBody);
+	Wifi_SendCustomCommand(webResponse);
+	ClearArray(webResponse);
+	for (wi=0;wi<70500;wi++);
+	//Wifi_CloseConnection(connectionNum);
 
 }
 
