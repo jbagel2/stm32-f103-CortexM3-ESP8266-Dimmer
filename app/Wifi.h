@@ -6,7 +6,8 @@
 #include <stdio.h>
 #include "string.h"
 #include "helpers.h"
-#include "RestApi/RestCommands.h"
+//#include "RestApi/RestCommands.h"
+#include "Server/WebServer.h"
 
 
 
@@ -24,13 +25,13 @@ const char DimmingInputPage[] = "  <html><head><meta charset=\"UTF-8\"/><meta na
 		"<input type=\"submit\" value=\"Submit\">"
 		"</form></html>";
 
-extern const char RESTResponse_Headers_Test_OK[]; /* = //Just here for testing as this is just a static OK 200 response
+/*extern const char *RESTResponse_Headers_Test_OK;  = //Just here for testing as this is just a static OK 200 response
 		"HTTP/1.1 200 OK\r\n"
 		"Cache-Control: no-cache\r\n"
 		"Content-Type: application/json;charset-utf-8\r\n"
 		"Connection: close\r\n\r\n\0"; */
 
-extern const char RESTResponse_Body_TEST_JSON[]; /*=
+		/*extern const char *RESTResponse_Body_TEST_JSON; =
 		"{\"Status\":\"\{\"CurrentIP_WAN\":\"0.0.0.0\",\"currentip_lan\":\"192.168.4.1\",\"self_check_result\":\"OK\"}""}\0"; */
 
 const char WIFI_ClientConnected[] = "Link"; // client just connected if found
@@ -187,7 +188,7 @@ void SendWebRequestResponse(uint8_t connectionNum)
 }
 
 
-Request_Type newResponse;
+//HTTPResponse newResponse;
 
 uint16_t headLength = 0;
 uint16_t bodyLength = 0;
@@ -200,7 +201,7 @@ void SendRESTResponse(uint8_t connectionNum, const char *responseHeaders, const 
 	//buildHeader(test,ContentType,"application/json");
 	headLength = strlen(responseHeaders);
 	bodyLength = strlen(responseBody);
-	uint16_t countTest = strlen(responseHeaders);
+	//uint16_t countTest = strlen(responseHeaders);
 	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s", connectionNum, headLength-1, responseHeaders);
 	Wifi_SendCustomCommand(webResponse);
 	ClearArray(webResponse);

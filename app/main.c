@@ -107,6 +107,7 @@ volatile uint8_t ERRORFound = 0;
 volatile uint8_t OCount = 0;
 volatile uint8_t LINKFound = 0;
 volatile uint8_t indexPageRequestWaiting = 0;
+volatile uint8_t restRequestWaiting = 0;
 volatile uint8_t activeConnectionNum = 0;
 
 int main(void)
@@ -172,7 +173,7 @@ int main(void)
 	printf("Wifi_Init() Complete\r\n"); //SEMIHOSTING DEBUG OUT
 	//for (mj=0;mj<20500;mj++);
 	for (mj=0;mj<130500;mj++);
-	ConnectToAP("Nonya","porsche911");
+	//ConnectToAP("Nonya","porsche911");
 	//for (mj=0;mj<70500;mj++);
 	printf("Preparing to start local ESP8266 server at ID: 1 Port: 80\r\n"); //SEMIHOSTING DEBUG OUT
 	StartServer(1,80);
@@ -182,6 +183,10 @@ int main(void)
 	for(;;)
     {
 
+		if(restRequestWaiting == 1)
+		{
+			SendRESTResponse(activeConnectionNum,RESTResponse_Headers_Test_OK,RESTResponse_Body_TEST_JSON);
+		}
 		if(indexPageRequestWaiting == 1)
 		{
 

@@ -8,13 +8,18 @@
  * service.
  *
  **********************************************************/
+
+//#include "CustomStructs/CustomTypes.h"
+
+/* Moved to WebServer.h
 #define HttpMethod(methodEnum) (HTTP_Method[(methodEnum)]) // Converts the enum to its corresponding string representation
+*/
+//typedef KeyValuePair_StringString Header;
 
+//char *RequestMethod;
+//char *ResponseMethod;
 
-char *RequestMethod;
-char *ResponseMethod;
-
-
+/* Moved to WebServer.h
 const char RESTResponse_Headers_Test_OK[] = //Just here for testing as this is just a static OK 200 response
 		" HTTP/1.1 200 OK\r\n"
 		"Cache-Control: no-cache\r\n"
@@ -24,24 +29,20 @@ const char RESTResponse_Headers_Test_OK[] = //Just here for testing as this is j
 
 const char RESTResponse_Body_TEST_JSON[] =
 		"{\"Status\":\"\{\"CurrentIP_WAN\":\"0.0.0.0\",\"currentip_lan\":\"192.168.4.1\",\"self_check_result\":\"OK\"}""}\0";
+*/
 
 
-
-
+/* Moved to WebServer.h
 const typedef enum {GET=0,POST,PUT,DELETE}Http_Method_Enum; // The rest call types that we know what to do with
 const char *HTTP_Method[4] = {"GET","POST","PUT","DELETE"}; // Array is used for string compare or value of for the Http_Call_Type ENUM
+*/
 
-
+/* Moved to WebServer.h
 const typedef enum {Dim,Reset,Settings,Status}REST_ValidQueryStrings; // The query strings that are accepted by the rest call
 const char *ValidQueryStrings[4] = {"Dim","Reset","Settings","Status"}; // Query strings that are valid
+*/
 
-typedef struct
-{
-	char *key;
-	char *value;
-
-}Header;
-
+/* moved to WebServer.h
 typedef struct
 {
 	char *HttpStatusCode;
@@ -49,26 +50,27 @@ typedef struct
 	char *Headers[];
 
 }Request_Type;
-
-const typedef enum {ContentType,ContentLength,Accept,AcceptEncoding,Host,UserAgent}RequestHeaders_Types;
-const char *RequestHeaders_Array[6] = {"Content-Type: ","Content-Length: ","Accept: ", "Accept-Encoding: ", "Host: ", "User-Agent: "};
-
-void buildHeader(char *newHeaderOut, RequestHeaders_Types type, char *headerValue)
-{
-	sprintf(newHeaderOut,"%s%s",RequestHeaders_Array[type],headerValue);
-}
+*/
 
 /*
-typedef struct
+const typedef enum {ContentType,ContentLength,Accept,AcceptEncoding,Host,UserAgent}RequestHeaders_Types;
+const char *RequestHeaders_Array[6] = {"Content-Type: ","Content-Length: ","Accept: ", "Accept-Encoding: ", "Host: ", "User-Agent: "};
+*/
+
+
+/* moved to WebServer
+Header buildHeader(Header *newHeaderOut, RequestHeaders_Types type, char *headerValue)
 {
-	char *ContentTypeValue;
-	char *ContentLengthValue;
-	char *Authorization;
+	Header newHeader;
+	newHeader.key = RequestHeaders_Array[type];
+	newHeader.value = headerValue;
+	//sprintf(newHeaderOut,"%s%s",RequestHeaders_Array[type],headerValue);
 
-}ResponseHeaders; */
+}
+*/
 
-//const char ResponseHeaders[4] = {RequestHeaders_Array[ContentType]};
 
+/* moved to WebServer.h
 typedef struct // Response object that will be transmitted back
 {
 	char *uriAbsolute;
@@ -76,6 +78,20 @@ typedef struct // Response object that will be transmitted back
 	Header headers[];
 
 }APIresponse;
+*/
+
+void ProcessRestRequest()
+{
+
+	//breakdown REST uri and find query strings
+
+}
+
+void Authorize()
+{
+
+}
+
 
 //void buildResponseHeaders(ResponseHeaders headerValues);
 
