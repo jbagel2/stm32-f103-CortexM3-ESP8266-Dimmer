@@ -27,10 +27,13 @@
 <part id="12"/>
 <part id="13"/>
 <part id="14"/>
+<part id="15"/>
+<part id="16"/>
+<part id="17"/>
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.internal.EditorStack@180558d" ratio="0.5150376" ratioLeft="685" ratioRight="645" relationship="2" relative="DefaultEditorWorkbook">
+<info part="org.eclipse.ui.internal.EditorStack@180558d" ratio="0.5319149" ratioLeft="275" ratioRight="242" relationship="2" relative="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
@@ -42,15 +45,15 @@
 </editorArea>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="GetCommands.h" partName="GetCommands.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/ATCommands/GetCommands.h" title="GetCommands.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/ATCommands/GetCommands.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/ATCommands/GetCommands.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="19" selectionOffset="1017" selectionTopPixel="613"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1603" selectionTopPixel="1182"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Wifi.h" partName="Wifi.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Wifi.h" title="Wifi.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Wifi.h" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="Wifi.h" partName="Wifi.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Wifi.h" title="Wifi.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Wifi.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Wifi.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="155" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6812" selectionTopPixel="3434"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/main.c" title="main.c" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6127" selectionTopPixel="2794"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3161" selectionTopPixel="1734"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="USART3_Config.c" partName="USART3_Config.c" path="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Config/USART3_Config.c" title="USART3_Config.c" tooltip="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Config/USART3_Config.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Config/USART3_Config.c"/>
@@ -80,7 +83,7 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_usart.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="37716" selectionTopPixel="17391"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="RestCommands.h" partName="RestCommands.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/RestApi/RestCommands.h" title="RestCommands.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/RestApi/RestCommands.h" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="RestCommands.h" partName="RestCommands.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/RestApi/RestCommands.h" title="RestCommands.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/RestApi/RestCommands.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/RestApi/RestCommands.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="304" selectionTopPixel="2"/>
 </editor>
@@ -98,7 +101,19 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="WebServerConfig.h" partName="WebServerConfig.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServerConfig.h" title="WebServerConfig.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServerConfig.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Server/WebServerConfig.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="64" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="365" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="WebServerConfig.c" partName="WebServerConfig.c" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServerConfig.c" title="WebServerConfig.c" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServerConfig.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Server/WebServerConfig.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="30" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="esp8266.h" partName="esp8266.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/esp8266/include/esp8266.h" title="esp8266.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/esp8266/include/esp8266.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/esp8266/include/esp8266.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="45" selectionOffset="109" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="esp8266.c" partName="esp8266.c" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/esp8266/source/esp8266.c" title="esp8266.c" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/esp8266/source/esp8266.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/esp8266/source/esp8266.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="198" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="WebService.h" partName="WebService.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/CustomStructs/WebService.h" title="WebService.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/CustomStructs/WebService.h" workbook="org.eclipse.ui.internal.EditorStack@180558d">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/CustomStructs/WebService.h"/>
@@ -106,11 +121,11 @@
 </editor>
 <editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="WebServer.h" partName="WebServer.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServer.h" title="WebServer.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServer.h" workbook="org.eclipse.ui.internal.EditorStack@180558d">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Server/WebServer.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="152" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="211" selectionOffset="2" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="WebServer.c" partName="WebServer.c" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServer.c" title="WebServer.c" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServer.c" workbook="org.eclipse.ui.internal.EditorStack@180558d">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Server/WebServer.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="300" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="906" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -133,7 +148,8 @@
 </view>
 <view id="org.coocox.coassistant.view.CoAssistantView_debug" partName="Peripherals">
 <viewState horizontalPosition="32" verticalPosition="0">
-<selection>&#x0A;<element name="USART1"/>
+<selection>
+<element name="USART1"/>
 </selection>
 <registerValues baseAddress="Base Address: 0x40013800" description="Description:  Universal synchronous/asynchronous receiver/transmitter 1 registers"/>
 </viewState>
@@ -145,7 +161,7 @@
 <viewState/>
 </view>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="2">
+<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="59">
 <expanded>
 <element path="/Wifi_Dimmer"/>
 <element path="/Wifi_Dimmer/ATCommands"/>
@@ -153,6 +169,9 @@
 <element path="/Wifi_Dimmer/cmsis_boot/startup"/>
 <element path="/Wifi_Dimmer/Config"/>
 <element path="/Wifi_Dimmer/CustomStructs"/>
+<element path="/Wifi_Dimmer/esp8266"/>
+<element path="/Wifi_Dimmer/esp8266/include"/>
+<element path="/Wifi_Dimmer/esp8266/source"/>
 <element path="/Wifi_Dimmer/RestApi"/>
 <element path="/Wifi_Dimmer/semihosting"/>
 <element path="/Wifi_Dimmer/Server"/>
@@ -162,7 +181,7 @@
 <element path="/Wifi_Dimmer/STM32F10x_StdPeriph_Lib_V3.5.0/src"/>
 </expanded>
 <selection>
-<element path="/Wifi_Dimmer/RestApi/RestCommands.h"/>
+<element path="/Wifi_Dimmer/Wifi.h"/>
 </selection>
 </viewState>
 </view>
@@ -185,7 +204,7 @@
 <viewState horizontalPosition="0" verticalPosition="0"/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.coocox.builder.perspective.CoBuilder">
+<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.coocox.builder.ui.PerspectiveCoBuilder" id="org.coocox.builder.perspective.CoBuilder" label="CooCox CoBuilder"/>
 <alwaysOnActionSet id="org.coocox.welcome.ui.actionSet"/>
@@ -240,7 +259,7 @@
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1089fac" ratio="0.71800435" ratioLeft="662" ratioRight="260" relationship="4" relative="org.eclipse.ui.internal.ViewStack@108fcaf">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1089fac" ratio="0.62192816" ratioLeft="658" ratioRight="400" relationship="4" relative="org.eclipse.ui.internal.ViewStack@108fcaf">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.cdt.ui.callHierarchy" label="Call Hierarchy"/>
@@ -253,7 +272,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.24505183" ratioLeft="260" ratioRight="801" relationship="2" relative="org.eclipse.ui.internal.ViewStack@108fcaf"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1058651" ratio="0.80984205" ratioLeft="1333" ratioRight="313" relationship="2" relative="org.eclipse.ui.editorss">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1058651" ratio="0.9021871" ratioLeft="1485" ratioRight="161" relationship="2" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.coocox.component.ui.Help" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.coocox.coassistant.view.CoAssistantView" label="Peripherals"/>
@@ -311,8 +330,8 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
 <hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
-<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
 <hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
+<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.debug.ui.DebugView"/>
 <view id="org.coocox.codebugger.trace.ui.traceview"/>
@@ -326,30 +345,43 @@
 <view id="org.coocox.builder.ui.views.ProjectView"/>
 <fastViewBars/>
 <viewLayoutRec closeable="false" id="org.eclipse.debug.ui.DebugView"/>
-<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.ui.internal.ViewStack@b979aa">&#x0A;<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">&#x0A;<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<layout>
+<mainWindow>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@b979aa">
+<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
+<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1398" ratioRight="466" relationship="2" relative="org.eclipse.ui.internal.ViewStack@b979aa">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1398" ratioRight="466" relationship="2" relative="org.eclipse.ui.internal.ViewStack@b979aa">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@4353c3" ratio="0.7689805" ratioLeft="709" ratioRight="213" relationship="4" relative="org.eclipse.ui.internal.ViewStack@b979aa">&#x0A;<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@4353c3" ratio="0.66446126" ratioLeft="703" ratioRight="355" relationship="4" relative="org.eclipse.ui.internal.ViewStack@b979aa">
+<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@112d38a" ratio="0.22312139" ratioLeft="193" ratioRight="672" relationship="2" relative="org.eclipse.ui.internal.ViewStack@4353c3">&#x0A;<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">&#x0A;<page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@112d38a" ratio="0.43837085" ratioLeft="409" ratioRight="524" relationship="2" relative="org.eclipse.ui.internal.ViewStack@4353c3">
+<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">
+<page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
 <page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
 <page content="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" label="Memory Browser"/>
 <page content="org.eclipse.cdt.ui.callHierarchy" label="Call Hierarchy"/>
 <page content="org.eclipse.debug.ui.MemoryView" label="Memory"/>
 <page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
@@ -357,17 +389,20 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@817de5" ratio="0.8831291" ratioLeft="937" ratioRight="124" relationship="2" relative="org.eclipse.ui.internal.ViewStack@b979aa">&#x0A;<folder activePageID="org.coocox.coassistant.view.CoAssistantView_debug" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.RegisterView" label="Registers"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@817de5" ratio="0.8831291" ratioLeft="937" ratioRight="124" relationship="2" relative="org.eclipse.ui.internal.ViewStack@b979aa">
+<folder activePageID="org.coocox.coassistant.view.CoAssistantView_debug" appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.RegisterView" label="Registers"/>
 <page content="org.coocox.coassistant.view.CoAssistantView_debug" label="Peripherals"/>
 <page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="Disassembly"/>
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.14722222" ratioLeft="265" ratioRight="1535" relationship="2" relative="org.eclipse.ui.internal.ViewStack@b979aa"/>
+<info part="org.eclipse.ui.editorss" ratio="0.16049382" ratioLeft="286" ratioRight="1496" relationship="2" relative="org.eclipse.ui.internal.ViewStack@b979aa"/>
 </mainWindow>
 </layout>
 </perspective>
@@ -375,165 +410,158 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/Wifi.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/RestApi/RestCommands.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/CustomStructs/CustomTypes.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/CustomStructs/KeyValuePair.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/Server/WebServer.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/Wifi.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/main.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/Server/WebServer.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/Server/WebServerConfig.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/CustomStructs/WebService.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/ATCommands/GetCommands.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c"/>
 </editors>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="1871" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="6753" y="0"/>
 </item>
-<item historyLabel="CustomTypes.h" index="2">
-<position info="not_deleted" x="259" y="41"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="6609" y="98"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="381" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="6220" y="0"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="334" y="0"/>
+<item historyLabel="WebServer.c" index="3">
+<position info="not_deleted" x="906" y="0"/>
 </item>
-<item historyLabel="KeyValuePair.h" index="3">
-<position info="not_deleted" x="412" y="18"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="6220" y="0"/>
 </item>
-<item historyLabel="CustomTypes.h" index="2">
-<position info="not_deleted" x="304" y="0"/>
+<item historyLabel="WebServer.c" index="3">
+<position info="not_deleted" x="906" y="0"/>
 </item>
-<item historyLabel="KeyValuePair.h" index="3">
-<position info="not_deleted" x="412" y="18"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="6220" y="0"/>
 </item>
-<item historyLabel="KeyValuePair.h" index="3">
-<position info="not_deleted" x="330" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="6239" y="0"/>
 </item>
-<item historyLabel="Wifi.h" index="0">
-<position info="not_deleted" x="5820" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="6279" y="0"/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="2035" y="88"/>
+<item historyLabel="WebServer.h" index="0">
+<position info="not_deleted" x="2" y="211"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="1340" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="6618" y="0"/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="2035" y="86"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="5970" y="16"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="1340" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6616" y="0"/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="2035" y="266"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="2626" y="0"/>
 </item>
-<item historyLabel="WebServer.c" index="5">
-<position info="not_deleted" x="300" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="6618" y="0"/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="2033" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="2626" y="0"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="1253" y="89"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="1171" y="0"/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="1762" y="242"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6319" y="0"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="1005" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="6324" y="0"/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="2006" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="2618" y="0"/>
 </item>
-<item historyLabel="Wifi.h" index="0">
-<position info="not_deleted" x="219" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="2606" y="0"/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="2006" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="2661" y="0"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="1389" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="622" y="463"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="6324" y="0"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="1867" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6901" y="0"/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="2391" y="0"/>
+<item historyLabel="startup_stm32f10x_md.c" index="4">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="1867" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="3161" y="0"/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="371" y="122"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="6324" y="0"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="757" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6611" y="0"/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="593" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="2547" y="0"/>
 </item>
-<item historyLabel="WebServerConfig.h" index="6">
-<position info="not_deleted" x="403" y="0"/>
+<item historyLabel="startup_stm32f10x_md.c" index="4">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="1395" y="232"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="3161" y="0"/>
 </item>
-<item historyLabel="WebServerConfig.h" index="6">
-<position info="not_deleted" x="366" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="6324" y="0"/>
 </item>
-<item historyLabel="Wifi.h" index="0">
-<position info="not_deleted" x="219" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6611" y="0"/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="1395" y="232"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6629" y="0"/>
 </item>
-<item historyLabel="WebServerConfig.h" index="6">
-<position info="not_deleted" x="64" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6638" y="0"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="757" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6562" y="0"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="334" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6566" y="0"/>
 </item>
-<item historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="1087" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="3161" y="0"/>
 </item>
-<item historyLabel="Wifi.h" index="0">
-<position info="not_deleted" x="219" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6517" y="0"/>
 </item>
-<item historyLabel="WebServerConfig.h" index="6">
-<position info="not_deleted" x="64" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6564" y="0"/>
 </item>
-<item historyLabel="WebServer.c" index="5">
-<position info="not_deleted" x="300" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6611" y="0"/>
 </item>
-<item historyLabel="WebService.h" index="7">
-<position info="not_deleted" x="450" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="2613" y="0"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="334" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="3161" y="0"/>
 </item>
-<item historyLabel="Wifi.h" index="0">
-<position info="not_deleted" x="219" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6517" y="0"/>
 </item>
-<item historyLabel="GetCommands.h" index="8">
-<position info="not_deleted" x="1017" y="19"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6564" y="0"/>
 </item>
-<item historyLabel="CustomTypes.h" index="2">
-<position info="not_deleted" x="124" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6611" y="0"/>
 </item>
-<item historyLabel="WebServer.h" index="4">
-<position info="not_deleted" x="152" y="0"/>
+<item historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6638" y="0"/>
 </item>
-<item historyLabel="GetCommands.h" index="8">
-<position info="not_deleted" x="1017" y="19"/>
-</item>
-<item active="true" historyLabel="RestCommands.h" index="1">
-<position info="not_deleted" x="1087" y="0"/>
+<item active="true" historyLabel="Wifi.h" index="1">
+<position info="not_deleted" x="6812" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -542,6 +570,18 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" tooltip="Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c">
+<persistable path="/Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="esp8266.c" tooltip="Wifi_Dimmer/esp8266/source/esp8266.c">
+<persistable path="/Wifi_Dimmer/esp8266/source/esp8266.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="esp8266.h" tooltip="Wifi_Dimmer/esp8266/include/esp8266.h">
+<persistable path="/Wifi_Dimmer/esp8266/include/esp8266.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="WebServerConfig.c" tooltip="Wifi_Dimmer/Server/WebServerConfig.c">
+<persistable path="/Wifi_Dimmer/Server/WebServerConfig.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="WebServerConfig.h" tooltip="Wifi_Dimmer/Server/WebServerConfig.h">
 <persistable path="/Wifi_Dimmer/Server/WebServerConfig.h"/>
 </file>
@@ -560,9 +600,6 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="CustomTypes.h" tooltip="Wifi_Dimmer/CustomStructs/CustomTypes.h">
 <persistable path="/Wifi_Dimmer/CustomStructs/CustomTypes.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" tooltip="Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c">
-<persistable path="/Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.c" tooltip="Wifi_Dimmer/cmsis_boot/system_stm32f10x.c">
 <persistable path="/Wifi_Dimmer/cmsis_boot/system_stm32f10x.c"/>
 </file>
@@ -574,19 +611,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="sh_cmd.s" tooltip="Wifi_Dimmer/semihosting/sh_cmd.s">
 <persistable path="/Wifi_Dimmer/semihosting/sh_cmd.s"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="semihosting.c" tooltip="Wifi_Dimmer/semihosting/semihosting.c">
-<persistable path="/Wifi_Dimmer/semihosting/semihosting.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="semihosting.h" tooltip="Wifi_Dimmer/semihosting/semihosting.h">
-<persistable path="/Wifi_Dimmer/semihosting/semihosting.h"/>
-</file>
-<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
-<persistable>&#x0A;<subPage/>
-</persistable>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="USART3_Config.c" tooltip="Wifi_Dimmer/Config/USART3_Config.c">
-<persistable path="/Wifi_Dimmer/Config/USART3_Config.c"/>
 </file>
 </mruList>
 </workbench>

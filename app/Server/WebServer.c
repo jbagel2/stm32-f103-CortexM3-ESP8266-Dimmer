@@ -18,8 +18,9 @@ const char *RESTResponse_Headers_Test_OK = //Just here for testing as this is ju
 		" HTTP/1.1 200 OK\r\n"
 		"Cache-Control: no-cache\r\n"
 		"Content-Type: application/json;charset-utf-8\r\n"
-		"Connection: close\r\n\r";
-		// Needs to include Content-Length:
+		"Connection: close\r\n";
+		// Needs to include Content-Length:XX
+		// Calculated and appended based on body
 
 const char *RESTResponse_Body_TEST_JSON =
 		"{\"Status\":\"\{\"CurrentIP_WAN\":\"0.0.0.0\",\"currentip_lan\":\"192.168.4.1\",\"self_check_result\":\"OK\"}""}\0";

@@ -55,10 +55,14 @@ void Wifi_SendCustomCommand(char *customMessage);
 
 volatile char WIFI_LinkDataReceivedParamsBuffer[8]; // will hold the data after the +IPD stating the amount of data incoming
 
+//Calculate array size
+#define ARRAYSIZE(x) (sizeof x/sizeof x[0])
+
+
 uint8_t outgoingConnections = 0;
 void ClearArray(char buffer[])
 {
-	memset(&buffer[0], '\0', sizeof(buffer));
+	memset(buffer, '\0', ARRAYSIZE(buffer));
 }
 void Wifi_ReadyWaitForAnswer()
 {
@@ -201,9 +205,17 @@ void SendRESTResponse(uint8_t connectionNum, const char *responseHeaders, const 
 	//buildHeader(test,ContentType,"application/json");
 	headLength = strlen(responseHeaders);
 	bodyLength = strlen(responseBody);
+
+	//Send CIPSEND separate from actual data
+
 	//uint16_t countTest = strlen(responseHeaders);
 	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s", connectionNum, headLength-1, responseHeaders);
 	Wifi_SendCustomCommand(webResponse);
+
+	uint16_t testsize1 = ARRAYSIZE(webResponse);
+	uint16_t testsize2 = sizeof webResponse;
+
+
 	ClearArray(webResponse);
 	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s%d\r\n\r\n", connectionNum, (strlen(RequestHeaders_Array[ContentLength]))+6, RequestHeaders_Array[ContentLength],bodyLength-1);
 	Wifi_SendCustomCommand(webResponse);

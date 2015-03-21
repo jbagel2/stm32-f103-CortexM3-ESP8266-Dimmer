@@ -190,7 +190,7 @@ int main(void)
 		if(indexPageRequestWaiting == 1)
 		{
 
-			printf("WebResquest found!\r\n"); //SEMIHOSTING DEBUG OUT
+			printf("WebRequest found!\r\n"); //SEMIHOSTING DEBUG OUT
 			for (mdi=0;mdi<80170;mdi++);// Wait for buffer. (need to replace with check for OK)
 			indexPageRequestWaiting = 0;
 			//printf("Preparing to send web response to connection %d\r\n",activeConnectionNum); //SEMIHOSTING DEBUG OUT
