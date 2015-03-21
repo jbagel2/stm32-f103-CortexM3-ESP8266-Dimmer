@@ -64,6 +64,11 @@ void ClearArray(char buffer[])
 {
 	memset(buffer, '\0', ARRAYSIZE(buffer));
 }
+
+void ClearArray_Size(char buffer[], uint16_t size)
+{
+	memset(buffer, '\0', size);
+}
 void Wifi_ReadyWaitForAnswer()
 {
 	waitingForReponse = 1;
@@ -196,6 +201,8 @@ void SendWebRequestResponse(uint8_t connectionNum)
 
 uint16_t headLength = 0;
 uint16_t bodyLength = 0;
+uint8_t bodyLengthLength = 0;
+char bodyLengthSizeString[4];
 
 void SendRESTResponse(uint8_t connectionNum, const char *responseHeaders, const char *responseBody)
 {
@@ -203,26 +210,30 @@ void SendRESTResponse(uint8_t connectionNum, const char *responseHeaders, const 
 	//newResponse->Headers=
 	//char test[50];
 	//buildHeader(test,ContentType,"application/json");
+
+	ClearArray_Size(webResponse,ARRAYSIZE(webResponse));
 	headLength = strlen(responseHeaders);
 	bodyLength = strlen(responseBody);
-
+	sprintf(bodyLengthSizeString, "%d", bodyLength);
 	//Send CIPSEND separate from actual data
-
+	bodyLengthLength = strlen(bodyLengthSizeString);
 	//uint16_t countTest = strlen(responseHeaders);
-	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s", connectionNum, headLength-1, responseHeaders);
+	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s", connectionNum, headLength, responseHeaders);
 	Wifi_SendCustomCommand(webResponse);
 
-	uint16_t testsize1 = ARRAYSIZE(webResponse);
-	uint16_t testsize2 = sizeof webResponse;
-
-
-	ClearArray(webResponse);
-	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s%d\r\n\r\n", connectionNum, (strlen(RequestHeaders_Array[ContentLength]))+6, RequestHeaders_Array[ContentLength],bodyLength-1);
+	//uint16_t testsize1 = ARRAYSIZE(webResponse);
+	//uint16_t testsize2 = sizeof webResponse;
+	ClearArray_Size(webResponse,strlen(webResponse));
+	//ClearArray_Size(webResponse,headLength+12);
+	//ClearArray(webResponse);
+	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s%d\r\n", connectionNum, ((strlen(RequestHeaders_Array[ContentLength]))+bodyLengthLength)+4, RequestHeaders_Array[ContentLength],bodyLength-1);
 	Wifi_SendCustomCommand(webResponse);
-	ClearArray(webResponse);
-	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s", connectionNum, bodyLength-1, responseBody);
+	ClearArray_Size(webResponse,strlen(webResponse));
+	//ClearArray_Size(webResponse,((strlen(RequestHeaders_Array[ContentLength]))+bodyLengthLength)+15);
+	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n%s\r\n", connectionNum, bodyLength+1, responseBody);
 	Wifi_SendCustomCommand(webResponse);
-	ClearArray(webResponse);
+	ClearArray_Size(webResponse,strlen(webResponse));
+	//ClearArray_Size(webResponse, bodyLength+13);
 	for (wi=0;wi<70500;wi++);
 	//Wifi_CloseConnection(connectionNum);
 
