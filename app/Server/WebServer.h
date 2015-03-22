@@ -10,6 +10,8 @@
 
 #include "CustomStructs/KeyValuePair.h"
 #include "WebServerConfig.h"
+#include "esp8266.h"
+#include "CustomStructs/GeneralMacros.h"
 
 typedef KeyValuePair_StringString Header;
 
@@ -44,8 +46,9 @@ typedef struct // Response object that will be transmitted back
 
 
 void buildHeader(Header *newHeaderOut, RequestHeaders_Types type, char *headerValue);
-
-
+void SendRESTResponse(uint8_t connectionNum, const char *responseHeaders, const char *responseBody);
+void StartServer(uint8_t serverNum, uint16_t portNum);
+void SendWebRequestResponse(uint8_t connectionNum);
 
 /*
  *

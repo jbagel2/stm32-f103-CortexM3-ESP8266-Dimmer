@@ -6,6 +6,7 @@
  extern "C" {
 #endif
 
+/*
 const char *ATCommandsArray[18];
 const char *SystemCommandsArray[4];
 
@@ -101,7 +102,6 @@ void Build_WifiCommands()
 	ATCommandsArray[15] = "AT+CWQAP";
 	ATCommandsArray[16] = "AT+CWSAP="; //Parameters are required for this <ssid>,<password>,<channel>,<encryption>
 	ATCommandsArray[17] = "ATE0";
-
 }
 
 
@@ -117,5 +117,5 @@ void Commands_Init()
 }
 #endif
 
-
+*/
 #endif // _GetCommands_H

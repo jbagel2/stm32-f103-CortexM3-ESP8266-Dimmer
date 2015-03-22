@@ -1,6 +1,7 @@
 #ifndef _Wifi_H
 #define _Wifi_H
 
+/*
 #include "USART3_Config.h"
 #include "GetCommands.h"
 #include <stdio.h>
@@ -29,10 +30,10 @@ const char DimmingInputPage[] = "  <html><head><meta charset=\"UTF-8\"/><meta na
 		"HTTP/1.1 200 OK\r\n"
 		"Cache-Control: no-cache\r\n"
 		"Content-Type: application/json;charset-utf-8\r\n"
-		"Connection: close\r\n\r\n\0"; */
+		"Connection: close\r\n\r\n\0";
 
 		/*extern const char *RESTResponse_Body_TEST_JSON; =
-		"{\"Status\":\"\{\"CurrentIP_WAN\":\"0.0.0.0\",\"currentip_lan\":\"192.168.4.1\",\"self_check_result\":\"OK\"}""}\0"; */
+		"{\"Status\":\"\{\"CurrentIP_WAN\":\"0.0.0.0\",\"currentip_lan\":\"192.168.4.1\",\"self_check_result\":\"OK\"}""}\0";
 
 const char WIFI_ClientConnected[] = "Link"; // client just connected if found
 const char WIFI_ClientDisconnected[] = "Unlink"; // client disconnected if found
@@ -184,6 +185,8 @@ void ConnectToRemoteServer(char *Protocol, char *IPAddress, uint16_t port)
 	Wifi_SendCustomCommand(newMessage);
 }
 
+
+///Currently a test method just sending
 void SendWebRequestResponse(uint8_t connectionNum)
 {
 	//Wifi_SendCustomCommand("AT+CIPSEND=0,36\rGot your web request. I'm responding");
@@ -231,14 +234,6 @@ void SendRESTResponse(uint8_t connectionNum, const char *responseHeaders, const 
 	for (wi=0;wi<70500;wi++);
 
 }
-
-
-void Wifi_SendDataToClient(uint8_t connectionNum)
-{
-	//(CIPMUX=0) AT+CIPSEND=<length>;
-	//(CIPMUX=1) AT+CIPSEND= <id>,<length>
-}
-
-
+*/
 
 #endif // _Wifi_H

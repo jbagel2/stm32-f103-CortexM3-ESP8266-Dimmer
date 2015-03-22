@@ -12,8 +12,12 @@
 #include <string.h>
 
 //#include "helpers.h"
-#include "Wifi.h"
-#include "GetCommands.h"
+//#include "Wifi.h"
+//#include "GetCommands.h"
+
+
+#include "esp8266/include/esp8266.h"
+#include "Server/WebServer.h"
 
 
 /*
@@ -58,7 +62,7 @@ uint16_t testPort = 80;
 #define WIFI_RX_LineComplete = "\r\n"
 char WIFI_CMD_RECEIVE_COMPLETE[] = ":|:"; // Will be appended to the end of a valid command
 
-Current_CMD parsedCommand;
+//Current_CMD parsedCommand;
 
 volatile char CMD_FULL_Incomming[13];
 char CMD_FULL_ResponseBuffer[25];
@@ -101,9 +105,9 @@ void LED(void);
 volatile uint32_t mi = 0;
 volatile uint32_t mj = 0;
 volatile uint32_t mdi = 0;
-volatile uint8_t waitingForReponse = 0;
-volatile uint8_t OKFound = 0;
-volatile uint8_t ERRORFound = 0;
+//volatile uint8_t waitingForReponse = 0;
+//volatile uint8_t OKFound = 0;
+//volatile uint8_t ERRORFound = 0;
 volatile uint8_t OCount = 0;
 volatile uint8_t LINKFound = 0;
 volatile uint8_t indexPageRequestWaiting = 0;
@@ -169,7 +173,7 @@ int main(void)
 	ConfigZeroCross_NVIC();
 
 	//for (mj=0;mj<20500;mj++);
-	Wifi_Init();
+	//Wifi_Init();
 	printf("Wifi_Init() Complete\r\n"); //SEMIHOSTING DEBUG OUT
 	//for (mj=0;mj<20500;mj++);
 	for (mj=0;mj<130500;mj++);
