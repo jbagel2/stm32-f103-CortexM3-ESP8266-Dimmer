@@ -34,6 +34,19 @@ const char *ATCommandsArray[18] = {"AT",
 	"ATE0"};
 
 
+const char *ESP_Responses[10] =
+{
+		"ready",
+		"Link",
+		"Unlink",
+		"OK",
+		"SEND OK",
+		"+IPD",
+		"ERROR",
+		"wrong syntax",
+		"busy p...",
+		"busy inet..."
+};
 
 void ClearArray_Size(char buffer[], uint16_t size)
 {

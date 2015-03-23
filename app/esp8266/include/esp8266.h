@@ -21,9 +21,9 @@ volatile uint8_t ERRORFound;
 #define ESP_USART USART3
 
 
-const typedef enum {ESP_RESPONSE_Link,ESP_RESPONSE_Unlink,ESP_RESPONSE_OK,
+const typedef enum {ESP_RESPONSE_READY,ESP_RESPONSE_Link,ESP_RESPONSE_Unlink,ESP_RESPONSE_OK,
 					ESP_RESPONSE_SEND_OK,ESP_RESPONSE_IPD,ESP_RESPONSE_ERROR,
-					ESP_RESPONSE_Wrong_Syntax}ESP_Messages;
+					ESP_RESPONSE_Wrong_Syntax,ESP_RESPONSE_BUSY_P,ESP_RESPONSE_BUSY_INET}ESP_Messages;
 
 typedef enum
 {
@@ -59,6 +59,9 @@ typedef enum
 extern const char *ATCommandsArray[18];
 
 #define WIFI_COMMAND(commandEnum) (ATCommandsArray[(commandEnum)])
+
+
+
 
 void Wifi_ReadyWaitForAnswer();
 void Wifi_WaitForAnswer();
