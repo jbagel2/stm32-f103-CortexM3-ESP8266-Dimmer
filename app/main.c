@@ -11,6 +11,8 @@
 #include "USART1_Config.h"
 #include <string.h>
 
+#include "time.h"
+
 //#include "helpers.h"
 //#include "Wifi.h"
 //#include "GetCommands.h"
@@ -113,30 +115,31 @@ volatile uint8_t LINKFound = 0;
 volatile uint8_t indexPageRequestWaiting = 0;
 volatile uint8_t restRequestWaiting = 0;
 volatile uint8_t activeConnectionNum = 0;
-
-
+void RefreshCustomRESTResponse(char *IPWAN, char *IPLAN, char *nodeValue1, char *nodeValue2);
+char customRESTResponse[400];
+char dimValueString[6];
 
 int main(void)
 {
-	printf("Entering Main()\r\n"); //SEMIHOSTING DEBUG OUT
+	printf("Main()\r\n"); //SEMIHOSTING DEBUG OUT
 	// LED lamp 12800 MAX (before no response, wont turn on) But a few second delay before Diode saturation (light comes on)
 	// 12400 - min for reasonable saturation delay
 	dimmingValue = 12600; // 12600
 
-	printf("Starting RCC clocks\r\n"); //SEMIHOSTING DEBUG OUT
+	printf("RCC clocks Str\r\n"); //SEMIHOSTING DEBUG OUT
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3,ENABLE); // ESP8266 - Wifi
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
-	printf("Finished Starting RCC clocks\r\n"); //SEMIHOSTING DEBUG OUT
+	printf("RCC clocks Fin\r\n"); //SEMIHOSTING DEBUG OUT
 
 
 	POWER_LED_Config.GPIO_Speed = GPIO_Speed_50MHz;
 	POWER_LED_Config.GPIO_Mode = GPIO_Mode_Out_PP;
 	POWER_LED_Config.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_6; // PB1 - Maple On-board LED | PB6 - Maple Pin 16 | PB0 - CH_PD (Power ON) Pin for ESP8266 Wifi
 	GPIO_Init(GPIOB,&POWER_LED_Config);
-	printf("Finished GPIO Init for GPIO Port: B Pins: 0,1,6\r\n"); //SEMIHOSTING DEBUG OUT
+	printf("GPIO Port: B Pins: 0,1,6 Fin\r\n"); //SEMIHOSTING DEBUG OUT
 
 		GPIOB->BRR = GPIO_Pin_0; // Power OFF for ESP8266
 		printf("ESP8266 Powered OFF (CH01 Pin Disabled (Pulled Low))\r\n"); //SEMIHOSTING DEBUG OUT
@@ -158,6 +161,7 @@ int main(void)
 	GPIO_Init(GPIOB,&Button_Config);
 	printf("GPIOB Pin 14 configured for Zero-Crossing detection (Maple Pin 29)\r\n"); //SEMIHOSTING DEBUG OUT
 
+	Init_Time(MILLISEC);
 
 	Init_USART3(115200,ENABLE);
 	Init_USART1(115200,ENABLE);
@@ -204,7 +208,9 @@ int main(void)
 			indexPageRequestWaiting = 0;
 			//printf("Preparing to send web response to connection %d\r\n",activeConnectionNum); //SEMIHOSTING DEBUG OUT
 			//SendWebRequestResponse(activeConnectionNum);
-			SendRESTResponse(activeConnectionNum,RESTResponse_Headers_Test_OK,RESTResponse_Body_TEST_JSON);
+			sprintf(dimValueString,"%d",dimmingValue);
+			RefreshCustomRESTResponse("111.111.111.111","255.255.255.255",dimValueString,"0000");
+			SendRESTResponse(activeConnectionNum,RESTResponse_Headers_Test_OK,customRESTResponse);
 		}
 		//Check for data to transmit USART3
 
@@ -252,9 +258,14 @@ void SetRedirectCommand(uint8_t commandNum)
 
 }
 
-void RefreshCustomRESTResponse(char *IPAsClient, char *IPAsHost, uint32_t dimmingValue)
-{
+#define NODE_ID "dim01"
 
+void RefreshCustomRESTResponse(char *IPWAN, char *IPLAN, char *nodeValue1, char *nodeValue2)
+{
+#ifndef NODE_ID
+#error NODE_ID not defined, Please define NODE_ID as char*
+#endif
+snprintf(customRESTResponse, ARRAYSIZE(customRESTResponse),"{\"ID\":\"%s\",\"Status\":{\"nodeValue01\":\"%s\",\"nodeValue02\":\"%s\",\"CurrentIP_WAN\":\"%s\",\"currentIP_LAN\":\"%s\",\"self_check_result\":\"OK\"}} ",NODE_ID, nodeValue1, nodeValue2, IPWAN, IPLAN);
 }
 
 void ConfigZeroCrossExternalInt() // Configured for Maple Mini Pin 29
@@ -310,7 +321,6 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
 
 	if(activeDataTrap == 1)
 	{
-
 		if(IPDDataIndex < bytesToGet)
 		{
 		IPDDataBuffer[IPDDataIndex++] = USART3_RxBuffer[RxCounter - 1];
@@ -321,7 +331,6 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
 			activeDataTrap = 0; //Data collection should be complete
 			indexPageRequestWaiting = 1;
 		}
-
 	}
 	else if(activeIPDTrap == 1)
 	{
@@ -342,12 +351,9 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
 			IPDMetaIndex = 0;
 			//activeConnectionNum = IPDMetaBuffer[1] - '0'; // converts ascii to int
 		}
-
 	}
 	else
 	{
-
-
 		if((USART3_RxBuffer[(RxCounter - 1)] == 'D')&&(USART3_RxBuffer[(RxCounter - 2)] == 'P')&&(USART3_RxBuffer[(RxCounter - 3)] == 'I')&&(USART3_RxBuffer[(RxCounter - 4)] == '+'))
 			{
 				activeIPDTrap = 1;
