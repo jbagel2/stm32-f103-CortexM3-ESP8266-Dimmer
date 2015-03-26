@@ -114,6 +114,8 @@ volatile uint8_t indexPageRequestWaiting = 0;
 volatile uint8_t restRequestWaiting = 0;
 volatile uint8_t activeConnectionNum = 0;
 
+
+
 int main(void)
 {
 	printf("Entering Main()\r\n"); //SEMIHOSTING DEBUG OUT
@@ -193,6 +195,9 @@ int main(void)
 		}
 		if(indexPageRequestWaiting == 1)
 		{
+			//Need to parse the responses and Header here, to decide the correct response type (Page or REST)
+
+
 
 			printf("WebRequest found!\r\n"); //SEMIHOSTING DEBUG OUT
 			for (mdi=0;mdi<80170;mdi++);// Wait for buffer. (need to replace with check for OK)
@@ -243,6 +248,11 @@ void ClearRxBuffer(char buffer[])
 }
 
 void SetRedirectCommand(uint8_t commandNum)
+{
+
+}
+
+void RefreshCustomRESTResponse(char *IPAsClient, char *IPAsHost, uint32_t dimmingValue)
 {
 
 }

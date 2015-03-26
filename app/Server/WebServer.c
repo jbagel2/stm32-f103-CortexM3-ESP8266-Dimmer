@@ -76,6 +76,8 @@ void SendRESTResponse(uint8_t connectionNum, const char *responseHeaders, const 
 	for (wi=0;wi<70500;wi++);
 }
 
+
+
 void StartServer(uint8_t serverNum, uint16_t portNum)
 {
 	for (wi=0;wi<73500;wi++);
