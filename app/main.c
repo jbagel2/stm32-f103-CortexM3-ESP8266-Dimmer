@@ -124,7 +124,7 @@ int main(void)
 	printf("Main()\r\n"); //SEMIHOSTING DEBUG OUT
 	// LED lamp 12800 MAX (before no response, wont turn on) But a few second delay before Diode saturation (light comes on)
 	// 12400 - min for reasonable saturation delay
-	dimmingValue = 12600; // 12600
+	dimmingValue = 11000; // 12600
 
 	printf("RCC clocks Str\r\n"); //SEMIHOSTING DEBUG OUT
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3,ENABLE); // ESP8266 - Wifi
@@ -283,10 +283,12 @@ void ConfigZeroCross_NVIC()
 	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_0);
 
 	ZeroCross_VectorPrior.NVIC_IRQChannel = EXTI15_10_IRQn;
-	ZeroCross_VectorPrior.NVIC_IRQChannelPreemptionPriority = 0;
+	ZeroCross_VectorPrior.NVIC_IRQChannelPreemptionPriority = 15;
 	ZeroCross_VectorPrior.NVIC_IRQChannelSubPriority = 0;
 	ZeroCross_VectorPrior.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&ZeroCross_VectorPrior);
+
+	NVIC_SetPriority(EXTI15_10_IRQn, NVIC_EncodePriority(4,15,0));
 }
 
 void EXTI15_10_IRQHandler(void)

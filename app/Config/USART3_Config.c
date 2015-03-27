@@ -92,7 +92,7 @@ void Init_USART3_Interrupt()
 	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
 
 	USART3_Interrupt_Config.NVIC_IRQChannel = USART3_IRQn;
-	USART3_Interrupt_Config.NVIC_IRQChannelPreemptionPriority = 1;
+	USART3_Interrupt_Config.NVIC_IRQChannelPreemptionPriority = 0;
 	USART3_Interrupt_Config.NVIC_IRQChannelSubPriority = 0;
 	USART3_Interrupt_Config.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&USART3_Interrupt_Config);

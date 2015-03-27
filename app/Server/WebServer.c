@@ -23,8 +23,7 @@ void buildHeader(Header *newHeaderOut, RequestHeaders_Types type, char *headerVa
 
 const char *RESTResponse_Headers_Test_OK = //Just here for testing as this is just a static OK 200 response
 		" HTTP/1.1 200 OK\r\n"
-		"Cache-Control: no-cache\r\n"
-		"Content-Type: application/json;charset-utf-8\r\n"
+		"Content-Type: application/json\r\n"
 		"Connection: close\r\n";
 		// Needs to include Content-Length:XX
 		// Calculated and appended based on body
