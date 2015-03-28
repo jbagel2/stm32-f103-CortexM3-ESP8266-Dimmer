@@ -163,8 +163,8 @@ int main(void)
 
 	Init_Time(MILLISEC);
 
-	Init_USART3(115200,ENABLE);
-	Init_USART1(115200,ENABLE);
+	Init_USART3(460800,ENABLE);
+	Init_USART1(460800,ENABLE);
 
 	for (mj=0;mj<500000;mj++);// FOR TESTING
 
@@ -204,7 +204,7 @@ int main(void)
 
 
 			printf("WebRequest found!\r\n"); //SEMIHOSTING DEBUG OUT
-			for (mdi=0;mdi<80170;mdi++);// Wait for buffer. (need to replace with check for OK)
+			for (mdi=0;mdi<800170;mdi++);// Wait for buffer. (need to replace with check for OK)
 			indexPageRequestWaiting = 0;
 			//printf("Preparing to send web response to connection %d\r\n",activeConnectionNum); //SEMIHOSTING DEBUG OUT
 			//SendWebRequestResponse(activeConnectionNum);

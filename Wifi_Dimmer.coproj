@@ -129,9 +129,9 @@
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_iwdg.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_iwdg.h" type="1"/>
     <File name="localSite/localSite.h" path="app/LocalMiniSite/localSite.h" type="1"/>
     <File name="RestApi/RestApi_Core.c" path="app/RestApi/RestApi_Core.c" type="1"/>
-    <File name="RestApi/RestCommands.h" path="app/RestApi/RestCommands.h" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_i2c.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_i2c.c" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_tim.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_tim.h" type="1"/>
+    <File name="RestApi/RestCommands.h" path="app/RestApi/RestCommands.h" type="1"/>
     <File name="cmsis_boot" path="" type="2"/>
     <File name="esp8266/include/esp8266.h" path="app/esp8266/include/esp8266.h" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_cec.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_cec.h" type="1"/>
