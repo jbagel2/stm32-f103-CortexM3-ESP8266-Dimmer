@@ -12,6 +12,7 @@ char commandToSend[80];
 volatile uint8_t waitingForReponse = 0;
 volatile uint8_t OKFound = 0;
 volatile uint8_t ERRORFound = 0;
+volatile uint32_t TxWaitForResponse_TimeStmp = 0;
 
 
 const char *ATCommandsArray[18] = {"AT",
@@ -54,13 +55,14 @@ void ClearArray_Size(char buffer[], uint16_t size)
 }
 void Wifi_ReadyWaitForAnswer()
 {
+	TxWaitForResponse_TimeStmp = Millis();
 	waitingForReponse = 1;
 
 }
 
 void Wifi_WaitForAnswer()
 {
-	while(waitingForReponse == 1);
+	while(waitingForReponse == 1 && (Millis() - TxWaitForResponse_TimeStmp) < ESP_ResponseTimeout_ms);
 	OKFound=0;
 	ERRORFound=0;
 }

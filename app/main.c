@@ -153,18 +153,21 @@ int main(void)
 	ZeroCross_Config.GPIO_Mode = GPIO_Mode_IPD;
 	ZeroCross_Config.GPIO_Pin = GPIO_Pin_14; // PB14 - Maple Pin 29
 	GPIO_Init(GPIOB,&ZeroCross_Config);
-	printf("GPIOB Pin 14 configured for Zero-Crossing detection (Maple Pin 29)\r\n"); //SEMIHOSTING DEBUG OUT
+	//printf("GPIOB Pin 14 configured for Zero-Crossing detection (Maple Pin 29)\r\n"); //SEMIHOSTING DEBUG OUT
 
 	Button_Config.GPIO_Mode = GPIO_Mode_IN_FLOATING;
 	Button_Config.GPIO_Speed = GPIO_Speed_50MHz;
 	Button_Config.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_7;
 	GPIO_Init(GPIOB,&Button_Config);
-	printf("GPIOB Pin 14 configured for Zero-Crossing detection (Maple Pin 29)\r\n"); //SEMIHOSTING DEBUG OUT
+	//printf("GPIOB Pin 14 configured for Zero-Crossing detection (Maple Pin 29)\r\n"); //SEMIHOSTING DEBUG OUT
 
 	Init_Time(MILLISEC);
 
-	Init_USART3(460800,ENABLE);
-	Init_USART1(460800,ENABLE);
+	//Init_USART3(460800,ENABLE);
+	//Init_USART1(460800,ENABLE);
+
+	Init_USART3(2000000,ENABLE);
+	Init_USART1(2000000,ENABLE);
 
 	for (mj=0;mj<500000;mj++);// FOR TESTING
 

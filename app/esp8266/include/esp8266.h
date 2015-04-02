@@ -11,13 +11,13 @@
 #include "stm32f10x_usart.h"
 #include <stdio.h>
 #include "string.h"
+#include "time.h"
 
 volatile uint8_t waitingForReponse;
 volatile uint8_t OKFound;
 volatile uint8_t ERRORFound;
 
-
-
+#define ESP_ResponseTimeout_ms 3000
 #define ESP_USART USART3
 
 
