@@ -161,7 +161,7 @@ int main(void)
 	GPIO_Init(GPIOB,&Button_Config);
 	//printf("GPIOB Pin 14 configured for Zero-Crossing detection (Maple Pin 29)\r\n"); //SEMIHOSTING DEBUG OUT
 
-	Init_Time(MILLISEC);
+
 
 	//Init_USART3(460800,ENABLE);
 	//Init_USART1(460800,ENABLE);
@@ -192,6 +192,8 @@ int main(void)
 	StartServer(1,80);
 
 	Wifi_SendCommand(WIFI_GET_CURRENT_IP);
+
+	Init_Time(MILLISEC);
 
 	for(;;)
     {
@@ -322,7 +324,7 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
   {
     /* Read one byte from the receive data register */
 	USART3_RxBuffer[RxCounter++] = (char)USART_ReceiveData(USART3);
-
+	USART_ClearITPendingBit(USART3,USART_IT_RXNE);
 
 	if(activeDataTrap == 1)
 	{
@@ -379,8 +381,6 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
 				RxCounter = 0;
 			}
 	}
-
-
 	USART_ClearITPendingBit(USART3,USART_IT_RXNE);
   }
   USART_ClearITPendingBit(USART3,USART_IT_RXNE);

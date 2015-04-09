@@ -58,6 +58,11 @@ void Init_USART3(uint32_t baud, FunctionalState USART3_Interrupts)
 	//Wifi_Init();
 }
 
+void Init_USART3_DMA(uint32_t baud, volatile char *DMA_RxBuffer)
+{
+
+}
+
 void Init_USART3_RCC()
 {
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);

@@ -18,6 +18,7 @@
 #endif
 
 void Init_USART3(uint32_t baud, FunctionalState USART3_Interrupts);
+void Init_USART3_DMA(uint32_t baud, volatile char *DMA_RxBuffer);
 void USART3_Send_AT_TEST();//Just send the basic AT command looking for a ready response
 void USART3_SendString(char *MessageToSend);
 void USART3_IRQHandler(void);

@@ -14,7 +14,6 @@ volatile uint8_t OKFound = 0;
 volatile uint8_t ERRORFound = 0;
 volatile uint32_t TxWaitForResponse_TimeStmp = 0;
 
-
 const char *ATCommandsArray[18] = {"AT",
 	"AT+CIPSTATUS",
 	"AT+CWLAP",
@@ -110,7 +109,7 @@ void Wifi_SendCommand(Wifi_Commands command )
 	while(USART_GetFlagStatus(ESP_USART, USART_FLAG_TXE) == RESET);
 	USART_SendData(ESP_USART,'\r');
 
-	Wifi_ReadyWaitForAnswer();
+	//Wifi_ReadyWaitForAnswer();
 	while(USART_GetFlagStatus(ESP_USART, USART_FLAG_TXE) == RESET);
 
 	USART_SendData(ESP_USART,'\n');
@@ -132,7 +131,5 @@ void ConnectToAP(char *apName, char *password) //Will utilize the arguments late
 //Configures ESP82667 Access Point with given parameters.
 void StartLocalAP(char *SSID, char *password, uint8_t channel, Available_Encyption encypt)
 {
-
 	sprintf(commandToSend, "AT+CWSAP=\"\",\"\",\"\",\"\"");
-
 }
