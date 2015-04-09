@@ -10,6 +10,7 @@
 #include "USART3_Config.h"
 #include "USART1_Config.h"
 #include <string.h>
+#include "GeneralMacros.h"
 
 #include "time.h"
 
@@ -60,7 +61,6 @@ uint16_t testPort = 80;
 //Wifi related Variables and declarations
 #define WIFI_COMMAND_ERROR "ERROR" // Expected response from ESP8266 on error
 #define WIFI_COMMAND_ACCEPTED "OK" // Expected response from ESP8266 on succesful command process
-
 #define WIFI_RX_LineComplete = "\r\n"
 char WIFI_CMD_RECEIVE_COMPLETE[] = ":|:"; // Will be appended to the end of a valid command
 
@@ -107,7 +107,7 @@ void LED(void);
 volatile uint32_t mi = 0;
 volatile uint32_t mj = 0;
 volatile uint32_t mdi = 0;
-//volatile uint8_t waitingForReponse = 0;
+volatile extern uint8_t waitingForReponse;
 //volatile uint8_t OKFound = 0;
 //volatile uint8_t ERRORFound = 0;
 volatile uint8_t OCount = 0;
@@ -118,6 +118,8 @@ volatile uint8_t activeConnectionNum = 0;
 void RefreshCustomRESTResponse(char *IPWAN, char *IPLAN, char *nodeValue1, char *nodeValue2);
 char customRESTResponse[400];
 char dimValueString[6];
+
+
 
 int main(void)
 {
@@ -166,7 +168,15 @@ int main(void)
 	//Init_USART3(460800,ENABLE);
 	//Init_USART1(460800,ENABLE);
 
-	Init_USART3(2000000,ENABLE);
+	//*********USE USART3 Rx in DMA Mode
+	#define ESP_RX_DMA_BUF_POLL_Interval_ms 1000 //Every 1 Sec check the Rx Buffer
+	uint32_t LastRxBufferReadTime = 0;
+	Init_USART3_DMA(2000000,USART3_RxBuffer, USART3_RxBufferSize);
+
+	//*********USE USART3 Rx in DMA Mode
+
+
+	//Init_USART3(2000000,ENABLE);
 	Init_USART1(2000000,ENABLE);
 
 	for (mj=0;mj<500000;mj++);// FOR TESTING
@@ -180,6 +190,7 @@ int main(void)
 
 	ConfigZeroCrossExternalInt();
 	ConfigZeroCross_NVIC();
+	Init_Time(MILLISEC);
 
 	//for (mj=0;mj<20500;mj++);
 	//Wifi_Init();
@@ -193,7 +204,7 @@ int main(void)
 
 	Wifi_SendCommand(WIFI_GET_CURRENT_IP);
 
-	Init_Time(MILLISEC);
+
 
 	for(;;)
     {
@@ -250,6 +261,13 @@ int main(void)
 			newCommandWaiting = 0;
 		}
 
+		if((Millis() - LastRxBufferReadTime) >= ESP_RX_DMA_BUF_POLL_Interval_ms)
+		{
+			LastRxBufferReadTime = Millis();
+			//do something here to check the buffer/transfer/parse
+
+		}
+
     }
 }
 
@@ -273,6 +291,11 @@ void RefreshCustomRESTResponse(char *IPWAN, char *IPLAN, char *nodeValue1, char 
 snprintf(customRESTResponse, ARRAYSIZE(customRESTResponse),"{\"ID\":\"%s\",\"Status\":{\"nodeValue01\":\"%s\",\"nodeValue02\":\"%s\",\"CurrentIP_WAN\":\"%s\",\"currentIP_LAN\":\"%s\",\"self_check_result\":\"OK\"}} ",NODE_ID, nodeValue1, nodeValue2, IPWAN, IPLAN);
 }
 
+#ifdef SUPPORT_CPLUSPLUS
+extern "C"{
+#endif
+
+
 void ConfigZeroCrossExternalInt() // Configured for Maple Mini Pin 29
 {
 	ZeroCross_Interrupt.EXTI_Line = EXTI_Line14;
@@ -282,6 +305,10 @@ void ConfigZeroCrossExternalInt() // Configured for Maple Mini Pin 29
 
 	EXTI_Init(&ZeroCross_Interrupt);
 }
+
+#ifdef SUPPORT_CPLUSPLUS
+}
+#endif
 
 void ConfigZeroCross_NVIC()
 {
@@ -428,3 +455,4 @@ void USART1_IRQHandler(void) //USART1 - User Command recieve (DEBUG ONLY, comman
   }
 
 }
+

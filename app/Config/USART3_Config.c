@@ -58,16 +58,39 @@ void Init_USART3(uint32_t baud, FunctionalState USART3_Interrupts)
 	//Wifi_Init();
 }
 
-void Init_USART3_DMA(uint32_t baud, volatile char *DMA_RxBuffer)
+//Need to split this apart after functional
+void Init_USART3_DMA(uint32_t baud, volatile char DMA_RxBuffer[], uint16_t BufSize)
 {
+	//Clock Start
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
+
+	//GPIO Config
+	Init_USART3_GPIO();
+
+
+	//USART Config
+	USART3_Config.USART_BaudRate = baud;
+	USART3_Config.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+	USART3_Config.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	USART3_Config.USART_Parity = USART_Parity_No;
+	USART3_Config.USART_StopBits = USART_StopBits_1;
+	USART3_Config.USART_WordLength = USART_WordLength_8b;
+	USART_Init(USART3, &USART3_Config);
+
+
+
+	//DMA Config
 	DMA_DeInit(DMA1_Channel3);
 
 	//USART3 DMA1 (RX Ch 3 | TX Ch 2 )
 	DMA_InitTypeDef USART3_DMA_Config;
 	USART3_DMA_Config.DMA_PeripheralBaseAddr = 0x40004804;
-	USART3_DMA_Config.DMA_MemoryBaseAddr = (uint32_t)USART3_RxBuffer;
+	USART3_DMA_Config.DMA_MemoryBaseAddr = (uint32_t)DMA_RxBuffer;
 	USART3_DMA_Config.DMA_DIR = DMA_DIR_PeripheralSRC;
-	USART3_DMA_Config.DMA_BufferSize = USART3_RxBufferSize;
+	USART3_DMA_Config.DMA_BufferSize = BufSize;
 	USART3_DMA_Config.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
 	USART3_DMA_Config.DMA_MemoryInc = DMA_MemoryInc_Enable;
 	USART3_DMA_Config.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
@@ -75,13 +98,18 @@ void Init_USART3_DMA(uint32_t baud, volatile char *DMA_RxBuffer)
 	USART3_DMA_Config.DMA_Mode = DMA_Mode_Circular;
 	USART3_DMA_Config.DMA_Priority = DMA_Priority_VeryHigh;
 	USART3_DMA_Config.DMA_M2M = DMA_M2M_Disable;
+
 	DMA_Init(DMA1_Channel3, &USART3_DMA_Config);
 
+	//DMA Interupt Config
+	//DMA_ITConfig(DMA1_Channel3,DMA_IT)
 
-		RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
-		RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
+	USART_DMACmd(USART3,USART_DMAReq_Rx,ENABLE);
+	DMA_Cmd(DMA1_Channel3,ENABLE);
+
+	USART_Cmd(USART3,ENABLE);
+
+
 
 
 USART_DMACmd(USART3, USART_DMAReq_Rx, ENABLE);
@@ -130,23 +158,10 @@ void Init_USART3_Interrupt()
 	//USART_ITConfig(USART3,USART_IT_TXE, ENABLE);
 }
 
-
-void Init_USART_DMA()
+uint16_t FindInBuffer(char *stringToFind, char buffer[])
 {
-	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
-
-	//DMA_InitTypeDef USART_DMA_Config;
-
-	//Just incase there is lingering config
-	//DMA_DeInit(DMA1_Channel1);
-
-	//USART_DMA_Config.DMA_DIR = DMA_DIR_PeripheralSRC;
-	//USART_DMA_Config.DMA_M2M = DMA_M2M_Enable;
-	//USART_DMA_Config.DMA_Mode = DMA_Mode_Circular;
-	//Need to finish this
 
 }
-
 
 void USART3_SendString(char *MessageToSend)
 {
