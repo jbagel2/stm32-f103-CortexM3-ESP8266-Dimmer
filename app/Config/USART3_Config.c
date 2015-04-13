@@ -14,6 +14,7 @@
 #include "misc.h"
 #include "helpers.h"
 #include "stm32f10x_dma.h"
+#include "time.h"
 //#include "Wifi.h"
 
 //extern uint8_t USART3_RxBufferSize;
@@ -26,6 +27,7 @@ extern uint8_t TxCounter;
 extern uint8_t RxCounter;
 extern uint8_t NbrOfDataToTransfer;
 extern uint8_t NbrOfDataToRead;
+extern volatile uint32_t lastUSARTCharReceived_Time;
 
 #define USART3_RxBufferSize (countof(USART3_RxBuffer) - 1)
 
@@ -61,6 +63,7 @@ void Init_USART3(uint32_t baud, FunctionalState USART3_Interrupts)
 //Need to split this apart after functional
 void Init_USART3_DMA(uint32_t baud, volatile char DMA_RxBuffer[], uint16_t BufSize)
 {
+	NVIC_InitTypeDef USART3_DMA_Interrupt_Config;
 	//Clock Start
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
@@ -70,6 +73,7 @@ void Init_USART3_DMA(uint32_t baud, volatile char DMA_RxBuffer[], uint16_t BufSi
 	//GPIO Config
 	Init_USART3_GPIO();
 
+	DMA_ClearFlag(DMA1_FLAG_GL3 | DMA1_FLAG_HT3 | DMA1_FLAG_TC3 | DMA1_FLAG_TE3);
 
 	//USART Config
 	USART3_Config.USART_BaudRate = baud;
@@ -101,19 +105,36 @@ void Init_USART3_DMA(uint32_t baud, volatile char DMA_RxBuffer[], uint16_t BufSi
 
 	DMA_Init(DMA1_Channel3, &USART3_DMA_Config);
 
-	//DMA Interupt Config
-	//DMA_ITConfig(DMA1_Channel3,DMA_IT)
 
-	USART_DMACmd(USART3,USART_DMAReq_Rx,ENABLE);
+	USART3_DMA_Interrupt_Config.NVIC_IRQChannel = DMA1_Channel3_IRQn;
+	USART3_DMA_Interrupt_Config.NVIC_IRQChannelCmd = ENABLE;
+	USART3_DMA_Interrupt_Config.NVIC_IRQChannelPreemptionPriority = 0;
+	USART3_DMA_Interrupt_Config.NVIC_IRQChannelSubPriority = 0;
+
+	NVIC_Init(&USART3_DMA_Interrupt_Config);
+	//NVIC_EnableIRQ(DMA1_Channel3_IRQn);
+
+
 	DMA_Cmd(DMA1_Channel3,ENABLE);
 
 	USART_Cmd(USART3,ENABLE);
+	//DMA_ITConfig(DMA1_Channel3, DMA_IT_TC, ENABLE);
 
+	//Init_USART3_Interrupt();
 
 
 
 USART_DMACmd(USART3, USART_DMAReq_Rx, ENABLE);
 }
+
+
+void DMA1_Channel3_IRQHandler(void)
+{
+	//DMA_ClearITPendingBit(DMA1_Channel3,DMA_IT_)
+	lastUSARTCharReceived_Time = Millis();
+}
+
+
 
 void Init_USART3_RCC()
 {
@@ -214,6 +235,8 @@ void USART3_Send_AT_TEST()
 	USART_SendData(USART3,'\n');
 	for (i=0;i<500000;i++);
 }
+
+
 
 
 void USART3_SendNextChar()

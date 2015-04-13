@@ -49,10 +49,11 @@
 
 
 #define RxBuffSize 400
-
+#define USART_TxComplete_Timeout_ms 1000
 #define TxBufferSize (countof(USART3_TxBuffer) - 1)
 #define USART3_RxBufferSize (countof(USART3_RxBuffer) - 1)
 #define USART1_RxBufferSize (countof(USART1_RxBuffer) - 1)
+#define DMA_Rx_Buff_Poll_Int_ms 200
 
 char *testProto = "TCP";
 char *testIP = "172.20.112.1";
@@ -71,9 +72,9 @@ char CMD_FULL_ResponseBuffer[25];
 volatile char byteToCommand[2];
 
 volatile char lookForResponseBuffer[10];
-
-
-
+volatile uint32_t lastUSARTCharReceived_Time = 0;
+volatile uint32_t DMA_Rx_Buff_Index = 0;
+uint32_t lastDMABuffPoll = 0;
 
 
 
@@ -82,6 +83,7 @@ uint8_t CMD_Incomming_InProgress = 0;
 
 uint8_t USART3_TxBuffer[10]; //Starting initialization at 10 (for now)
 volatile char USART3_RxBuffer[RxBuffSize];
+volatile char USART3_RxBuffer_Buffer[RxBuffSize];
 volatile char USART1_RxBuffer[RxBuffSize];
 uint8_t TxCounter = 0;
 volatile uint8_t RxCounter = 0;
@@ -119,6 +121,7 @@ void RefreshCustomRESTResponse(char *IPWAN, char *IPLAN, char *nodeValue1, char 
 char customRESTResponse[400];
 char dimValueString[6];
 
+uint8_t USART3_Tx_Recieved = 0;
 
 
 int main(void)
@@ -141,6 +144,9 @@ int main(void)
 	POWER_LED_Config.GPIO_Mode = GPIO_Mode_Out_PP;
 	POWER_LED_Config.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_6; // PB1 - Maple On-board LED | PB6 - Maple Pin 16 | PB0 - CH_PD (Power ON) Pin for ESP8266 Wifi
 	GPIO_Init(GPIOB,&POWER_LED_Config);
+
+	SetArray_Size(USART3_RxBuffer,RxBuffSize);
+
 	printf("GPIO Port: B Pins: 0,1,6 Fin\r\n"); //SEMIHOSTING DEBUG OUT
 
 		GPIOB->BRR = GPIO_Pin_0; // Power OFF for ESP8266
@@ -204,15 +210,29 @@ int main(void)
 
 	Wifi_SendCommand(WIFI_GET_CURRENT_IP);
 
-
+	char *tstBuff;
 
 	for(;;)
     {
+
+
 
 		if(restRequestWaiting == 1)
 		{
 			SendRESTResponse(activeConnectionNum,RESTResponse_Headers_Test_OK,RESTResponse_Body_TEST_JSON);
 		}
+		if((Millis() - lastDMABuffPoll) >= DMA_Rx_Buff_Poll_Int_ms)
+		{
+			//USART3_RxBuffer[0] = "111111111111";
+			lastDMABuffPoll = Millis();
+			//DMA_Rx_Buff_Index = strlen(USART3_RxBuffer);
+			tstBuff = mempcpy(USART3_RxBuffer_Buffer, USART3_RxBuffer, RxBuffSize);
+			DMA_Rx_Buff_Index = tstBuff - &USART3_RxBuffer_Buffer[0];
+			//tstBuff = memmem(USART3_RxBuffer,sizeof(USART3_RxBuffer),"OK\r\n",4);
+			ClearArray_Size(USART3_RxBuffer, sizeof(USART3_RxBuffer));
+
+		}
+
 		if(indexPageRequestWaiting == 1)
 		{
 			//Need to parse the responses and Header here, to decide the correct response type (Page or REST)
@@ -261,12 +281,12 @@ int main(void)
 			newCommandWaiting = 0;
 		}
 
-		if((Millis() - LastRxBufferReadTime) >= ESP_RX_DMA_BUF_POLL_Interval_ms)
-		{
-			LastRxBufferReadTime = Millis();
+		//if((Millis() - LastRxBufferReadTime) >= ESP_RX_DMA_BUF_POLL_Interval_ms)
+		//{
+		//	LastRxBufferReadTime = Millis();
 			//do something here to check the buffer/transfer/parse
 
-		}
+		//}
 
     }
 }
@@ -275,6 +295,8 @@ void ClearRxBuffer(char buffer[])
 {
 	memset(&buffer[0], 0, sizeof(buffer));
 }
+
+
 
 void SetRedirectCommand(uint8_t commandNum)
 {
@@ -349,69 +371,12 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
 {
   if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)
   {
-    /* Read one byte from the receive data register */
-	USART3_RxBuffer[RxCounter++] = (char)USART_ReceiveData(USART3);
-	USART_ClearITPendingBit(USART3,USART_IT_RXNE);
-
-	if(activeDataTrap == 1)
-	{
-		if(IPDDataIndex < bytesToGet)
-		{
-		IPDDataBuffer[IPDDataIndex++] = USART3_RxBuffer[RxCounter - 1];
-		}
-		else
-		{
-			IPDDataIndex = 0;
-			activeDataTrap = 0; //Data collection should be complete
-			indexPageRequestWaiting = 1;
-		}
-	}
-	else if(activeIPDTrap == 1)
-	{
-		if(USART3_RxBuffer[RxCounter - 1] != ':')
-		{
-			IPDMetaBuffer[IPDMetaIndex++] = USART3_RxBuffer[RxCounter - 1];
-			if(IPDMetaIndex >= sizeof(IPDMetaBuffer))
-			{
-				IPDMetaIndex = 0;
-				activeIPDTrap = 0; //This data section should never be even close to this big. but this is here to keep it getting stuck in case of data corruption or something.
-			}
-		}
-		else {
-			IPDMetaBuffer[IPDMetaIndex++] = '\0'; //null terminate the data
-			activeIPDTrap = 0;
-			activeDataTrap = 1;
-			bytesToGet = atoi(IPDMetaBuffer[3]); //convert last numbers in ipd meta data into byteToGet number
-			IPDMetaIndex = 0;
-			//activeConnectionNum = IPDMetaBuffer[1] - '0'; // converts ascii to int
-		}
-	}
-	else
-	{
-		if((USART3_RxBuffer[(RxCounter - 1)] == 'D')&&(USART3_RxBuffer[(RxCounter - 2)] == 'P')&&(USART3_RxBuffer[(RxCounter - 3)] == 'I')&&(USART3_RxBuffer[(RxCounter - 4)] == '+'))
-			{
-				activeIPDTrap = 1;
-			}
-		if((waitingForReponse==1)&&(USART3_RxBuffer[(RxCounter - 1)] == 'K')&&(USART3_RxBuffer[(RxCounter - 2)] == 'O'))
-			{
-				OKFound = 1;
-				waitingForReponse =0;
-			}
-		if((waitingForReponse==1)&&(USART3_RxBuffer[(RxCounter - 2)] == 'R')&&(USART3_RxBuffer[(RxCounter - 3)] == 'O')&&(USART3_RxBuffer[(RxCounter - 5)] == 'R'))
-			{
-				ERRORFound=1;
-				waitingForReponse =0;
-			}
-
-		if(RxCounter >= USART3_RxBufferSize)
-			{
-				RxCounter = 0;
-			}
-	}
-	USART_ClearITPendingBit(USART3,USART_IT_RXNE);
+	  DMA_Rx_Buff_Index++;
   }
   USART_ClearITPendingBit(USART3,USART_IT_RXNE);
 }
+
+
 
 void USART1_IRQHandler(void) //USART1 - User Command recieve (DEBUG ONLY, commands from user will come from wifi)
 {

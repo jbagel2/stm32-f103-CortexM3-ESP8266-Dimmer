@@ -52,6 +52,12 @@ void ClearArray_Size(char buffer[], uint16_t size)
 {
 	memset(buffer, '\0', size);
 }
+
+void SetArray_Size(char buffer[], uint16_t size)
+{
+	memset(buffer, '1', size);
+}
+
 void Wifi_ReadyWaitForAnswer()
 {
 	TxWaitForResponse_TimeStmp = Millis();
