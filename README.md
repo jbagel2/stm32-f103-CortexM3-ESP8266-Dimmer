@@ -2,7 +2,7 @@
 
 ###--- CoIDE (v1.7.8) Project. ---
 
-####TONS of new updates (will update this readme file soon). Example Working DMA circular USART buffer for ESP8266 responses
+####(UPDATE: 04/15/2015)TONS of new updates (will update this readme file soon). Example Working DMA circular USART buffer for ESP8266 responses
 
 AC mains triac controlled dimmer using STM32F103 for brains. ESP8266 Wifi for communication and mesh networking. 
 
