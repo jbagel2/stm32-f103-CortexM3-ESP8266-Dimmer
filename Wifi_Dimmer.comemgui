@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MBs>&#x0A;<MemoryBroser ComboItemsValue="USART3_RxBuffer;" FocuseTabIndex="0" TabsValue="" TextValue="USART3_RxBuffer"/>&#x0A;</MBs>
+<MBs>&#x0A;<MemoryBroser ComboItemsValue="USART3_RxBuffer;0x40021000;" FocuseTabIndex="0" TabsValue="" TextValue="0x924"/>&#x0A;</MBs>
