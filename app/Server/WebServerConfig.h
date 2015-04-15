@@ -3,7 +3,8 @@
 #ifndef _WEBSERVERCONFIG_H_
 #define _WEBSERVERCONFIG_H_
 
-#define RESPONSE_BUFFER_SIZE 1000
+#include "globalDefines.h"
+//#define RESPONSE_BUFFER_SIZE 1000
 
 //Modify this section to reflect your valid rest query strings
 

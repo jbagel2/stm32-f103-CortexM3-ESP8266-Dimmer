@@ -12,13 +12,14 @@
 #include <stdio.h>
 #include "string.h"
 #include "time.h"
+#include "globalDefines.h"
 
 volatile uint8_t waitingForReponse;
 volatile uint8_t OKFound;
 volatile uint8_t ERRORFound;
 
-#define ESP_ResponseTimeout_ms 3000
-#define ESP_USART USART3
+//#define ESP_ResponseTimeout_ms 3000
+//#define ESP_USART USART3
 
 
 const typedef enum {ESP_RESPONSE_READY,ESP_RESPONSE_Link,ESP_RESPONSE_Unlink,ESP_RESPONSE_OK,

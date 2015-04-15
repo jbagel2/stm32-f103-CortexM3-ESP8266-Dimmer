@@ -13,6 +13,7 @@ volatile uint8_t waitingForReponse = 0;
 volatile uint8_t OKFound = 0;
 volatile uint8_t ERRORFound = 0;
 volatile uint32_t TxWaitForResponse_TimeStmp = 0;
+extern volatile char USART3_RxBuffer_Buffer[RxBuffSize];
 
 const char *ATCommandsArray[18] = {"AT",
 	"AT+CIPSTATUS",
@@ -68,6 +69,16 @@ void Wifi_ReadyWaitForAnswer()
 void Wifi_WaitForAnswer()
 {
 	while(waitingForReponse == 1 && (Millis() - TxWaitForResponse_TimeStmp) < ESP_ResponseTimeout_ms);
+	OKFound=0;
+	ERRORFound=0;
+}
+
+void Wifi_WaitForAnswerCMD(char cmdToWaitFor[], uint16_t cmdSize)
+{
+	while(waitingForReponse == 1 && (Millis() - TxWaitForResponse_TimeStmp) < ESP_ResponseTimeout_ms)
+		{
+
+		};
 	OKFound=0;
 	ERRORFound=0;
 }

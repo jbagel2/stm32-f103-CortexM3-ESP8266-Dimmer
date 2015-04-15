@@ -82,7 +82,7 @@ uint8_t CMD_Incomming_InProgress = 0;
 
 
 uint8_t USART3_TxBuffer[10]; //Starting initialization at 10 (for now)
-volatile char USART3_RxBuffer[RxBuffSize];
+volatile char USART3_RxBuffer[RxBuffSize]; // Currently used as DMA Circular buffer
 volatile char USART3_RxBuffer_Buffer[RxBuffSize];
 volatile char USART1_RxBuffer[RxBuffSize];
 uint8_t TxCounter = 0;

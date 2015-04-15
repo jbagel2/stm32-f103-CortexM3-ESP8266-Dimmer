@@ -129,9 +129,9 @@
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_iwdg.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_iwdg.h" type="1"/>
     <File name="localSite/localSite.h" path="app/LocalMiniSite/localSite.h" type="1"/>
     <File name="RestApi/RestApi_Core.c" path="app/RestApi/RestApi_Core.c" type="1"/>
-    <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_tim.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_tim.h" type="1"/>
     <File name="RestApi/RestCommands.h" path="app/RestApi/RestCommands.h" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_i2c.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_i2c.c" type="1"/>
+    <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_tim.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_tim.h" type="1"/>
     <File name="cmsis_boot" path="" type="2"/>
     <File name="esp8266/include/esp8266.h" path="app/esp8266/include/esp8266.h" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_cec.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_cec.h" type="1"/>
@@ -146,6 +146,7 @@
     <File name="localSite/localSite.c" path="app/LocalMiniSite/localSite.c" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_crc.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_crc.h" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_iwdg.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_iwdg.c" type="1"/>
+    <File name="DimmerConfig" path="" type="2"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_tim.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c" type="1"/>
     <File name="Server/WebServerConfig.h" path="app/Server/WebServerConfig.h" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_dbgmcu.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_dbgmcu.h" type="1"/>
@@ -158,6 +159,7 @@
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_fsmc.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_fsmc.h" type="1"/>
     <File name="Server/WebServerConfig.c" path="app/Server/WebServerConfig.c" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/misc.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/misc.c" type="1"/>
+    <File name="DimmerConfig/globalDefines.h" path="app/dimmerConfig/globalDefines.h" type="1"/>
     <File name="Config/USART1_Config.c" path="app/Config/USART1_Config.c" type="1"/>
     <File name="CustomStructs/GeneralMacros.h" path="app/CustomStructs/GeneralMacros.h" type="1"/>
     <File name="CustomStructs/KeyValuePair.h" path="app/CustomStructs/KeyValuePair.h" type="1"/>
@@ -172,8 +174,8 @@
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_sdio.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_sdio.c" type="1"/>
     <File name="semihosting/semihosting.h" path="semihosting/semihosting.h" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_rcc.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c" type="1"/>
-    <File name="CustomStructs/time.h" path="app/CustomStructs/time.h" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_rtc.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c" type="1"/>
+    <File name="CustomStructs/time.h" path="app/CustomStructs/time.h" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_pwr.h" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_pwr.h" type="1"/>
   </Files>
 </Project>
