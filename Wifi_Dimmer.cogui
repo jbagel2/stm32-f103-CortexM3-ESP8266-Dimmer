@@ -13,27 +13,18 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="7"/>
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
 <part id="6"/>
+<part id="7"/>
 <part id="8"/>
-<part id="9"/>
-<part id="10"/>
-<part id="11"/>
-<part id="12"/>
-<part id="13"/>
-<part id="14"/>
-<part id="17"/>
-<part id="15"/>
-<part id="16"/>
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.internal.EditorStack@180558d" ratio="0.37719297" ratioLeft="473" ratioRight="781" relationship="2" relative="DefaultEditorWorkbook">
+<info part="org.eclipse.ui.internal.EditorStack@180558d" ratio="0.4449649" ratioLeft="760" ratioRight="948" relationship="2" relative="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
@@ -48,13 +39,9 @@
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="GetCommands.h" partName="GetCommands.h" path="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/ATCommands/GetCommands.h" title="GetCommands.h" tooltip="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/ATCommands/GetCommands.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/ATCommands/GetCommands.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2876" selectionTopPixel="0"/>
-</editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/main.c" title="main.c" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="7588" selectionTopPixel="3740"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="7682" selectionTopPixel="3672"/>
 </editor>
 <editor id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" partName="Repository" title="Repository" tooltip="Repository" workbook="DefaultEditorWorkbook">
 <input factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory">&#x0A;<subPage horizontalPosition="0" selectedItemId="33" subPageIndex="2" verticalPosition="622"/>
@@ -76,61 +63,25 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/semihosting/semihosting.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="465" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="RestCommands.h" partName="RestCommands.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/RestApi/RestCommands.h" title="RestCommands.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/RestApi/RestCommands.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/RestApi/RestCommands.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="304" selectionTopPixel="2"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="KeyValuePair.h" partName="KeyValuePair.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/CustomStructs/KeyValuePair.h" title="KeyValuePair.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/CustomStructs/KeyValuePair.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/CustomStructs/KeyValuePair.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="330" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="WebServerConfig.h" partName="WebServerConfig.h" path="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServerConfig.h" title="WebServerConfig.h" tooltip="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServerConfig.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Server/WebServerConfig.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="60" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="WebServerConfig.c" partName="WebServerConfig.c" path="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServerConfig.c" title="WebServerConfig.c" tooltip="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServerConfig.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Server/WebServerConfig.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="34" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="esp8266.h" partName="esp8266.h" path="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/esp8266/include/esp8266.h" title="esp8266.h" tooltip="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/esp8266/include/esp8266.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/esp8266/include/esp8266.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="482" selectionTopPixel="678"/>
-</editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="GeneralMacros.h" partName="GeneralMacros.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/CustomStructs/GeneralMacros.h" title="GeneralMacros.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/CustomStructs/GeneralMacros.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/CustomStructs/GeneralMacros.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="34" selectionOffset="83" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="time.h" partName="time.h" path="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/CustomStructs/time.h" title="time.h" tooltip="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/CustomStructs/time.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/CustomStructs/time.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="35" selectionOffset="246" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" partName="startup_stm32f10x_md.c" path="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/cmsis_boot/startup/startup_stm32f10x_md.c" title="startup_stm32f10x_md.c" tooltip="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/cmsis_boot/startup/startup_stm32f10x_md.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="10032" selectionTopPixel="3009"/>
+<editorState selectionHorizontalPixel="0" selectionLength="43" selectionOffset="74" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_gpio.c" partName="stm32f10x_gpio.c" path="C:/ARMDevelopment/STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c" title="stm32f10x_gpio.c" tooltip="C:/ARMDevelopment/STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_gpio.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="9307" selectionTopPixel="4913"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Wifi.h" partName="Wifi.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Wifi.h" title="Wifi.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Wifi.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Wifi.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="USART3_Config.h" partName="USART3_Config.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Config/USART3_Config.h" title="USART3_Config.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Config/USART3_Config.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Config/USART3_Config.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="172" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="WebServer.h" partName="WebServer.h" path="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServer.h" title="WebServer.h" tooltip="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServer.h" workbook="org.eclipse.ui.internal.EditorStack@180558d">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Server/WebServer.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="13" selectionOffset="751" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="globalDefines.h" partName="globalDefines.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/dimmerConfig/globalDefines.h" title="globalDefines.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/dimmerConfig/globalDefines.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/DimmerConfig/globalDefines.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="928" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="WebServer.c" partName="WebServer.c" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServer.c" title="WebServer.c" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Server/WebServer.c" workbook="org.eclipse.ui.internal.EditorStack@180558d">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Server/WebServer.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3270" selectionTopPixel="1236"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3107" selectionTopPixel="931"/>
 </editor>
 <editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="esp8266.c" partName="esp8266.c" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/esp8266/source/esp8266.c" title="esp8266.c" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/esp8266/source/esp8266.c" workbook="org.eclipse.ui.internal.EditorStack@180558d">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/esp8266/source/esp8266.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="955" selectionTopPixel="663"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2235" selectionTopPixel="1142"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="USART3_Config.c" partName="USART3_Config.c" path="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Config/USART3_Config.c" title="USART3_Config.c" tooltip="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/Config/USART3_Config.c" workbook="org.eclipse.ui.internal.EditorStack@180558d">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/Config/USART3_Config.c"/>
@@ -148,9 +99,13 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/STM32F10x_StdPeriph_Lib_V3.5.0/inc/stm32f10x_dma.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="21" selectionOffset="5021" selectionTopPixel="821"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="helpers.h" partName="helpers.h" path="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/helpers.h" title="helpers.h" tooltip="C:/ARMDevelopment/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/helpers.h" workbook="org.eclipse.ui.internal.EditorStack@180558d">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="helpers.h" partName="helpers.h" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/helpers.h" title="helpers.h" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/helpers.h" workbook="org.eclipse.ui.internal.EditorStack@180558d">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/helpers.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="49" selectionOffset="89" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="47" selectionOffset="89" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" partName="startup_stm32f10x_md.c" path="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/cmsis_boot/startup/startup_stm32f10x_md.c" title="startup_stm32f10x_md.c" tooltip="D:/Google Drive/ARM Development/STM32 Projects/F103/stm32-f103-CortexM3-ESP8266-Dimmer/app/cmsis_boot/startup/startup_stm32f10x_md.c" workbook="org.eclipse.ui.internal.EditorStack@180558d">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="10032" selectionTopPixel="2907"/>
 </editor>
 </editors>
 <views>
@@ -170,7 +125,8 @@
 </view>
 <view id="org.coocox.coassistant.view.CoAssistantView_debug" partName="Peripherals">
 <viewState horizontalPosition="0" verticalPosition="0">
-<selection>&#x0A;<element name="DMA1"/>
+<selection>
+<element name="DMA1"/>
 </selection>
 <registerValues baseAddress="Base Address: 0x40020000" description="Description:  Direct Memory Access 1 registers"/>
 </viewState>
@@ -182,24 +138,20 @@
 <viewState/>
 </view>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="92">
+<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
 <expanded>
 <element path="/Wifi_Dimmer"/>
-<element path="/Wifi_Dimmer/ATCommands"/>
 <element path="/Wifi_Dimmer/cmsis_boot"/>
 <element path="/Wifi_Dimmer/cmsis_boot/startup"/>
 <element path="/Wifi_Dimmer/Config"/>
 <element path="/Wifi_Dimmer/CustomStructs"/>
+<element path="/Wifi_Dimmer/DimmerConfig"/>
 <element path="/Wifi_Dimmer/esp8266"/>
 <element path="/Wifi_Dimmer/esp8266/include"/>
 <element path="/Wifi_Dimmer/esp8266/source"/>
-<element path="/Wifi_Dimmer/RestApi"/>
 <element path="/Wifi_Dimmer/semihosting"/>
 <element path="/Wifi_Dimmer/Server"/>
 <element path="/Wifi_Dimmer/stdio"/>
-<element path="/Wifi_Dimmer/STM32F10x_StdPeriph_Lib_V3.5.0"/>
-<element path="/Wifi_Dimmer/STM32F10x_StdPeriph_Lib_V3.5.0/inc"/>
-<element path="/Wifi_Dimmer/STM32F10x_StdPeriph_Lib_V3.5.0/src"/>
 </expanded>
 <selection>
 <element path="/Wifi_Dimmer/main.c"/>
@@ -262,6 +214,7 @@
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.cdt.ui.callHierarchy"/>
+<view id="org.coocox.builder.ui.views.ProjectView"/>
 <fastViewBars>
 <fastViewBar fastViewLocation="131072" id="org.eclipse.ui.internal.ViewStack@1058651" orientation="512" selectedTabId="org.coocox.coassistant.view.CoAssistantView" style="0">
 <fastViews>
@@ -270,17 +223,11 @@
 <view id="org.coocox.component.ui.Help" ratio="0.3"/>
 </fastViews>
 </fastViewBar>
-<fastViewBar fastViewLocation="16384" id="org.eclipse.ui.internal.ViewStack@108fcaf" orientation="512" selectedTabId="org.coocox.builder.ui.views.ProjectView" style="0">
-<fastViews>
-<view id="org.coocox.builder.ui.views.ProjectView" ratio="0.29709366"/>
-</fastViews>
-</fastViewBar>
 </fastViewBars>
 <layout>
 <mainWindow>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@108fcaf">
 <folder appearance="2" expanded="2">
-<page content="org.coocox.builder.ui.views.ProjectView" label="LabelNotFound"/>
 <page content="org.coocox.component.ui.view.ComponentView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
@@ -313,6 +260,14 @@
 </folder>
 </info>
 </mainWindow>
+<detachedWindow height="1032" width="546" x="-795" y="-166">
+<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
+<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</detachedWindow>
 </layout>
 </perspective>
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
@@ -357,8 +312,8 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
 <hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
-<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
 <hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
+<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.debug.ui.DebugView"/>
 <view id="org.coocox.codebugger.trace.ui.traceview"/>
@@ -371,29 +326,41 @@
 <view id="org.eclipse.cdt.dsf.debug.ui.disassembly.view"/>
 <fastViewBars/>
 <viewLayoutRec closeable="false" id="org.eclipse.debug.ui.DebugView"/>
-<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.ui.internal.ViewStack@b979aa">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.coocox.builder.ui.views.ProjectView" label="LabelNotFound"/>
+<layout>
+<mainWindow>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@b979aa">
+<folder appearance="2" expanded="2">
+<page content="org.coocox.builder.ui.views.ProjectView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1398" ratioRight="466" relationship="2" relative="org.eclipse.ui.internal.ViewStack@b979aa">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1398" ratioRight="466" relationship="2" relative="org.eclipse.ui.internal.ViewStack@b979aa">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@4353c3" ratio="0.71041214" ratioLeft="655" ratioRight="267" relationship="4" relative="org.eclipse.ui.internal.ViewStack@b979aa">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@4353c3" ratio="0.71041214" ratioLeft="655" ratioRight="267" relationship="4" relative="org.eclipse.ui.internal.ViewStack@b979aa">
+<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@112d38a" ratio="0.43837085" ratioLeft="409" ratioRight="524" relationship="2" relative="org.eclipse.ui.internal.ViewStack@4353c3">&#x0A;<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">&#x0A;<page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@112d38a" ratio="0.43837085" ratioLeft="409" ratioRight="524" relationship="2" relative="org.eclipse.ui.internal.ViewStack@4353c3">
+<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">
+<page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
 <page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
 <page content="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" label="Memory Browser"/>
 <page content="org.eclipse.cdt.ui.callHierarchy" label="Call Hierarchy"/>
 <page content="org.eclipse.debug.ui.MemoryView" label="Memory"/>
 <page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
@@ -401,11 +368,14 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@817de5" ratio="0.8238434" ratioLeft="926" ratioRight="198" relationship="2" relative="org.eclipse.ui.internal.ViewStack@b979aa">&#x0A;<folder activePageID="org.coocox.coassistant.view.CoAssistantView_debug" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.RegisterView" label="Registers"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@817de5" ratio="0.8238434" ratioLeft="926" ratioRight="198" relationship="2" relative="org.eclipse.ui.internal.ViewStack@b979aa">
+<folder activePageID="org.coocox.coassistant.view.CoAssistantView_debug" appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.RegisterView" label="Registers"/>
 <page content="org.coocox.coassistant.view.CoAssistantView_debug" label="Peripherals"/>
 <page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="Disassembly"/>
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 </presentation>
@@ -420,160 +390,159 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/esp8266/source/esp8266.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/esp8266/include/esp8266.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c"/>
 </editors>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6852" y="0"/>
+<position info="not_deleted" x="7459" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3609" y="0"/>
-</item>
-<item historyLabel="startup_stm32f10x_md.c" index="1">
-<position info="not_deleted" x="10032" y="0"/>
+<position info="not_deleted" x="7537" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3609" y="0"/>
+<position info="not_deleted" x="7677" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="7751" y="0"/>
 </item>
 <item historyLabel="startup_stm32f10x_md.c" index="2">
 <position info="not_deleted" x="10032" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3728" y="0"/>
+<position info="not_deleted" x="7606" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7180" y="0"/>
+<position info="not_deleted" x="3811" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7291" y="0"/>
+<position info="not_deleted" x="7601" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7512" y="0"/>
+<position info="not_deleted" x="7677" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="1796" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7660" y="0"/>
+<position info="not_deleted" x="7677" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position/>
+</item>
+<item historyLabel="startup_stm32f10x_md.c" index="3">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7180" y="61"/>
+<position info="not_deleted" x="7677" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7660" y="0"/>
+<position info="not_deleted" x="3811" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="2326" y="0"/>
+</item>
+<item historyLabel="startup_stm32f10x_md.c" index="3">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7649" y="0"/>
+<position info="not_deleted" x="3811" y="0"/>
 </item>
-<item historyLabel="startup_stm32f10x_md.c" index="2">
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="1796" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="1901" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="1796" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="2326" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="2354" y="0"/>
+</item>
+<item historyLabel="startup_stm32f10x_md.c" index="3">
 <position info="not_deleted" x="10032" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3728" y="0"/>
+<position info="not_deleted" x="3811" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="2354" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="1796" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="2235" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7180" y="0"/>
+<position info="not_deleted" x="3811" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7291" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7512" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7588" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7510" y="0"/>
-</item>
-<item historyLabel="startup_stm32f10x_md.c" index="2">
+<item historyLabel="startup_stm32f10x_md.c" index="3">
 <position info="not_deleted" x="10032" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3728" y="0"/>
+<position info="not_deleted" x="4784" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7180" y="0"/>
+<position info="not_deleted" x="3811" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7291" y="0"/>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="2235" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7374" y="0"/>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="1796" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7588" y="0"/>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="1901" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7660" y="0"/>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="1988" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7510" y="0"/>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="2035" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7175" y="3"/>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="2235" y="0"/>
 </item>
-<item historyLabel="startup_stm32f10x_md.c" index="2">
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="2233" y="0"/>
+</item>
+<item historyLabel="startup_stm32f10x_md.c" index="3">
 <position info="not_deleted" x="10032" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3728" y="0"/>
+<position info="not_deleted" x="3811" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="1796" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="1901" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="1988" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="2035" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="1996" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="2153" y="0"/>
+</item>
+<item historyLabel="esp8266.c" index="1">
+<position info="not_deleted" x="2235" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7473" y="0"/>
-</item>
-<item historyLabel="startup_stm32f10x_md.c" index="2">
-<position info="not_deleted" x="10032" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3728" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7658" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7509" y="0"/>
-</item>
-<item historyLabel="startup_stm32f10x_md.c" index="2">
-<position info="not_deleted" x="10032" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3728" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7588" y="0"/>
-</item>
-<item historyLabel="esp8266.c" index="3">
-<position info="not_deleted" x="1155" y="0"/>
-</item>
-<item historyLabel="esp8266.c" index="3">
-<position info="not_deleted" x="1115" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7602" y="0"/>
-</item>
-<item historyLabel="esp8266.h" index="4">
-<position info="not_deleted" x="482" y="0"/>
-</item>
-<item historyLabel="esp8266.c" index="3">
-<position info="not_deleted" x="955" y="0"/>
-</item>
-<item historyLabel="esp8266.h" index="4">
-<position info="not_deleted" x="482" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7602" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3705" y="0"/>
-</item>
-<item historyLabel="startup_stm32f10x_md.c" index="2">
-<position info="not_deleted" x="10032" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3728" y="0"/>
+<position info="not_deleted" x="3811" y="0"/>
 </item>
 <item active="true" historyLabel="main.c" index="0">
-<position info="not_deleted" x="7588" y="0"/>
+<position info="not_deleted" x="7464" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -584,6 +553,21 @@
 <mruList>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" tooltip="Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c">
 <persistable path="/Wifi_Dimmer/cmsis_boot/startup/startup_stm32f10x_md.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="localSite.c" tooltip="Wifi_Dimmer/localSite/localSite.c">
+<persistable path="/Wifi_Dimmer/localSite/localSite.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="localSite.h" tooltip="Wifi_Dimmer/localSite/localSite.h">
+<persistable path="/Wifi_Dimmer/localSite/localSite.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="RestApi_Core.c" tooltip="Wifi_Dimmer/RestApi/RestApi_Core.c">
+<persistable path="/Wifi_Dimmer/RestApi/RestApi_Core.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="globalDefines.h" tooltip="Wifi_Dimmer/DimmerConfig/globalDefines.h">
+<persistable path="/Wifi_Dimmer/DimmerConfig/globalDefines.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="USART1_Config.h" tooltip="Wifi_Dimmer/Config/USART1_Config.h">
+<persistable path="/Wifi_Dimmer/Config/USART1_Config.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Wifi.h" tooltip="Wifi_Dimmer/Wifi.h">
 <persistable path="/Wifi_Dimmer/Wifi.h"/>
@@ -611,21 +595,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="KeyValuePair.h" tooltip="Wifi_Dimmer/CustomStructs/KeyValuePair.h">
 <persistable path="/Wifi_Dimmer/CustomStructs/KeyValuePair.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="CustomTypes.h" tooltip="Wifi_Dimmer/CustomStructs/CustomTypes.h">
-<persistable path="/Wifi_Dimmer/CustomStructs/CustomTypes.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.c" tooltip="Wifi_Dimmer/cmsis_boot/system_stm32f10x.c">
-<persistable path="/Wifi_Dimmer/cmsis_boot/system_stm32f10x.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.h" tooltip="Wifi_Dimmer/cmsis_boot/system_stm32f10x.h">
-<persistable path="/Wifi_Dimmer/cmsis_boot/system_stm32f10x.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="printf.c" tooltip="Wifi_Dimmer/stdio/printf.c">
-<persistable path="/Wifi_Dimmer/stdio/printf.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="RestApi_Core.c" tooltip="Wifi_Dimmer/RestApi/RestApi_Core.c">
-<persistable path="/Wifi_Dimmer/RestApi/RestApi_Core.c"/>
 </file>
 </mruList>
 </workbench>

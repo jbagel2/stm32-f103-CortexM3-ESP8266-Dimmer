@@ -14,6 +14,7 @@ volatile uint8_t OKFound = 0;
 volatile uint8_t ERRORFound = 0;
 volatile uint32_t TxWaitForResponse_TimeStmp = 0;
 extern volatile char USART3_RxBuffer_Buffer[RxBuffSize];
+extern volatile char USART3_RxBuffer[RxBuffSize];
 
 const char *ATCommandsArray[18] = {"AT",
 	"AT+CIPSTATUS",
@@ -73,14 +74,32 @@ void Wifi_WaitForAnswer()
 	ERRORFound=0;
 }
 
-void Wifi_WaitForAnswerCMD(char cmdToWaitFor[], uint16_t cmdSize)
+
+char *WaitForAnswer_cmd_Buffer;
+char *WaitForAnswer_ans_Buffer;
+///Will parse the USART buffer periodically (based on #defined poll interval) for the echo of cmdToWaitFor
+///in the response from the ESP8266 module.
+void Wifi_WaitForAnswerCMD(char *cmdToWaitFor, uint16_t cmdSize)
 {
+
 	while(waitingForReponse == 1 && (Millis() - TxWaitForResponse_TimeStmp) < ESP_ResponseTimeout_ms)
 		{
+		WaitForAnswer_cmd_Buffer = memmem(USART3_RxBuffer,RxBuffSize,cmdToWaitFor,cmdSize);
+		if(strlen(WaitForAnswer_cmd_Buffer)>0)
+		{
+			if(WaitForAnswer_ans_Buffer = memmem(WaitForAnswer_cmd_Buffer,strlen(WaitForAnswer_cmd_Buffer),"OK\r\n",4))
+			{
+				ClearArray_Size(WaitForAnswer_cmd_Buffer, strlen(WaitForAnswer_cmd_Buffer));
+				OKFound=1;
+				waitingForReponse = 0;
+			}
+			//Check for OK or Error Message
+
+		}
 
 		};
-	OKFound=0;
-	ERRORFound=0;
+	//OKFound=0;
+	//ERRORFound=0;
 }
 
 
@@ -131,7 +150,7 @@ void Wifi_SendCommand(Wifi_Commands command )
 
 	USART_SendData(ESP_USART,'\n');
 
-	Wifi_WaitForAnswer();
+	Wifi_WaitForAnswerCMD(ATCommandsArray[command], strlen(ATCommandsArray[command]));
 	//for (wi=0;wi<735000;wi++);
 
 }

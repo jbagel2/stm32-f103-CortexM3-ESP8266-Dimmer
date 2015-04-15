@@ -10,8 +10,8 @@
 #include "USART3_Config.h"
 #include "USART1_Config.h"
 #include <string.h>
-#include "GeneralMacros.h"
-
+//#include "GeneralMacros.h"
+#include "globalDefines.h"
 #include "time.h"
 
 //#include "helpers.h"
@@ -45,24 +45,24 @@
  */
 
 
-#define countof(a)   (sizeof(a) / sizeof(*(a)))
+//#define countof(a)   (sizeof(a) / sizeof(*(a)))
 
 
-#define RxBuffSize 400
-#define USART_TxComplete_Timeout_ms 1000
+//#define RxBuffSize 400
+//#define USART_TxComplete_Timeout_ms 1000
 #define TxBufferSize (countof(USART3_TxBuffer) - 1)
 #define USART3_RxBufferSize (countof(USART3_RxBuffer) - 1)
 #define USART1_RxBufferSize (countof(USART1_RxBuffer) - 1)
-#define DMA_Rx_Buff_Poll_Int_ms 200
+//#define DMA_Rx_Buff_Poll_Int_ms 200
 
 char *testProto = "TCP";
 char *testIP = "172.20.112.1";
 uint16_t testPort = 80;
 
 //Wifi related Variables and declarations
-#define WIFI_COMMAND_ERROR "ERROR" // Expected response from ESP8266 on error
-#define WIFI_COMMAND_ACCEPTED "OK" // Expected response from ESP8266 on succesful command process
-#define WIFI_RX_LineComplete = "\r\n"
+//#define WIFI_COMMAND_ERROR "ERROR" // Expected response from ESP8266 on error
+//#define WIFI_COMMAND_ACCEPTED "OK" // Expected response from ESP8266 on succesful command process
+//#define WIFI_RX_LineComplete = "\r\n"
 char WIFI_CMD_RECEIVE_COMPLETE[] = ":|:"; // Will be appended to the end of a valid command
 
 //Current_CMD parsedCommand;
@@ -145,7 +145,7 @@ int main(void)
 	POWER_LED_Config.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_6; // PB1 - Maple On-board LED | PB6 - Maple Pin 16 | PB0 - CH_PD (Power ON) Pin for ESP8266 Wifi
 	GPIO_Init(GPIOB,&POWER_LED_Config);
 
-	SetArray_Size(USART3_RxBuffer,RxBuffSize);
+	//SetArray_Size(USART3_RxBuffer,RxBuffSize);
 
 	printf("GPIO Port: B Pins: 0,1,6 Fin\r\n"); //SEMIHOSTING DEBUG OUT
 
@@ -226,10 +226,10 @@ int main(void)
 			//USART3_RxBuffer[0] = "111111111111";
 			lastDMABuffPoll = Millis();
 			//DMA_Rx_Buff_Index = strlen(USART3_RxBuffer);
-			tstBuff = mempcpy(USART3_RxBuffer_Buffer, USART3_RxBuffer, RxBuffSize);
-			DMA_Rx_Buff_Index = tstBuff - &USART3_RxBuffer_Buffer[0];
+			//tstBuff = mempcpy(USART3_RxBuffer_Buffer, USART3_RxBuffer, RxBuffSize);
+			//DMA_Rx_Buff_Index = tstBuff - &USART3_RxBuffer_Buffer[0];
 			//tstBuff = memmem(USART3_RxBuffer,sizeof(USART3_RxBuffer),"OK\r\n",4);
-			ClearArray_Size(USART3_RxBuffer, sizeof(USART3_RxBuffer));
+			//ClearArray_Size(USART3_RxBuffer, sizeof(USART3_RxBuffer));
 
 		}
 

@@ -31,6 +31,7 @@
 
 //Helpful Macros
 #define countof(a)   (sizeof(a) / sizeof(*(a)))
+#define ARRAYSIZE(x) (sizeof(x)/sizeof (x)[0]) // Need to test this one.. I think its broken.
 
 
 #endif //#ifndef __GLOBALDEFINES_H__
