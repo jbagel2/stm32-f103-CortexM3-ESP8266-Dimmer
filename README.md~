@@ -2,8 +2,6 @@
 
 ###--- CoIDE (v1.7.8) Project. ---
 
-####(UPDATE: 04/15/2015)TONS of new updates (will update this readme file soon). Example Working DMA circular USART buffer for ESP8266 responses
-
 AC mains triac controlled dimmer using STM32F103 for brains. ESP8266 Wifi for communication and mesh networking. 
 
 I welcome comments on things you think can be improved along the way. CONSTRUCTIVE ONLY PLEASE!!
@@ -27,12 +25,13 @@ Current capabilities as software and hardware currently exist.
 
 
 Project under heavy development. 
- - (DevBoard is a Leaf Labs - Maple Mini (socketed on a custom protoboard (used as a connections breakout for testing)))
- - This will be implemented on a custom built multi-layer PCB for production.
- - EAGLE CAD files will be included soon for V0.1 hardware.
- - Basic COMS/Commands for ESP8266 working
- - USART1 - currently used for debuging and sending commands while testing (will come from parsed Wifi received data eventually)
- - USART3 - used for serial connection to ESP8266
+-(DevBoard is a Leaf Labs - Maple Mini (socketed on a custom protoboard (used as a connections breakout for testing)))
+-This will be implemented on a custom built multi-layer PCB for production.
+-EAGLE CAD files will be included soon for V0.1 hardware.
+
+-- Basic COMS/Commands for ESP8266 working
+-- USART1 - currently used for debuging and sending commands while testing (will come from parsed Wifi received data eventually)
+-- USART3 - used for serial connection to ESP8266
 
 
 As you can see below, there is still a lot to do. 
