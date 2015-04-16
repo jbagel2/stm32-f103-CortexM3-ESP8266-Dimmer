@@ -10,6 +10,7 @@
 #include "USART3_Config.h"
 #include "USART1_Config.h"
 #include <string.h>
+//#include <stddef.h>
 //#include "GeneralMacros.h"
 #include "globalDefines.h"
 #include "time.h"
@@ -44,8 +45,21 @@
  *
  */
 
+//TYPEDEF DECLARATIONS
+typedef struct{
+	uint8_t ConnectionNum;
+	uint16_t DataSize;
+	char *RequestType; //ie.. POST, GET, PUT, DELETE
+	char *URI; //ie.. /api/foo?id=123
+	char **Headers;
+	char *Body;
+}IPD_Data;
 
-//#define countof(a)   (sizeof(a) / sizeof(*(a)))
+
+
+//METHOD DECLARATIONS
+IPD_Data ProcessIPD_Data(char *IPD_Buffer);
+
 
 
 //#define RxBuffSize 400
@@ -83,7 +97,10 @@ uint8_t CMD_Incomming_InProgress = 0;
 
 uint8_t USART3_TxBuffer[10]; //Starting initialization at 10 (for now)
 volatile char USART3_RxBuffer[RxBuffSize]; // Currently used as DMA Circular buffer
-volatile char USART3_RxBuffer_Buffer[RxBuffSize];
+char *ESP_IPD_Data_Buffer_Pntr;
+char ESP_IPD_DataBuffer[RxBuffSize];
+
+
 volatile char USART1_RxBuffer[RxBuffSize];
 uint8_t TxCounter = 0;
 volatile uint8_t RxCounter = 0;
@@ -122,6 +139,11 @@ char customRESTResponse[400];
 char dimValueString[6];
 
 uint8_t USART3_Tx_Recieved = 0;
+
+
+
+
+IPD_Data currentIPD;
 
 
 int main(void)
@@ -212,6 +234,7 @@ int main(void)
 
 	char *tstBuff;
 
+
 	for(;;)
     {
 
@@ -223,8 +246,24 @@ int main(void)
 		}
 		if((Millis() - lastDMABuffPoll) >= DMA_Rx_Buff_Poll_Int_ms)
 		{
-			//USART3_RxBuffer[0] = "111111111111";
+			//Probably need to check for new client ({clientNum},CONNECT)
 			lastDMABuffPoll = Millis();
+			ESP_IPD_Data_Buffer_Pntr = memmem(USART3_RxBuffer,RxBuffSize,"+IPD",4);
+			if(ESP_IPD_Data_Buffer_Pntr)
+			{
+				//Copy IPD message and data to its own buffer so DMA can go about its business
+				strcpy(ESP_IPD_DataBuffer,ESP_IPD_Data_Buffer_Pntr);
+
+				//Wipes the received message from the DMA buffer (using the pointer to the data)
+				//This makes sure the data doesn't get mistaken for a new request, on the next buffer polling.
+				ClearArray_Size(ESP_IPD_Data_Buffer_Pntr,strlen(ESP_IPD_Data_Buffer_Pntr));
+
+				//now we process since DMA isn't going to stomp on us.
+				ProcessIPD_Data(ESP_IPD_DataBuffer);
+
+
+				printf("Incoming webrequest\r\n");
+			}
 			//DMA_Rx_Buff_Index = strlen(USART3_RxBuffer);
 			//tstBuff = mempcpy(USART3_RxBuffer_Buffer, USART3_RxBuffer, RxBuffSize);
 			//DMA_Rx_Buff_Index = tstBuff - &USART3_RxBuffer_Buffer[0];
@@ -289,6 +328,29 @@ int main(void)
 		//}
 
     }
+}
+
+char *IPD_Processing_buf;
+//Breaks the IPD message into a proper request object
+IPD_Data ProcessIPD_Data(char *IPD_Buffer)
+{
+	//IPD_Processing_buf = strdupa(IPD_Buffer);
+	//IPD_Processing_buf = &IPD_Buffer + 5;
+	IPD_Data thisIPDMessage;
+
+	strtok(IPD_Buffer,",");
+
+	thisIPDMessage.ConnectionNum = (uint8_t)strtok(NULL,",");
+
+	thisIPDMessage.DataSize = strtok(NULL,":");
+	//TODO: Probably need to add a check to make sure actual datasize matches expected..
+
+	thisIPDMessage.RequestType = strtok(NULL," ");
+
+	thisIPDMessage.URI = strtok(NULL,"\r\n");
+
+	return thisIPDMessage;
+
 }
 
 void ClearRxBuffer(char buffer[])
