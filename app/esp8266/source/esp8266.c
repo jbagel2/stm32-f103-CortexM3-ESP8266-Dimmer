@@ -13,7 +13,7 @@ volatile uint8_t waitingForReponse = 0;
 volatile uint8_t OKFound = 0;
 volatile uint8_t ERRORFound = 0;
 volatile uint32_t TxWaitForResponse_TimeStmp = 0;
-extern volatile char USART3_RxBuffer_Buffer[RxBuffSize];
+//extern volatile char USART3_RxBuffer_Buffer[RxBuffSize];
 extern volatile char USART3_RxBuffer[RxBuffSize];
 
 const char *ATCommandsArray[18] = {"AT",
