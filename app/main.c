@@ -47,11 +47,11 @@
 
 //TYPEDEF DECLARATIONS
 typedef struct{
-	uint8_t ConnectionNum;
-	uint16_t DataSize;
+	char *ConnectionNum;
+	char *DataSize;
 	char *RequestType; //ie.. POST, GET, PUT, DELETE
 	char *URI; //ie.. /api/foo?id=123
-	char **Headers;
+	char *Headers;
 	char *Body;
 }IPD_Data;
 
@@ -259,7 +259,7 @@ int main(void)
 				ClearArray_Size(ESP_IPD_Data_Buffer_Pntr,strlen(ESP_IPD_Data_Buffer_Pntr));
 
 				//now we process since DMA isn't going to stomp on us.
-				ProcessIPD_Data(ESP_IPD_DataBuffer);
+				currentIPD = ProcessIPD_Data(ESP_IPD_DataBuffer);
 
 
 				printf("Incoming webrequest\r\n");
@@ -340,7 +340,7 @@ IPD_Data ProcessIPD_Data(char *IPD_Buffer)
 
 	strtok(IPD_Buffer,",");
 
-	thisIPDMessage.ConnectionNum = (uint8_t)strtok(NULL,",");
+	thisIPDMessage.ConnectionNum = strtok(NULL,",");
 
 	thisIPDMessage.DataSize = strtok(NULL,":");
 	//TODO: Probably need to add a check to make sure actual datasize matches expected..
@@ -349,6 +349,9 @@ IPD_Data ProcessIPD_Data(char *IPD_Buffer)
 
 	thisIPDMessage.URI = strtok(NULL,"\r\n");
 
+	thisIPDMessage.Headers = strtok(NULL,"{");
+
+	thisIPDMessage.Body = strtok(NULL,"}");
 	return thisIPDMessage;
 
 }
