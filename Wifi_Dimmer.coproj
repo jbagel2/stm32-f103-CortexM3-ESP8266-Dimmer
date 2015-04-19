@@ -100,8 +100,8 @@
     <File name="cmsis_boot/stm32f10x.h" path="app/cmsis_boot/stm32f10x.h" type="1"/>
     <File name="Server" path="" type="2"/>
     <File name="cmsis_boot/stm32f10x_conf.h" path="app/cmsis_boot/stm32f10x_conf.h" type="1"/>
-    <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_exti.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_exti.c" type="1"/>
     <File name="CustomStructs/time.c" path="app/CustomStructs/time.c" type="1"/>
+    <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_exti.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_exti.c" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_usart.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_usart.c" type="1"/>
     <File name="Config/USART3_Config.c" path="app/Config/USART3_Config.c" type="1"/>
     <File name="STM32F10x_StdPeriph_Lib_V3.5.0/src/stm32f10x_pwr.c" path="../../../STM32 Libraries/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_pwr.c" type="1"/>

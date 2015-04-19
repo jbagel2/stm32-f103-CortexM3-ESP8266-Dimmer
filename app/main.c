@@ -140,7 +140,7 @@ char dimValueString[6];
 
 uint8_t USART3_Tx_Recieved = 0;
 
-
+uint16_t position = 0;
 
 
 IPD_Data currentIPD;
@@ -233,7 +233,19 @@ int main(void)
 	Wifi_SendCommand(WIFI_GET_CURRENT_IP);
 
 	char *tstBuff;
-
+	USART3_RxBuffer[0] = "1";
+	USART3_RxBuffer[1] = "1";
+	USART3_RxBuffer[2] = "1";
+	USART3_RxBuffer[3] = "1";
+	USART3_RxBuffer[4] = "1";
+	USART3_RxBuffer[5] = "1";
+	USART3_RxBuffer[6] = "1";
+	USART3_RxBuffer[7] = "1";
+	USART3_RxBuffer[8] = "1";
+	USART3_RxBuffer[9] = "1";
+	USART3_RxBuffer[10] = "1";
+	USART3_RxBuffer[11] = "1";
+	USART3_RxBuffer[12] = "1";
 
 	for(;;)
     {
@@ -251,13 +263,16 @@ int main(void)
 			ESP_IPD_Data_Buffer_Pntr = memmem(USART3_RxBuffer,RxBuffSize,"+IPD",4);
 			if(ESP_IPD_Data_Buffer_Pntr)
 			{
+				position = DMA_GetCurrDataCounter(DMA1_Channel3);
+				//position = strlen(USART3_RxBuffer);
 				//Copy IPD message and data to its own buffer so DMA can go about its business
 				strcpy(ESP_IPD_DataBuffer,ESP_IPD_Data_Buffer_Pntr);
+				DMA_Cmd(DMA1_Channel3,DISABLE);
 
 				//Wipes the received message from the DMA buffer (using the pointer to the data)
 				//This makes sure the data doesn't get mistaken for a new request, on the next buffer polling.
 				ClearArray_Size(ESP_IPD_Data_Buffer_Pntr,strlen(ESP_IPD_Data_Buffer_Pntr));
-
+				DMA_Initialize(USART3_RxBuffer, USART3_RxBufferSize);
 				//now we process since DMA isn't going to stomp on us.
 				currentIPD = ProcessIPD_Data(ESP_IPD_DataBuffer);
 

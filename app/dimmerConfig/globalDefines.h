@@ -15,9 +15,9 @@
 
 
 //USART buffers and related
-#define RxBuffSize 400
+#define RxBuffSize 500
 #define USART_TxComplete_Timeout_ms 1000
-#define DMA_Rx_Buff_Poll_Int_ms 200
+#define DMA_Rx_Buff_Poll_Int_ms 2000
 
 //Wifi related Variables and declarations
 #define WIFI_COMMAND_ERROR "ERROR" // Expected response from ESP8266 on error
