@@ -44,8 +44,12 @@ uint8_t bodyLengthLength = 0;
 char bodyLengthSizeString[4];
 
 uint16_t fullLength = 0;
-
+uint16_t fullCommandLen = 0;
 ///Sends a response to the active client (connectionNum)
+
+char *responseBuff;
+char data[200];
+
 void SendRESTResponse(uint8_t connectionNum, const char *responseHeaders, const char *responseBody)
 {
 
@@ -61,16 +65,26 @@ void SendRESTResponse(uint8_t connectionNum, const char *responseHeaders, const 
 	bodyLengthLength = strlen(bodyLengthSizeString);
 
 	fullLength = headLength + (((strlen(RequestHeaders_Array[ContentLength]))+bodyLengthLength)+4) + bodyLength+1;
+	fullCommandLen = fullLength;
 	sprintf(webResponse, "AT+CIPSEND=%d,%d\r\n", connectionNum, fullLength);
-	Wifi_SendCustomCommand(webResponse);
+	fullCommandLen += strlen(webResponse);
+
+	//void Wifi_ReadyWaitForAnswer();
+	//Wifi_SendCustomCommand(webResponse);
+
+	Wifi_SendCustomCommand_External_Wait(webResponse);
+
 	ClearArray_Size(webResponse,strlen(webResponse));
-	sprintf(webResponse,"%s%s%d\r\n\r\n%s",responseHeaders,RequestHeaders_Array[ContentLength],bodyLength-1,responseBody);
+	sprintf(webResponse,"%s%s%d\r\n\r\n%s",responseHeaders,RequestHeaders_Array[ContentLength],bodyLength + 1,responseBody);
+	//strcat(webResponse, data);
 
-	Wifi_SendCustomCommand(webResponse);
+	Wifi_SendCustomCommand_External_Wait(webResponse);
+
+	Wifi_WaitForAnswer_SEND_OK(fullCommandLen);
 
 	ClearArray_Size(webResponse,strlen(webResponse));
 
-	for (wi=0;wi<70500;wi++);
+	//for (wi=0;wi<70500;wi++);
 }
 
 

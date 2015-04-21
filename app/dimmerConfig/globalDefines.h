@@ -9,15 +9,15 @@
  */
 
 
-#define ESP_ResponseTimeout_ms 3000
+#define ESP_ResponseTimeout_ms 6000
 #define ESP_USART USART3
 #define DEBUG_CMD_USART USART1
 
 
 //USART buffers and related
-#define RxBuffSize 400
+#define RxBuffSize 500
 #define USART_TxComplete_Timeout_ms 1000
-#define DMA_Rx_Buff_Poll_Int_ms 200
+#define DMA_Rx_Buff_Poll_Int_ms 500
 
 //Wifi related Variables and declarations
 #define WIFI_COMMAND_ERROR "ERROR" // Expected response from ESP8266 on error
@@ -26,7 +26,7 @@
 
 
 //WebServer related defines
-#define RESPONSE_BUFFER_SIZE 1000
+#define RESPONSE_BUFFER_SIZE 300
 
 
 //Helpful Macros

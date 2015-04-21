@@ -21,13 +21,13 @@
 
 
 
-extern uint8_t USART3_TxBuffer[];
+//extern uint8_t USART3_TxBuffer[];
 extern volatile char USART3_RxBuffer[];
-extern uint8_t TxCounter;
-extern uint8_t RxCounter;
-extern uint8_t NbrOfDataToTransfer;
-extern uint8_t NbrOfDataToRead;
-extern volatile uint32_t lastUSARTCharReceived_Time;
+//extern uint8_t TxCounter;
+//extern uint8_t RxCounter;
+//extern uint8_t NbrOfDataToTransfer;
+//extern uint8_t NbrOfDataToRead;
+//extern volatile uint32_t lastUSARTCharReceived_Time;
 
 #define USART3_RxBufferSize (countof(USART3_RxBuffer) - 1)
 
@@ -128,11 +128,50 @@ USART_DMACmd(USART3, USART_DMAReq_Rx, ENABLE);
 }
 
 
-void DMA1_Channel3_IRQHandler(void)
+void DMA_Initialize(volatile char DMA_RxBuffer[], uint16_t BufSize)
+{
+		NVIC_InitTypeDef USART3_DMA_Interrupt_Config;
+
+		DMA_ClearFlag(DMA1_FLAG_GL3 | DMA1_FLAG_HT3 | DMA1_FLAG_TC3 | DMA1_FLAG_TE3);
+
+		DMA_DeInit(DMA1_Channel3);
+
+		//USART3 DMA1 (RX Ch 3 | TX Ch 2 )
+		DMA_InitTypeDef USART3_DMA_Config;
+		USART3_DMA_Config.DMA_PeripheralBaseAddr = 0x40004804;
+		USART3_DMA_Config.DMA_MemoryBaseAddr = (uint32_t)DMA_RxBuffer;
+		USART3_DMA_Config.DMA_DIR = DMA_DIR_PeripheralSRC;
+		USART3_DMA_Config.DMA_BufferSize = BufSize;
+		USART3_DMA_Config.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+		USART3_DMA_Config.DMA_MemoryInc = DMA_MemoryInc_Enable;
+		USART3_DMA_Config.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
+		USART3_DMA_Config.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
+		USART3_DMA_Config.DMA_Mode = DMA_Mode_Circular;
+		USART3_DMA_Config.DMA_Priority = DMA_Priority_VeryHigh;
+		USART3_DMA_Config.DMA_M2M = DMA_M2M_Disable;
+
+		DMA_Init(DMA1_Channel3, &USART3_DMA_Config);
+
+
+		USART3_DMA_Interrupt_Config.NVIC_IRQChannel = DMA1_Channel3_IRQn;
+		USART3_DMA_Interrupt_Config.NVIC_IRQChannelCmd = ENABLE;
+		USART3_DMA_Interrupt_Config.NVIC_IRQChannelPreemptionPriority = 0;
+		USART3_DMA_Interrupt_Config.NVIC_IRQChannelSubPriority = 0;
+
+		NVIC_Init(&USART3_DMA_Interrupt_Config);
+		//NVIC_EnableIRQ(DMA1_Channel3_IRQn);
+
+
+		DMA_Cmd(DMA1_Channel3,ENABLE);
+}
+
+
+
+/*void DMA1_Channel3_IRQHandler(void)
 {
 	//DMA_ClearITPendingBit(DMA1_Channel3,DMA_IT_)
 	lastUSARTCharReceived_Time = Millis();
-}
+}*/
 
 
 
@@ -179,16 +218,10 @@ void Init_USART3_Interrupt()
 	//USART_ITConfig(USART3,USART_IT_TXE, ENABLE);
 }
 
-uint16_t FindInBuffer(char *stringToFind, char buffer[])
-{
-
-}
-
-void USART3_SendString(char *MessageToSend)
+/*void USART3_SendString(char *MessageToSend)
 {
 	while(MessageToSend++)
 	{
-
 		USART_SendData(USART3, MessageToSend);
 	}
 }
@@ -242,7 +275,7 @@ void USART3_Send_AT_TEST()
 void USART3_SendNextChar()
 {
 
-}
+}*/
 
 // - Interrupt routines
 
