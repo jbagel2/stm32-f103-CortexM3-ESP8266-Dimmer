@@ -21,13 +21,13 @@
 
 
 
-extern uint8_t USART3_TxBuffer[];
+//extern uint8_t USART3_TxBuffer[];
 extern volatile char USART3_RxBuffer[];
-extern uint8_t TxCounter;
-extern uint8_t RxCounter;
-extern uint8_t NbrOfDataToTransfer;
-extern uint8_t NbrOfDataToRead;
-extern volatile uint32_t lastUSARTCharReceived_Time;
+//extern uint8_t TxCounter;
+//extern uint8_t RxCounter;
+//extern uint8_t NbrOfDataToTransfer;
+//extern uint8_t NbrOfDataToRead;
+//extern volatile uint32_t lastUSARTCharReceived_Time;
 
 #define USART3_RxBufferSize (countof(USART3_RxBuffer) - 1)
 
@@ -167,11 +167,11 @@ void DMA_Initialize(volatile char DMA_RxBuffer[], uint16_t BufSize)
 
 
 
-void DMA1_Channel3_IRQHandler(void)
+/*void DMA1_Channel3_IRQHandler(void)
 {
 	//DMA_ClearITPendingBit(DMA1_Channel3,DMA_IT_)
 	lastUSARTCharReceived_Time = Millis();
-}
+}*/
 
 
 
@@ -218,16 +218,10 @@ void Init_USART3_Interrupt()
 	//USART_ITConfig(USART3,USART_IT_TXE, ENABLE);
 }
 
-uint16_t FindInBuffer(char *stringToFind, char buffer[])
-{
-
-}
-
-void USART3_SendString(char *MessageToSend)
+/*void USART3_SendString(char *MessageToSend)
 {
 	while(MessageToSend++)
 	{
-
 		USART_SendData(USART3, MessageToSend);
 	}
 }
@@ -281,7 +275,7 @@ void USART3_Send_AT_TEST()
 void USART3_SendNextChar()
 {
 
-}
+}*/
 
 // - Interrupt routines
 

@@ -68,6 +68,7 @@ void Wifi_ReadyWaitForAnswer();
 void Wifi_WaitForAnswer();
 void Wifi_CloseConnection(uint8_t connectionNum);
 void Wifi_SendCustomCommand(char *customMessage);
+void Wifi_SendCustomCommand_External_Wait(char *customMessage);
 void Wifi_SendCommand(Wifi_Commands command );
 void ConnectToAP(char *apName, char *password);
 void StartLocalAP(char *SSID, char *password, uint8_t channel, Available_Encyption encypt);
