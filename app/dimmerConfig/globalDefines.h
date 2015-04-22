@@ -15,7 +15,7 @@
 
 
 //USART buffers and related
-#define RxBuffSize 500
+#define RxBuffSize 1000
 #define USART_TxComplete_Timeout_ms 1000
 #define DMA_Rx_Buff_Poll_Int_ms 500
 
