@@ -45,6 +45,7 @@
  *
  */
 
+/*
 //TYPEDEF DECLARATIONS
 typedef struct{
 	uint8_t ConnectionNum;
@@ -59,7 +60,7 @@ typedef struct{
 
 //METHOD DECLARATIONS
 IPD_Data ProcessIPD_Data(char *IPD_Buffer);
-
+*/
 
 
 //#define RxBuffSize 400
@@ -97,11 +98,11 @@ uint8_t CMD_Incomming_InProgress = 0;
 
 //uint8_t USART3_TxBuffer[10]; //Starting initialization at 10 (for now)
 volatile char USART3_RxBuffer[RxBuffSize]; // Currently used as DMA Circular buffer
-char *ESP_IPD_Data_Buffer_Pntr;
-char ESP_IPD_DataBuffer[RxBuffSize];
+//char *ESP_IPD_Data_Buffer_Pntr;
+//char ESP_IPD_DataBuffer[RxBuffSize];
 
 
-volatile char USART1_RxBuffer[RxBuffSize];
+//volatile char USART1_RxBuffer[RxBuffSize];
 uint8_t TxCounter = 0;
 volatile uint8_t RxCounter = 0;
 uint8_t USART1_RxCounter = 0;
@@ -134,7 +135,8 @@ volatile uint8_t LINKFound = 0;
 volatile uint8_t indexPageRequestWaiting = 0;
 volatile uint8_t restRequestWaiting = 0;
 volatile uint8_t activeConnectionNum = 0;
-void RefreshCustomRESTResponse(char *IPWAN, char *IPLAN, uint32_t nodeValue1);
+void RefreshCustomRESTResponseDimmer(char *IPWAN, char *IPLAN, uint32_t nodeValue1);
+void RefreshCustomRESTResponse(char *IPWAN, char *IPLAN, char *nodeKeyName, char *nodeValue);
 char customRESTResponse[400];
 char dimValueString[6];
 
@@ -144,13 +146,13 @@ uint16_t position = 0;
 
 
 IPD_Data currentIPD;
-uint16_t incommingDimmingValue = 0;
-char *dimmingString;
-char *URI;
-char *queryString1;
-char *queryValue1;
-char *queryString2;
-char *queryValue2;
+//uint16_t incommingDimmingValue = 0;
+//char *dimmingString;
+//char *URI;
+//char *queryString1;
+//char *queryValue1;
+//char *queryString2;
+//char *queryValue2;
 
 
 int main(void)
@@ -212,9 +214,9 @@ int main(void)
 
 
 	//Init_USART3(2000000,ENABLE);
-	Init_USART1(2000000,ENABLE);
+	//Init_USART1(2000000,ENABLE);
 
-	for (mj=0;mj<500000;mj++);// FOR TESTING
+	//for (mj=0;mj<500000;mj++);// FOR TESTING
 
 	//for (mj=0;mj<5000;mj++);// FOR TESTING
 	//Need to wait for a sec before transmitting data. Let ESP8266 power on
@@ -240,7 +242,7 @@ int main(void)
 
 	Wifi_SendCommand(WIFI_GET_CURRENT_IP);
 
-	//char *tstBuff;
+	//Sets data of first few bites of DMA so it doesn't start with 12 null terminators.
 	USART3_RxBuffer[0] = "1";
 	USART3_RxBuffer[1] = "1";
 	USART3_RxBuffer[2] = "1";
@@ -255,10 +257,11 @@ int main(void)
 	USART3_RxBuffer[11] = "1";
 	USART3_RxBuffer[12] = "1";
 
+
+
+	//Main Run Loop
 	for(;;)
     {
-
-
 
 		if(restRequestWaiting == 1)
 		{
@@ -267,87 +270,12 @@ int main(void)
       //This Polls the dma buffer ever [poll interval] For new incoming data from esp (Starting with +IPD)
 		if((Millis() - lastDMABuffPoll) >= DMA_Rx_Buff_Poll_Int_ms)
 		{
-			//Probably need to check for new client ({clientNum},CONNECT)
 			lastDMABuffPoll = Millis();
-			ESP_IPD_Data_Buffer_Pntr = memmem(USART3_RxBuffer,RxBuffSize,"+IPD",4);
-			if(ESP_IPD_Data_Buffer_Pntr)
+			currentIPD = Wifi_CheckDMABuff_ForIPDData();
+			if(currentIPD.Valid == 1)
 			{
-				position = DMA_GetCurrDataCounter(DMA1_Channel3);
-				//position = strlen(USART3_RxBuffer);
-				//Copy IPD message and data to its own buffer so DMA can go about its business
-				strcpy(ESP_IPD_DataBuffer,ESP_IPD_Data_Buffer_Pntr);
-				DMA_Cmd(DMA1_Channel3,DISABLE);
-
-				//Wipes the received message from the DMA buffer (using the pointer to the data)
-				//This makes sure the data doesn't get mistaken for a new request, on the next buffer polling.
-				ClearArray_Size(ESP_IPD_Data_Buffer_Pntr,strlen(ESP_IPD_Data_Buffer_Pntr));
-				DMA_Initialize(USART3_RxBuffer, USART3_RxBufferSize);
-
-
-				//now we process since DMA isn't going to stomp on us.
-				currentIPD = ProcessIPD_Data(ESP_IPD_DataBuffer);
-					//TODO: Need to add a level of error detection/correction as data may be missing the
-				if(strstr(currentIPD.RequestType, "POST"))
-				{
-					//if URI contains dimming (the test for now)
-					if(strstr(currentIPD.URI, "dimming"))
-					{
-						if(strstr(currentIPD.URI, "?"))//If query String is found
-						{
-							URI = strtok(currentIPD.URI, "?");
-							if(strstr(URI,"="))//If URI was sent prepended with a '/' this will be true
-							{
-								queryString1 = strtok(URI, "=");
-								//strtok(NULL, "=");
-								queryValue1 = strtok(NULL, "\0");
-							}
-							else
-							{
-							queryString1 = strtok(NULL, "=");
-							if(strstr(currentIPD.URI, "&"))
-							{
-								queryValue1 = strtok(NULL, "&");
-							}
-							else
-							{
-								queryValue1 = strtok(NULL, "\0");
-							}
-							}
-						}
-
-						dimmingValue = atoi(queryValue1);
-						if(dimmingValue <= 13000)
-						{
-							RefreshCustomRESTResponse("172.20.112.136", "192.168.4.1", dimmingValue);
-							SendRESTResponse(currentIPD.ConnectionNum, RESTResponse_Headers_Test_OK, customRESTResponse);
-						}
-
-					}
-				}
-				//printf("Incoming webrequest\r\n");
+				SendRESTResponse(currentIPD.ConnectionNum, RESTResponse_Headers_Test_OK, customRESTResponse);
 			}
-			//DMA_Rx_Buff_Index = strlen(USART3_RxBuffer);
-			//tstBuff = mempcpy(USART3_RxBuffer_Buffer, USART3_RxBuffer, RxBuffSize);
-			//DMA_Rx_Buff_Index = tstBuff - &USART3_RxBuffer_Buffer[0];
-			//tstBuff = memmem(USART3_RxBuffer,sizeof(USART3_RxBuffer),"OK\r\n",4);
-			//ClearArray_Size(USART3_RxBuffer, sizeof(USART3_RxBuffer));
-
-		}
-
-		if(indexPageRequestWaiting == 1)
-		{
-			//Need to parse the responses and Header here, to decide the correct response type (Page or REST)
-
-
-
-			//printf("WebRequest found!\r\n"); //SEMIHOSTING DEBUG OUT
-			for (mdi=0;mdi<800170;mdi++);// Wait for buffer. (need to replace with check for OK)
-			indexPageRequestWaiting = 0;
-			//printf("Preparing to send web response to connection %d\r\n",activeConnectionNum); //SEMIHOSTING DEBUG OUT
-			//SendWebRequestResponse(activeConnectionNum);
-			//sprintf(dimValueString,"%d",dimmingValue);
-			RefreshCustomRESTResponse("111.111.111.111","255.255.255.255",dimmingValue);
-			SendRESTResponse(activeConnectionNum,RESTResponse_Headers_Test_OK,customRESTResponse);
 		}
 		//Check for data to transmit USART3
 
@@ -356,77 +284,13 @@ int main(void)
 			Wifi_SendCommand(Command_To_Redirect);
 			for (mj=0;mj<130500;mj++);//debounce
 		}
-		//check for command to send
-		//check for connection to close
-
-		if(newCommandWaiting == 1)
-		{
-			//printf("New Command waiting!\r\n"); //SEMIHOSTING DEBUG OUT
-			if(CMD_FULL_Incomming[0] != NULL)
-			{
-				CMD_FULL_Incomming[11] = '\r';
-				CMD_FULL_Incomming[12] = '\0';
-				strcpy(CMD_FULL_ResponseBuffer,CMD_FULL_Incomming);
-				strcat(CMD_FULL_ResponseBuffer,"CMD RECVD\r");
-				//CMD_FULL_ResponseBuffer = CMD_FULL_Incomming;
-				//CMD_FULL_ResponseBuffer[13] = "CMD RECVD\r";
-				//Wifi_SendCustomCommand("AT+CIPSEND=0,23");
-				//Wifi_SendCustomCommand("AT+CIPSEND=1,36");
-				//Wifi_SendCustomCommand(CMD_FULL_ResponseBuffer);
-				SendWebRequestResponse(0);
-				SendWebRequestResponse(1);
-
-			}
-			//Wifi_SendCustomCommand("AT+CIPSEND=0,11");
-			//Wifi_SendCustomCommand("CMD RECVD\r");
-			newCommandWaiting = 0;
-		}
-
-		//if((Millis() - LastRxBufferReadTime) >= ESP_RX_DMA_BUF_POLL_Interval_ms)
-		//{
-		//	LastRxBufferReadTime = Millis();
-			//do something here to check the buffer/transfer/parse
-
-		//}
-
     }
-}
-
-char *IPD_Processing_buf;
-char *ConnectNum;
-//Breaks the IPD message into a proper request object
-IPD_Data ProcessIPD_Data(char *IPD_Buffer)
-{
-	//IPD_Processing_buf = strdupa(IPD_Buffer);
-	//IPD_Processing_buf = &IPD_Buffer + 5;
-	IPD_Data thisIPDMessage;
-
-	strtok(IPD_Buffer,",");
-
-	ConnectNum = strtok(NULL,",");
-	thisIPDMessage.ConnectionNum = atoi(ConnectNum);
-
-	thisIPDMessage.DataSize = strtok(NULL,":");
-	//TODO: Probably need to add a check to make sure actual datasize matches expected..
-
-	thisIPDMessage.RequestType = strtok(NULL," ");
-
-	thisIPDMessage.URI = strtok(NULL," ");
-
-	strtok(NULL,"\r\n");
-
-	thisIPDMessage.Headers = strtok(NULL,"{");
-
-	thisIPDMessage.Body = strtok(NULL,"}");
-	return thisIPDMessage;
-
 }
 
 void ClearRxBuffer(char buffer[])
 {
 	memset(&buffer[0], 0, sizeof(buffer));
 }
-
 
 
 void SetRedirectCommand(uint8_t commandNum)
@@ -436,12 +300,21 @@ void SetRedirectCommand(uint8_t commandNum)
 
 #define NODE_ID "dim01"
 
-void RefreshCustomRESTResponse(char *IPWAN, char *IPLAN, uint32_t nodeValue1)
+void RefreshCustomRESTResponseDimmer(char *IPWAN, char *IPLAN, uint32_t nodeValue1)
 {
 #ifndef NODE_ID
 #error NODE_ID not defined, Please define NODE_ID as char*
 #endif
 snprintf(customRESTResponse, ARRAYSIZE(customRESTResponse),"{\"ID\":\"%s\",\"Status\":{\"dimmingValue\":\"%d\",\"CurrentIP_WAN\":\"%s\",\"currentIP_LAN\":\"%s\",\"self_check_result\":\"OK\"}} ",NODE_ID, nodeValue1, IPWAN, IPLAN);
+}
+
+
+void RefreshCustomRESTResponse(char *IPWAN, char *IPLAN, char *nodeKeyName, char *nodeValue)
+{
+#ifndef NODE_ID
+#error NODE_ID not defined, Please define NODE_ID as char*
+#endif
+snprintf(customRESTResponse, ARRAYSIZE(customRESTResponse),"{\"ID\":\"%s\",\"Status\":{\"%s\":\"%s\",\"CurrentIP_WAN\":\"%s\",\"currentIP_LAN\":\"%s\",\"self_check_result\":\"OK\"}} ",NODE_ID, nodeKeyName, nodeValue, IPWAN, IPLAN);
 }
 
 #ifdef SUPPORT_CPLUSPLUS
@@ -508,13 +381,13 @@ void USART3_IRQHandler(void) //USART3 - ESP8266 Wifi Module
 }
 
 
-
+/*
 void USART1_IRQHandler(void) //USART1 - User Command recieve (DEBUG ONLY, commands from user will come from wifi)
 {
   if(USART_GetFlagStatus(USART1, USART_FLAG_RXNE) != RESET)
   {
 	
-    /* Read one byte from the receive data register */
+    // Read one byte from the receive data register
 	//byteToCommand[0] = ;
 	USART1_RxBuffer[USART1_RxCounter++] = USART_ReceiveData(USART1);
 	//char byteToCommand = USART1_RxBuffer[(USART1_RxCounter - 1)];
@@ -551,3 +424,4 @@ void USART1_IRQHandler(void) //USART1 - User Command recieve (DEBUG ONLY, comman
   }
 
 }
+*/

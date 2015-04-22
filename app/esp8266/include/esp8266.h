@@ -57,6 +57,17 @@ typedef enum
 	WPA_WPA2_PSK
 }Available_Encyption;
 
+//TYPEDEF DECLARATIONS
+typedef struct{
+	uint8_t ConnectionNum;
+	char *DataSize;
+	char *RequestType; //ie.. POST, GET, PUT, DELETE
+	char *URI; //ie.. /api/foo?id=123
+	char *Headers;
+	char *Body;
+	uint8_t Valid;
+}IPD_Data;
+
 extern const char *ATCommandsArray[18];
 
 #define WIFI_COMMAND(commandEnum) (ATCommandsArray[(commandEnum)])
@@ -70,6 +81,7 @@ void Wifi_CloseConnection(uint8_t connectionNum);
 void Wifi_SendCustomCommand(char *customMessage);
 void Wifi_SendCustomCommand_External_Wait(char *customMessage);
 void Wifi_SendCommand(Wifi_Commands command );
+IPD_Data Wifi_CheckDMABuff_ForIPDData();
 void ConnectToAP(char *apName, char *password);
 void StartLocalAP(char *SSID, char *password, uint8_t channel, Available_Encyption encypt);
 
