@@ -264,6 +264,7 @@ int main(void)
 		{
 			SendRESTResponse(activeConnectionNum,RESTResponse_Headers_Test_OK,RESTResponse_Body_TEST_JSON);
 		}
+      //This Polls the dma buffer ever [poll interval] For new incoming data from esp (Starting with +IPD)
 		if((Millis() - lastDMABuffPoll) >= DMA_Rx_Buff_Poll_Int_ms)
 		{
 			//Probably need to check for new client ({clientNum},CONNECT)
@@ -550,4 +551,3 @@ void USART1_IRQHandler(void) //USART1 - User Command recieve (DEBUG ONLY, comman
   }
 
 }
-
