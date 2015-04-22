@@ -8,12 +8,12 @@
 #include "esp8266.h"
 
 
-char commandToSend[80];
+char commandToSend[70];
 volatile uint8_t waitingForReponse = 0;
 volatile uint8_t OKFound = 0;
 volatile uint8_t ERRORFound = 0;
 volatile uint32_t TxWaitForResponse_TimeStmp = 0;
-extern volatile char USART3_RxBuffer_Buffer[RxBuffSize];
+//extern volatile char USART3_RxBuffer_Buffer[RxBuffSize];
 extern volatile char USART3_RxBuffer[RxBuffSize];
 
 const char *ATCommandsArray[18] = {"AT",
@@ -22,7 +22,7 @@ const char *ATCommandsArray[18] = {"AT",
 	"AT+GMR",
 	"AT+CWMODE?",
 	"AT+CWMODE=3",
-	"AT+CWJAP=\"YOUR_SSID\",\"PASSWORD\"",
+	"AT+CWJAP=\"SSID\",\"PASSWORD\"",
 	"AT+CWJAP?",
 	"AT+RST",
 	"AT+CIPMUX=1",
@@ -102,6 +102,31 @@ void Wifi_WaitForAnswerCMD(char *cmdToWaitFor, uint16_t cmdSize)
 	//ERRORFound=0;
 }
 
+uint32_t pointerRange = 0;
+void Wifi_WaitForAnswer_SEND_OK(uint16_t cmdSize)
+{
+
+	while(waitingForReponse == 1 && (Millis() - TxWaitForResponse_TimeStmp) < ESP_ResponseTimeout_ms)
+	{
+		WaitForAnswer_cmd_Buffer = memmem(USART3_RxBuffer,RxBuffSize,"AT+CIPSEND",10);
+		if(strlen(WaitForAnswer_cmd_Buffer)>0)
+		{
+			while(waitingForReponse == 1 && (Millis() - TxWaitForResponse_TimeStmp) < ESP_ResponseTimeout_ms)
+				{
+				if(WaitForAnswer_ans_Buffer = memmem(USART3_RxBuffer,strlen(USART3_RxBuffer),"SEND OK\r\n",9))
+				{
+					pointerRange = WaitForAnswer_cmd_Buffer - WaitForAnswer_ans_Buffer;
+					ClearArray_Size(WaitForAnswer_cmd_Buffer, cmdSize + 9);
+					OKFound=1;
+					waitingForReponse = 0;
+				}
+				}
+			//Check for OK or Error Message
+		}
+	}
+
+}
+
 
 char closeConnectionBuffer[15];
 void Wifi_CloseConnection(uint8_t connectionNum)
@@ -112,6 +137,14 @@ void Wifi_CloseConnection(uint8_t connectionNum)
 
 
 void Wifi_SendCustomCommand(char *customMessage)
+{
+			Wifi_SendCustomCommand_External_Wait(customMessage);
+
+			Wifi_WaitForAnswer();
+			//for (wi=0;wi<735000;wi++);
+}
+
+void Wifi_SendCustomCommand_External_Wait(char *customMessage)
 {
 		while(*customMessage)
 		{
@@ -126,7 +159,7 @@ void Wifi_SendCustomCommand(char *customMessage)
 			Wifi_ReadyWaitForAnswer();
 			USART_SendData(ESP_USART,'\n');
 
-			Wifi_WaitForAnswer();
+			//Wifi_WaitForAnswer();
 			//for (wi=0;wi<735000;wi++);
 }
 
